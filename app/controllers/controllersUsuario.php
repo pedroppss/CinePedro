@@ -68,7 +68,7 @@ class controllersUsuario{
             include "../../admin/html/CrearPelicula.php";
             $usuario=new Usuario();
             if(!empty($_REQUEST['nombrePelicula']) && !empty($_REQUEST['argumento']) && !empty($_REQUEST['clasificacion']) && !empty($_REQUEST['ano']) && !empty($_REQUEST['duracion']) && !empty($_REQUEST['edad'])
-            && !empty($_REQUEST['genero_id']) && !empty($_FILES['imagen']) )
+            && !empty($_REQUEST['genero_id']) && !empty($_FILES['imagen']) && !empty($_REQUEST['actor/actriz']) && !empty($_REQUEST['director']))
             {
                 $imagenP=$_FILES['imagen']['name'];
 
@@ -78,6 +78,8 @@ class controllersUsuario{
                     move_uploaded_file($_FILES['imagen']['tmp_name'],$rutaDestinoPelicula);
                     $usuario->añadir($_REQUEST['nombrePelicula'],$_REQUEST['argumento'],$_REQUEST['clasificacion'],$_REQUEST['ano'],$_REQUEST['duracion'],$_REQUEST['edad'],
                     $_REQUEST['genero_id'],$imagenP);
+                    $usuario->meteractrizactor($_REQUEST['actor/actriz'],$_REQUEST['nombrePelicula']);
+                    $usuario->meterdirector($_REQUEST['director'],$_REQUEST['nombrePelicula']);
                     echo "Se ha creado correctamente";
                 }else
                 {

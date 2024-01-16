@@ -84,6 +84,71 @@ class Usuario extends conexion{
             exit("Error:" .$e->getMessage());
         }
    }
+   //Función para obtener el ID de la película por su nombre de pelicula
+   public function obtenerIdPelicula($nombre)
+   {
+    try
+    {
+       $instancia=new Usuario();
+       $conexion=$instancia->conexion;
+       $consultasql="select id from peliculasc where nombre=:nombre";
+       $enlaceDatos=$conexion->prepare($consultasql);
+       $enlaceDatos->bindParam(":nombre",$nombre,PDO::PARAM_STR);
+       $enlaceDatos->execute();
+       $resultado = $enlaceDatos->fetch(PDO::FETCH_ASSOC);
+       return ($resultado) ? $resultado['id'] : null;
+        //$enlaceDatos->fetch(PDO::PARAM_STR);
+    }catch(PDOException $e)
+    {
+        exit("Error:" .$e->getMessage());
+    }
+   }
+   //meter el actor o el actriz para la pelicula creada
+   public function meteractrizactor($actor,$nombrepelicula)
+   {
+        try
+        {
+            $pelicula_id=$this->obtenerIdPelicula($nombrepelicula);
+            if(!$pelicula_id)
+            {
+                exit("Error: No se encontró la pelicula con ese nombre de la pelicula");
+            }
+            $instancia=new Usuario();
+            $conexion=$instancia->conexion;
+            $consultasql='insert into peliculas_personalc (pelicula_id,personal_id) values (:pelicula_id,:personal_id)';
+            $enlaceDatos=$conexion->prepare($consultasql);
+            $enlaceDatos->bindParam(":pelicula_id",$pelicula_id,PDO::PARAM_INT);
+            $enlaceDatos->bindParam(":personal_id",$actor,PDO::PARAM_STR);
+            $enlaceDatos->execute();
+            //$enlaceDatos->fetch(PDO::PARAM_STR);
+        }catch(PDOException $e)
+        {
+            exit("Error:" .$e->getMessage());
+        }
+   }
+   //meter un director para la pelicula creada
+   public function meterdirector($director,$nombrepelicula)
+   {
+    try
+    {
+        $pelicula_id=$this->obtenerIdPelicula($nombrepelicula);
+        if(!$pelicula_id)
+        {
+            exit("Error: No se encontró la pelicula con ese nombre de la pelicula");
+        }
+        $instancia=new Usuario();
+        $conexion=$instancia->conexion;
+        $consultasql='insert into peliculas_personalc (pelicula_id,personal_id) values (:pelicula_id,:personal_id)';
+        $enlaceDatos=$conexion->prepare($consultasql);
+        $enlaceDatos->bindParam(":pelicula_id",$pelicula_id,PDO::PARAM_INT);
+        $enlaceDatos->bindParam(":personal_id",$director,PDO::PARAM_STR);
+        $enlaceDatos->execute();
+        //$enlaceDatos->fetch(PDO::PARAM_STR);
+    }catch(PDOException $e)
+    {
+        exit("Error:" .$e->getMessage());
+    }
+   }
    //Añadir un actor, un actriz o un Director
    public function anadiractoractrizdirector($nombre,$tipo,$imagen)
    {

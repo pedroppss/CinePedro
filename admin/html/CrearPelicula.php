@@ -84,18 +84,46 @@ session_start();
                                                     </div>
                                                     <br>
                                                 <label class="form-label" for="default-07">Genero de la Pelicula</label>        
-                                                        <select name="genero_id" id="genero_id" placeholder="genero de la Pelicula">
-                                                            <option value="1">1-Fantasía</option>
-                                                            <option value="2">2-Acción</option>
-                                                            <option value="3">3-Drama</option>
-                                                            <option value="4">4-Ciencia Ficción</option>
-                                                            <option value="5">5-Aventuras</option>
-                                                            <option value="6">6-Monstruos</option>
-                                                            <option value="7">7-Terror</option>
-                                                            <option value="8">8-Dibujos Aminados</option>
-                                                        </select>    
+                                                    <select name="genero_id" id="genero_id" placeholder="genero de la Pelicula">
+                                                        <option value="1">1-Fantasía</option>
+                                                        <option value="2">2-Acción</option>
+                                                        <option value="3">3-Drama</option>
+                                                        <option value="4">4-Ciencia Ficción</option>
+                                                        <option value="5">5-Aventuras</option>
+                                                        <option value="6">6-Monstruos</option>
+                                                        <option value="7">7-Terror</option>
+                                                        <option value="8">8-Dibujos Aminados</option>
+                                                    </select>    
                                                     <br>
-                                                    <label class="form-label" for="default-08">Seleccionar una imagen para subir</label>
+                                                <label class="form-label" for="default-08">Actores/Actrices de la pelicula</label>
+                                                    <select name="actor/actriz" id="actor/actriz" placeholder="Actores/actrices">
+                                                        <option value="1">Vin Diesel</option>
+                                                        <option value="2">Jason Momoa</option>
+                                                        <option value="3">Michelle Rodriguez</option>
+                                                        <option value="6">Nathalie Emmanuel</option>
+                                                        <option value="9">Brie Larson</option>
+                                                        <option value="13">Jason Bateman</option>
+                                                        <option value="18">Gustaf Skarsgard</option>
+                                                        <option value="22">Domenic Di Rosa</option>
+                                                        <option value="25">Jason D. Avalos</option>
+                                                        <option value="26">Jimmy Caspeur</option>
+                                                    </select>
+                                                    <br>
+                                                <label class="form-label" for="default-08">Director de la Pelicula</label>
+                                                    <select name="director" id="director" placeholder="Directores">
+                                                        <option value="4">Louis Leterrier</option>
+                                                        <option value="19">Ben Affleck</option>
+                                                        <option value="31">Steven Caple Jr</option>
+                                                        <option value="39">Kevin Greutert</option>
+                                                        <option value="44">Scott Beck</option>
+                                                        <option value="56">Adam Wingard</option>
+                                                        <option value="68">Joaquim Dos Santos</option>
+                                                        <option value="80">James Wan</option>
+                                                        <option value="92">James Gunn</option>
+                                                        <option value="105">Rob Marshall</option>
+                                                    </select>
+                                                    <br>
+                                                <label class="form-label" for="default-08">Seleccionar una imagen para subir</label>
                                                     <input type="file" class="upload-btn" name="imagen" id="imagen" accept="image/*" required>
                                                     <br>
                                                     <button class="w-300 h-12 mt-7 ml-[299px] bg-rose-600 text-2xl font-normal text-white font-poppins" type="submit" name="añadir" value="añadir">Añadir</button>
