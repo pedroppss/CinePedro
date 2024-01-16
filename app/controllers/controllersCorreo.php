@@ -19,7 +19,7 @@ class ControllerCorreo
         //Creamos el contenido del asunto 
         $subject = "Activacion de cuentas";
         //Cuerpo del mensaje
-        $message = '<h1>¡Gracias por registrarse!Para poder activar la cuenta, haz click en el enlace</h1><a href="http://localhost/dwes2/Cine-Pedro/app/views/login_register.php?ctl=login">Iniciar sesion</a> <br> Enviado el día: ' . date("Y-m-d H:i:s");
+        $message = '<h1>¡Gracias por registrarse!Para poder activar la cuenta, haz click en el enlace</h1><a href="http://143.47.43.204:8080/pedro/Cine-Pedro/app/views/login_register.php?ctl=login">Iniciar sesion</a> <br> Enviado el día: ' . date("Y-m-d H:i:s");
 
         try {
             // Creando una nueva instancia de PHPMailer
