@@ -53,7 +53,7 @@ session_start();
                                             </div>
                                             <form action="app/views/login_register.php?ctl=añadirActores" method="POST" enctype="multipart/form-data">
                                             <div class="form-group">
-                                                    <label class="form-label" for="default-01">Nombre del Actor, Actriz o Director para editar</label>
+                                                    <label class="form-label" for="default-01">Nombre del Actor, Actriz o Director para Añadir</label>
                                                     <div class="form-control-wrap">
                                                         <input class="form-control" type="text" name="nombreActorActrizDirector" id="nombreActorActrizDirector" placeholder="Nombre del Actor, Actrices o Directores">
                                                     </div>
