@@ -1,4 +1,6 @@
-
+<?php 
+session_start();
+?>
 <!DOCTYPE html>
 <html lang="zxx" class="js">
 
@@ -34,55 +36,41 @@
                                     <div class="components-preview wide-md mx-auto">
                                         <div class="nk-block-head nk-block-head-lg wide-sm">
                                             <div class="nk-block-head-content">
-                                                <div class="nk-block-head-sub"><a class="back-to" href="app/views/login_register.php?ctl=adminPrincipal"><em class="icon ni ni-arrow-left"></em><span>Ir a la Página principal</span></a></div>
-                                                <h2 class="nk-block-title fw-normal">Lista de Usuarios</h2>
+                                                <div class="nk-block-head-sub"><a class="back-to" href="app/views/login_register.php?ctl=usuarios"><em class="icon ni ni-arrow-left"></em><span>Lista de Actores, Actrices y Directores</span></a></div>
+                                                <h2 class="nk-block-title fw-normal">Asignar Roles a los Usuarios</h2>
                                                 <div class="nk-block-des">
                                                     <!--<p class="lead">Using <a href="https://datatables.net/" target="_blank">DataTables</a>, add advanced interaction controls to your HTML tables. It is a highly flexible tool and all advanced features allow you to display table instantly and nice way.</p>
                                                     <p>Check out the <a href="https://datatables.net/" target="_blank">documentation</a> for a full overview.</p>-->
-                                                <p class="lead">Esto es una lista de Usuarios</p>
+                                                <p class="lead">Esto es para asignar roles (administrador o Roles) a los usuarios
+                                                </p>
                                                 </div>
                                             </div>
                                         </div><!-- .nk-block-head -->
                                         <div class="nk-block nk-block-lg">
                                             <div class="nk-block-head">
                                                 <div class="nk-block-head-content">
-                                                    <h4 class="nk-block-title">Usuarios</h4>
+                                                    <h4 class="nk-block-title">Asignacion de Roles a lo usuarios</h4>
                                                 </div>
                                             </div>
-                                            <div class="card card-bordered card-preview">
-                                                <div class="card-inner">
-                                                    <table class="datatable-init table">
-                                                        <thead>
-                                                            <tr>
-                                                                <th>Avatar</th>
-                                                                <th>Nombre</th>
-                                                                <th>Apellidos</th>
-                                                                <th>NIF</th>
-                                                                <th>Rol</th>
-                                                                <th>Correo</th>
-                                                                <th>Contraseña</th>
-                                                                <th>Activo</th>
-                                                            </tr>
-                                                        </thead>
-                                                        <tbody>
-                                                        <?php foreach($_SESSION['usuarios'] as $usuario){ ?>
-                                                            <tr>
-                                                                <td><img src="app/images/avatar/<?php echo $usuario['avatar']?>"></td>
-                                                                <td><?php echo $usuario['nombre'] ?></td>
-                                                                <td><?php echo $usuario['apellidos'] ?></td>
-                                                                <td><?php echo $usuario['nif'] ?></td>
-                                                                <td><?php echo $usuario['rol'] ?></td>
-                                                                <td><?php echo $usuario['correo'] ?></td>
-                                                                <td><?php echo $usuario['contraseña'] ?></td>
-                                                                <td><?php echo $usuario['activo'] ?></td>
-                                                            </tr>
-                                                           <?php } ?>
-                                                        </tbody>
-                                                    </table>
+                                            <form action="app/views/login_register.php?ctl=asignarRolesUsuarios" method="POST">
+                                                <div class="form-group">
+                                                    <label class="form-label" for="default-01">Nombre del Usuario</label>
+                                                        <div class="form-control-wrap">        
+                                                            <input  class="form-control" type="text" name="nombreUsuario" id="nombreUsuario" placeholder="Nombre del Usuario">    
+                                                        </div>
+                                                    <br>
+                                                    <label class="form-label" for="default-02">Roles</label>
+                                                    <select name="roles" id="roles" placeholder="administrador">
+                                                        <option value="cliente">cliente</option>
+                                                        <option value="administrador">administrador</option>
+                                                    </select>
+                                                    <br>
+                                                    <button class="w-300 h-12 mt-7 ml-[299px] bg-rose-600 text-2xl font-normal text-white font-poppins" type="submit" name="asignar" value="asignar">Asignar</button>
                                                 </div>
-                                            </div><!-- .card-preview -->
+                                            </form>
                                         </div> <!-- nk-block -->
-                                   </div>
+                                    </div><!-- .components-preview -->
+                                </div>
                                 <!-- footer @s -->
                                 <?php include '../../admin/assets/templates/footer.php'; ?>
                                 <!-- footer @e -->

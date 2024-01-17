@@ -1,6 +1,3 @@
-<?php 
-session_start();
-?>
 <!DOCTYPE html>
 <html lang="zxx" class="js">
 
@@ -36,12 +33,12 @@ session_start();
                                     <div class="components-preview wide-md mx-auto">
                                         <div class="nk-block-head nk-block-head-lg wide-sm">
                                             <div class="nk-block-head-content">
-                                                <div class="nk-block-head-sub"><a class="back-to" href="app/views/login_register.php?ctl=usuarios"><em class="icon ni ni-arrow-left"></em><span>Lista de Usuarios</span></a></div>
-                                                <h2 class="nk-block-title fw-normal">Borrar Usuario</h2>
+                                                <div class="nk-block-head-sub"><a class="back-to" href="app/views/login_register.php?ctl=usuarios"><em class="icon ni ni-arrow-left"></em><span>Lista de Actores, Actrices y Directores</span></a></div>
+                                                <h2 class="nk-block-title fw-normal">Activar o Desactivar Usuarios</h2>
                                                 <div class="nk-block-des">
                                                     <!--<p class="lead">Using <a href="https://datatables.net/" target="_blank">DataTables</a>, add advanced interaction controls to your HTML tables. It is a highly flexible tool and all advanced features allow you to display table instantly and nice way.</p>
                                                     <p>Check out the <a href="https://datatables.net/" target="_blank">documentation</a> for a full overview.</p>-->
-                                                <p class="lead">Esto es para Borrar Usuarios
+                                                <p class="lead">Esto es para activar o desactivar a los usuarios
                                                 </p>
                                                 </div>
                                             </div>
@@ -49,17 +46,17 @@ session_start();
                                         <div class="nk-block nk-block-lg">
                                             <div class="nk-block-head">
                                                 <div class="nk-block-head-content">
-                                                    <h4 class="nk-block-title">Borrado de Usuarios</h4>
+                                                    <h4 class="nk-block-title">Activación o desactivación de los usuarios</h4>
                                                 </div>
                                             </div>
-                                            <form action="app/views/login_register.php?ctl=borrarUsuario" method="POST">
+                                            <form action="app/views/login_register.php?ctl=activar/desactivarusuarios" method="POST">
                                                 <div class="form-group">
                                                     <label class="form-label" for="default-01">Nombre del Usuario</label>
                                                         <div class="form-control-wrap">        
                                                             <input  class="form-control" type="text" name="nombreUsuario" id="nombreUsuario" placeholder="Nombre del Usuario">    
                                                         </div>
                                                     <br>
-                                                    <button class="w-300 h-12 mt-7 ml-[299px] bg-rose-600 text-2xl font-normal text-white font-poppins" type="submit" name="borrar" value="borrar">Borrar</button>
+                                                    <button class="w-300 h-12 mt-7 ml-[299px] bg-rose-600 text-2xl font-normal text-white font-poppins" type="submit" name="activar_desactivar" value="activar_desactivar">Activar/Desactivar</button>
                                                 </div>
                                             </form>
                                         </div> <!-- nk-block -->

@@ -50,26 +50,25 @@
                                     <ul class="nk-menu">
                                         
                                         <li class="nk-menu-item has-sub">
-                                            <a href="app/views/login_register.php?ctl=añadir" class="nk-menu-link nk-menu-toggle">
+                                            <a href="app/views/login_register.php?ctl=activar/desactivarusuarios" class="nk-menu-link nk-menu-toggle">
                                                 <span class="nk-menu-icon"><em class="icon ni ni-tile-thumb"></em></span>
-                                                <span class="nk-menu-text">Crear Usuarios</span>
+                                                <span class="nk-menu-text">Activar/desactivar usuarios</span>
                                             </a>
                                         </li><!-- .nk-menu-item -->
                                         <li class="nk-menu-item has-sub">
-                                            <a href="app/views/login_register.php?ctl=borrarUsuario" class="nk-menu-link nk-menu-toggle">
+                                            <a href="app/views/login_register.php?ctl=eliminarcuentas" class="nk-menu-link nk-menu-toggle">
+                                                <span class="nk-menu-icon"><em class="icon ni ni-tile-thumb"></em></span>
+                                                <span class="nk-menu-text">Eliminar cuentas de los usuarios</span>
+                                            </a>
+                                        </li>
+                                        <li class="nk-menu-item has-sub">
+                                            <a href="app/views/login_register.php?ctl=asignarRolesUsuarios" class="nk-menu-link nk-menu-toggle">
                                                 <span class="nk-menu-icon"><em class="icon ni ni-users"></em></span>
-                                                <span class="nk-menu-text">Borrar Usuarios</span>
+                                                <span class="nk-menu-text">Asignar roles a los usuarios</span>
                                             </a>
-                                        </li><!-- .nk-menu-item -->
-                                        <li class="nk-menu-item has-sub">
-                                            <a href="app/views/login_register.php?ctl=editar" class="nk-menu-link nk-menu-toggle">
-                                                <span class="nk-menu-icon"><em class="icon ni ni-user-list"></em></span>
-                                                <span class="nk-menu-text">Editar Usuarios</span>
-                                            </a>
-                                        </li><!-- .nk-menu-item -->
-                                    </ul><!-- .nk-menu -->
+                                        </li><!-- .nk-menu-item -->                                    </ul><!-- .nk-menu -->
                                 </div><!-- .nk-sidebar-menu -->
                                 <div class="nk-aside-close">
                                     <a href="#" class="toggle" data-target="sideNav"><em class="icon ni ni-cross"></em></a>
                                 </div><!-- .nk-aside-close -->
-                            </div>
+</div>

@@ -188,14 +188,15 @@ class Usuario extends conexion{
     }
    }
    //eliminar un usuario
-   public function eliminarusuario($nombreUsuario)
+   public function eliminarusuario($correo,$nombreUsuario)
    {
     try
     {
         $instancia=new Usuario();
         $conexion=$instancia->conexion;
-        $consultasql="delete from usuariosc where nombre=:nombre";
+        $consultasql="delete from usuariosc where nombre=:nombre and correo=:correo";
         $enlaceDatos=$conexion->prepare($consultasql);
+        $enlaceDatos->bindParam(":correo",$correo,PDO::PARAM_STR);
         $enlaceDatos->bindParam(":nombre",$nombreUsuario,PDO::PARAM_STR);
         $enlaceDatos->execute();
         $enlaceDatos->fetch(PDO::PARAM_STR);
@@ -267,6 +268,95 @@ class Usuario extends conexion{
             exit("Error:" .$e->getMessage());
         }
    }
+   //activar el usuario si el estado del usuario es 0
+   public function activarusuario($nombreUsuario)
+   {
+    try{
+        $instancia=new Usuario();
+        $conexion=$instancia->conexion;
+        $consultasql="update usuariosc set activo = 1 where nombre=:nombre";
+        $enlaceDatos=$conexion->prepare($consultasql);
+        $enlaceDatos->bindParam(":nombre",$nombreUsuario,PDO::PARAM_STR);        
+        $enlaceDatos->execute();
+        $enlaceDatos->fetch(PDO::PARAM_STR);
+        
+
+    }catch(PDOException $e)
+    {
+        exit("Error:" .$e->getMessage());
+    } 
+   }
+   //desactivar el usuario si el estado del usuario es 1
+   public function desactivarusuario($nombreUsuario)
+   {
+    try{
+        $instancia=new Usuario();
+        $conexion=$instancia->conexion;
+        $consultasql="update usuariosc set activo=0 where nombre=:nombre";
+        $enlaceDatos=$conexion->prepare($consultasql);
+        $enlaceDatos->bindParam(":nombre",$nombreUsuario,PDO::PARAM_STR);        
+        $enlaceDatos->execute();
+        $enlaceDatos->fetch(PDO::PARAM_STR);
+
+    }catch(PDOException $e)
+    {
+        exit("Error:" .$e->getMessage());
+    }
+   }
+   // function para activar o desactivar cuenta.
+   public function usuario($nombre)
+   {
+    try{
+        $instancia=new Usuario();
+        $conexion=$instancia->conexion;
+        $consultasql="select activo from usuariosc where nombre=:nombre";
+        $enlaceDatos=$conexion->prepare($consultasql);
+        $enlaceDatos->bindParam(":nombre",$nombre,PDO::PARAM_STR);        
+        $enlaceDatos->execute();
+        //$enlaceDatos->fetch(PDO::PARAM_STR);
+        
+        while($usuario=$enlaceDatos->fetch(PDO::FETCH_ASSOC))
+        {
+            $usuarioactivo[]=$usuario;
+            $usuarioactivo['activo']=$usuario['activo'];
+        }
+        if($usuarioactivo['activo']==0)
+        {
+            self::activarusuario($nombre);
+            echo "se ha activado la cuenta";
+        }else if($usuarioactivo['activo']==1){
+            self::desactivarusuario($nombre);
+            echo "se ha desactivado la cuenta";
+        }else if(!$usuarioactivo['activo']==0 || !$usuarioactivo['activo']==1)
+        {
+            echo "el nombre que has introducido no existe en la base de datos";
+        }
+        return $usuarioactivo;
+        
+    }catch(PDOException $e)
+    {
+        exit("Error:" .$e->getMessage());
+    } 
+   }
+   
+   //asignar los roles a los usuarios
+   public function asignar($nombreUsuario,$roles)
+   {
+        try{
+            $instancia=new Usuario();
+            $conexion=$instancia->conexion;
+            $consultasql="update usuariosc set rol=:rol where nombre=:nombre";
+            $enlaceDatos=$conexion->prepare($consultasql);
+            $enlaceDatos->bindParam(":nombre",$nombreUsuario,PDO::PARAM_STR);
+            $enlaceDatos->bindParam(":rol",$roles,PDO::PARAM_STR);
+            $enlaceDatos->execute();
+            $enlaceDatos->fetch(PDO::PARAM_STR);
+
+        }catch(PDOException $e)
+        {
+            exit("Error:" .$e->getMessage());
+        }
+   }
    //listar todas las peliculas que hay en la bases de datos
    public function listarPeliculas()
    {
@@ -307,7 +397,7 @@ class Usuario extends conexion{
        {
        $instancia=new Usuario();
        $conexion=$instancia->conexion;
-       $consultasql="select usuariosc.nombre as nombre, usuariosc.apellidos as apellidos, usuariosc.avatar as avatar, usuariosc.NIF as nif,
+       $consultasql="select usuariosc.nombre as nombre, usuariosc.apellidos as apellidos, usuariosc.avatar as avatar, usuariosc.activo as activo,usuariosc.NIF as nif,
        usuariosc.hash_pass as contrasena, usuariosc.correo as correo, usuariosc.rol as rol from usuariosc";
        $enlaceDatos=$conexion->prepare($consultasql);
        $enlaceDatos->execute();
@@ -317,6 +407,7 @@ class Usuario extends conexion{
            'nombre'=>$row['nombre'],
            'avatar' => $row["avatar"],
            'apellidos' => $row["apellidos"],
+           'activo'=>$row["activo"],
            'nif' => $row["nif"],
            'contraseña' => $row["contrasena"],
            'rol' => $row["rol"],               

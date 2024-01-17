@@ -14,8 +14,17 @@ class controllersUsuario{
             include "../views/login.php";
             $error= "Debes introducir el email y la contraseña que son obligatorios";
             return;
+            
+        }else if(isset($_REQUEST['password'])<3  && isset($_REQUEST['gmail']))
+        {
+            $error="La contraseña debe tener mas de 3 caracteres";
+        }else if(!preg_match('/[A-Z]/',isset($_REQUEST['password'])))
+        {
+            $error="la contraseña deber tener al menos una letra mayuscula";
+        }else if(!preg_match('/[a-z]/',isset($_REQUEST['password'])))
+        {
+            $error="la contraseña deber tener al menos una letra minúscula";
         }
-
         $usuario=new Usuario();
         $_SESSION['usuarios']=$usuario->login($_REQUEST['gmail'],$_REQUEST['password']);
 
@@ -38,7 +47,7 @@ class controllersUsuario{
                 }
             
             }   
-        
+        return $error;
     }
     public function registarUsuario()
     {
@@ -56,9 +65,10 @@ class controllersUsuario{
         }
     }
     public function logout(){
-        session_destroy();
+    
         include "../views/login_register_header.php";
         include "../views/login.php";
+        //session_destroy();
     }
     public function recuperarPassword(){
         include "../views/recuperarPassword.php";
@@ -106,11 +116,11 @@ class controllersUsuario{
     }
     public function eliminarUsuario()
     {
-        include "../../admin/html/borrarUsuario.php";
+        include "../../admin/html/eliminarCuentasUsuarios.php";
         $usuario=new Usuario();
-        if(!empty($_REQUEST['nombreUsuario']))
+        if(!empty($_REQUEST['correoUsuario'])&&!empty($_REQUEST['nombreUsuario']))
         {
-            $usuario->eliminarusuario($_REQUEST['nombreUsuario']);     
+            $usuario->eliminarusuario($_REQUEST['correoUsuario'],$_REQUEST['nombreUsuario']);     
             echo "Se ha borrado el usuario correctamente";
 
         }else{
@@ -195,6 +205,33 @@ class controllersUsuario{
             echo "Por favor,completa todos los campos";
         }
 
+    }
+    public function activadesactivarUsuarios()
+    {
+        isset($_SESSION)?:session_start();
+        include "../../admin/html/activar_desactivarUsuarios.php";
+       
+        if(!empty($_REQUEST['nombreUsuario']))
+            {
+                $usuario=new Usuario();
+                $_SESSION['usuario']=$usuario->usuario($_REQUEST['nombreUsuario']);
+
+            }
+        
+       
+        
+    }
+    public function asignarRolesUsuarios()
+    {
+        include "../../admin/html/asignarRolesUsuarios.php";
+        $usuario=new Usuario();
+        if(!empty($_REQUEST['nombreUsuario']) && !empty($_REQUEST['roles']))
+        {
+            $usuario->asignar($_REQUEST['nombreUsuario'],$_REQUEST['roles']);
+            echo "Se asignado el rol correctamente";
+        }else{
+            echo "no se ha asignado el rol";
+        }
     }
     public function listarPeliculas()
     {

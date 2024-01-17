@@ -30,7 +30,14 @@
         case 'añadirActores':
             (new controllersUsuario())->crearActorAztrizDirector();
             break;
+        case 'asignarRolesUsuarios':
+            (new controllersUsuario())->asignarRolesUsuarios();
+            break;
+        case 'eliminarcuentas':
             (new controllersUsuario())->eliminarUsuario();
+            break;
+        case 'activar/desactivarusuarios':
+            (new controllersUsuario())->activadesactivarUsuarios();
             break;
         case 'recuperarPassword':
             (new controllersUsuario())->recuperarPassword();

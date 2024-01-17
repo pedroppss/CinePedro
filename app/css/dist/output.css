@@ -631,6 +631,10 @@ video {
   margin-bottom: 47px;
 }
 
+.ml-14{
+  margin-left: 3.5rem;
+}
+
 .ml-16{
   margin-left: 4rem;
 }
@@ -801,14 +805,6 @@ video {
 
 .mt-\[6px\]{
   margin-top: 6px;
-}
-
-.ml-10{
-  margin-left: 2.5rem;
-}
-
-.ml-14{
-  margin-left: 3.5rem;
 }
 
 .flex{
@@ -1461,6 +1457,11 @@ video {
   color: rgba(255, 255, 255, 1);
 }
 
+.text-color_white_4{
+  --tw-text-opacity: 1;
+  color: rgb(242 242 242 / var(--tw-text-opacity));
+}
+
 .text-red-600{
   --tw-text-opacity: 1;
   color: rgb(220 38 38 / var(--tw-text-opacity));
@@ -1473,9 +1474,4 @@ video {
 .text-white{
   --tw-text-opacity: 1;
   color: rgb(255 255 255 / var(--tw-text-opacity));
-}
-
-.text-color_white_4{
-  --tw-text-opacity: 1;
-  color: rgb(242 242 242 / var(--tw-text-opacity));
 }
