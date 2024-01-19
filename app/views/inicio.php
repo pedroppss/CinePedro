@@ -1,5 +1,5 @@
 <main class="bg-fond_inicio rounded-2xl">
-    <h1 class="p-8 font-medium font-poppins text-white text-3xl">Cartelera</h1>
+    <h1 class="p-8 font-medium font-poppins text-white text-3xl animate-change_color">Cartelera</h1>
     <div class="flex gap-7">
         <button class="bg-button_gray w-36 h-11 ml-6 rounded-md text-color_button font-poppins font-normal text-lg">En Cartelera</button>
         <button class="bg-button_gray_2 w-36 h-11 rounded-md text-color_button_2 font-poppins font-normal text-lg">Próximamente</button>

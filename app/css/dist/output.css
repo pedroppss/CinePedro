@@ -1051,6 +1051,24 @@ video {
   max-width: 1536px;
 }
 
+@keyframes change_color{
+  from{
+    color: #EE77EC;
+  }
+
+  50%{
+    color: #DC46DA;
+  }
+
+  to{
+    color: #D86BD6;
+  }
+}
+
+.animate-change_color{
+  animation: change_color 1s linear infinite;
+}
+
 .grid-cols-2{
   grid-template-columns: repeat(2, minmax(0, 1fr));
 }
@@ -1474,4 +1492,15 @@ video {
 .text-white{
   --tw-text-opacity: 1;
   color: rgb(255 255 255 / var(--tw-text-opacity));
+}
+
+.transition-all{
+  transition-property: all;
+  transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
+  transition-duration: 150ms;
+}
+
+.hover\:text-green-600:hover{
+  --tw-text-opacity: 1;
+  color: rgb(22 163 74 / var(--tw-text-opacity));
 }

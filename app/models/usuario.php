@@ -364,13 +364,14 @@ class Usuario extends conexion{
        {
        $instancia=new Usuario();
        $conexion=$instancia->conexion;
-       $consultasql="select peliculasc.clasificacion as clasif,peliculasc.año as año, peliculasc.duracion as duracion,
+       $consultasql="select peliculasc.id as id , peliculasc.clasificacion as clasif,peliculasc.año as año, peliculasc.duracion as duracion,
            peliculasc.argumento as argumento,peliculasc.nombre as nombre ,peliculasc.cartel as cartel ,peliculasc.clasificacion_edad as edad from peliculasc";
        $enlaceDatos=$conexion->prepare($consultasql);
        $enlaceDatos->execute();
        $peliculas = array();
        while($row = $enlaceDatos->fetch(PDO::FETCH_ASSOC)){
        $pelicula =array(
+           'id'=>$row['id'],
            'titulo'=>$row['nombre'],
            'imagen' => $row["cartel"],
            'edad' => $row['edad'],
@@ -518,6 +519,44 @@ class Usuario extends conexion{
        }catch(PDOException $e){
            echo "Error:" .$e->getMessage();
        }
+   }
+   //listar todas las salas que hay en la base de datos
+   public function listasalas()
+   {
+    try
+    {
+        
+        $instancia=new Usuario();
+        $conexion=$instancia->conexion;
+        $consultasql="select salasc.nombre as nombre, 
+        salasc.num_butacas as butacas , sesionesc.fecha as fecha , sesionesc.precio as precio , horasc.hora as hora,
+        peliculasc.nombre  as titulo
+        from salasc 
+        INNER JOIN sesionesc on salasc.id=sesionesc.sala_id
+        INNER JOIN horasc on horasc.id=sesionesc.hora
+        INNER JOIN peliculasc on peliculasc.id=sesionesc.pelicula_id";
+        $enlaceDatos=$conexion->prepare($consultasql);
+        $enlaceDatos->execute();
+        $salas=array();
+        while($row = $enlaceDatos->fetch(PDO::FETCH_ASSOC)){
+         $sala =array(
+             'nombreSala'=>$row['nombre'],
+             'butacas' => $row["butacas"],
+             'fecha' => $row['fecha'],
+             'precioSesion' => $row["precio"],
+             'hora'=>$row['hora'],
+             'titulo'=>$row['titulo'], 
+     
+         );
+         $salas[]=$sala;
+        }
+        $_SESSION['salas']=$salas;
+        $conexion=null;
+        return $_SESSION['salas'];
+    }catch(PDOException $e){
+        echo "Error:" .$e->getMessage();
+    }
+    
    }
 }
 ?>

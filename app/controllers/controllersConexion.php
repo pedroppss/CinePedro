@@ -39,6 +39,9 @@
         case 'activar/desactivarusuarios':
             (new controllersUsuario())->activadesactivarUsuarios();
             break;
+        case 'gestionarsalasesiones':
+            (new controllersUsuario())->gestionarSalasSesiones();
+            break;
         case 'recuperarPassword':
             (new controllersUsuario())->recuperarPassword();
             break;
@@ -53,6 +56,9 @@
             break;
         case 'actoresactricesdirectores':
             (new controllersUsuario())->listarActoresActricesDirector();
+            break;
+        case 'salas':
+            (new controllersUsuario())->listarSalas();
             break;
         default:
             break;

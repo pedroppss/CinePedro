@@ -8,14 +8,14 @@
     <div>
         <nav>
             <ul class= "flex justify-center text-white gap-12 font-normal font-poppins mt-12 text-lg">
-                <li><a href="index.php?ctl=default">Home</li>
-                <li><a href="#">Jobs</li>
-                <li><a href="#">Info</li>
-                <li><a href="#">Support</li>
-                <li><a href="#">Contact us</li>
-                <li><a href="#">FAQ</li>
-                <li><a href="#">Account</li>
-                <li><a href="#">Help Center</li>
+                <li><a href="index.php?ctl=default" class="hover:text-green-600 transition-all">Home</li>
+                <li><a href="#" class="hover:text-green-600 transition-all">Jobs</li>
+                <li><a href="#" class="hover:text-green-600 transition-all">Info</li>
+                <li><a href="#" class="hover:text-green-600 transition-all">Support</li>
+                <li><a href="#" class="hover:text-green-600 transition-all">Contact us</li>
+                <li><a href="#" class="hover:text-green-600 transition-all">FAQ</li>
+                <li><a href="#" class="hover:text-green-600 transition-all">Account</li>
+                <li><a href="#" class="hover:text-green-600 transition-all">Help Center</li>
             </ul>
         </nav>
     </div>

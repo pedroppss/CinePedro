@@ -164,7 +164,7 @@
                                                             </div>
                                                         </div>
                                                         <div class="nk-wg1-action">
-                                                            <a href="html/subscription/subscriptions.html" class="link"><span>Salas</span> <em class="icon ni ni-chevron-right"></em></a>
+                                                            <a href="app/views/login_register.php?ctl=salas" class="link"><span>Salas</span> <em class="icon ni ni-chevron-right"></em></a>
                                                         </div>
                                                     </div>
                                                 </div>

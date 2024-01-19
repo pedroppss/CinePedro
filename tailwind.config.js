@@ -7,6 +7,16 @@ module.exports = {
   ],
   theme: {
     extend: {
+      animation:{
+        'change_color':'change_color 1s linear infinite',
+      },
+      keyframes:{
+        change_color:{
+            'from':{color:'#EE77EC'},
+            '50%':{color:'#DC46DA'},
+            'to':{color:'#D86BD6'},
+        }
+      },
       backgroundColor:{
         fond_black:'#020510',
         fond_transp:'#FFFFFF33',

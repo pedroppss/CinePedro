@@ -6,6 +6,7 @@
   },
   "dependencies": {
     "composer": "^4.1.0",
-    "php": "^1.0.2"
+    "php": "^1.0.2",
+    "tailwindcss-animated": "^1.0.1"
   }
 }

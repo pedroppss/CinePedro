@@ -217,9 +217,6 @@ class controllersUsuario{
                 $_SESSION['usuario']=$usuario->usuario($_REQUEST['nombreUsuario']);
 
             }
-        
-       
-        
     }
     public function asignarRolesUsuarios()
     {
@@ -232,6 +229,13 @@ class controllersUsuario{
         }else{
             echo "no se ha asignado el rol";
         }
+    }
+    public function gestionarSalasSesiones()
+    {
+        isset($_SESSION)?:session_start();
+        include "../../admin/html/gestionarSalasSesiones.php";
+        $usuario=new Usuario();
+        $_SESSION['peliculas']=$usuario->listarPeliculas();
     }
     public function listarPeliculas()
     {
@@ -260,6 +264,12 @@ class controllersUsuario{
         //var_dump($_SESSION['actores']);
         //var_dump($_SESSION['actrices']);
         //var_dump($_SESSION['directores']);
+    }
+    public function listarSalas(){
+        isset($_SESSION)?:session_start();
+        include "../../admin/html/listadoSalas.php";
+        $usuario=new Usuario();
+        $_SESSION['salas']=$usuario->listasalas();
     }
 }
 ?>

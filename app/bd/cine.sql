@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Servidor: 127.0.0.1
--- Tiempo de generación: 08-01-2024 a las 13:21:55
+-- Tiempo de generación: 18-01-2024 a las 20:07:12
 -- Versión del servidor: 10.4.28-MariaDB
 -- Versión de PHP: 8.2.4
 
@@ -18,8 +18,30 @@ SET time_zone = "+00:00";
 /*!40101 SET NAMES utf8mb4 */;
 
 --
--- Base de datos: `cine_pedro`
+-- Base de datos: `cine`
 --
+
+
+
+-- --------------------------------------------------------
+
+--
+-- Estructura de tabla para la tabla `butacas_reservadasc`
+--
+
+CREATE TABLE `butacas_reservadasc` (
+  `idcompra` int(11) NOT NULL,
+  `asiento` int(11) NOT NULL,
+  `idsesion` int(11) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+--
+-- Volcado de datos para la tabla `butacas_reservadasc`
+--
+
+INSERT INTO `butacas_reservadasc` (`idcompra`, `asiento`, `idsesion`) VALUES
+(2, 34, 3),
+(4, 5, 3);
 
 -- --------------------------------------------------------
 
@@ -70,6 +92,26 @@ INSERT INTO `generoc` (`id`, `nombre`) VALUES
 (6, 'Monstruos'),
 (7, 'Terror'),
 (8, 'Dibujos Animados');
+
+-- --------------------------------------------------------
+
+--
+-- Estructura de tabla para la tabla `horasc`
+--
+
+CREATE TABLE `horasc` (
+  `id` int(11) NOT NULL,
+  `hora` time NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+--
+-- Volcado de datos para la tabla `horasc`
+--
+
+INSERT INTO `horasc` (`id`, `hora`) VALUES
+(1, '17:00:00'),
+(2, '20:00:00'),
+(3, '00:00:23');
 
 -- --------------------------------------------------------
 
@@ -402,7 +444,7 @@ INSERT INTO `salasc` (`id`, `nombre`, `num_butacas`) VALUES
 CREATE TABLE `sesionesc` (
   `id` int(11) NOT NULL,
   `fecha` date DEFAULT NULL,
-  `hora` time DEFAULT NULL,
+  `hora` int(11) NOT NULL,
   `sala_id` int(11) DEFAULT NULL,
   `precio` decimal(10,2) DEFAULT NULL,
   `pelicula_id` int(11) DEFAULT NULL
@@ -413,10 +455,11 @@ CREATE TABLE `sesionesc` (
 --
 
 INSERT INTO `sesionesc` (`id`, `fecha`, `hora`, `sala_id`, `precio`, `pelicula_id`) VALUES
-(1, '2023-12-18', '14:00:00', 1, 16.80, 1),
-(2, '2023-12-18', '17:00:00', 1, 12.50, 2),
-(3, '2023-12-18', '15:30:00', 2, 11.90, 3),
-(4, '2023-12-18', '18:30:00', 2, 13.75, 4);
+(1, '2023-12-18', 1, 1, 16.80, 1),
+(2, '2023-12-18', 3, 1, 12.50, 2),
+(3, '2023-12-18', 1, 2, 11.90, 3),
+(4, '2023-12-18', 2, 2, 13.75, 4),
+(5, '2024-01-26', 2, 1, 15.00, 4);
 
 -- --------------------------------------------------------
 
@@ -445,12 +488,19 @@ INSERT INTO `usuariosc` (`id`, `correo`, `nombre`, `apellidos`, `NIF`, `activo`,
 (2, 'ejemplo2@example.com', 'Antonio', 'Rodríguez López', '98765432b', 0, 'avatar2.jpg', 'hash_pass_2', 'cliente'),
 (3, 'admin@cine.com', 'Laura', 'Martínez García', '45678901c', 1, 'avatar3.jpg', '$2y$10$dVJvvi9YQq8ugT12sPYGROu37m19v8KKCs9PhDd9SY4Ulek38mZLC', 'administrador'),
 (4, 'ejemplo4@example.com', 'Carlos', 'Fernández Sánchez', '34567890d', 1, 'avatar4.jpg', 'hash_pass_4', 'cliente'),
-(5, 'ejemplo5@example.com', 'Sofía', 'López Hernández', '23456789e', 0, 'avatar5.jpg', 'hash_pass_5', 'cliente'),
-(10, 'pedro@gmail.com', 'pedro', 'perez', '7112325a', 0, 'default.jpg', '$2y$10$hY8EWtFEgM3.CPiw5UhoMeVFUzkRqG4QeLYLAyfAPdKlgLOWSrNUW', 'cliente');
+(5, 'ejemplo5@example.com', 'Sofía', 'López Hernández', '23456789e', 0, 'avatar5.jpg', 'hash_pass_5', 'cliente');
 
 --
 -- Índices para tablas volcadas
 --
+
+--
+-- Indices de la tabla `butacas_reservadasc`
+--
+ALTER TABLE `butacas_reservadasc`
+  ADD PRIMARY KEY (`asiento`,`idsesion`),
+  ADD KEY `idcompra` (`idcompra`,`asiento`,`idsesion`),
+  ADD KEY `idsesion` (`idsesion`);
 
 --
 -- Indices de la tabla `compra_butacasc`
@@ -465,6 +515,12 @@ ALTER TABLE `compra_butacasc`
 -- Indices de la tabla `generoc`
 --
 ALTER TABLE `generoc`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- Indices de la tabla `horasc`
+--
+ALTER TABLE `horasc`
   ADD PRIMARY KEY (`id`);
 
 --
@@ -506,7 +562,8 @@ ALTER TABLE `salasc`
 ALTER TABLE `sesionesc`
   ADD PRIMARY KEY (`id`),
   ADD KEY `pelicula_id` (`pelicula_id`),
-  ADD KEY `sala_id` (`sala_id`);
+  ADD KEY `sala_id` (`sala_id`),
+  ADD KEY `hora` (`hora`);
 
 --
 -- Indices de la tabla `usuariosc`
@@ -532,6 +589,12 @@ ALTER TABLE `generoc`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
 
 --
+-- AUTO_INCREMENT de la tabla `horasc`
+--
+ALTER TABLE `horasc`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+
+--
 -- AUTO_INCREMENT de la tabla `numeracionfacturasc`
 --
 ALTER TABLE `numeracionfacturasc`
@@ -541,7 +604,7 @@ ALTER TABLE `numeracionfacturasc`
 -- AUTO_INCREMENT de la tabla `peliculasc`
 --
 ALTER TABLE `peliculasc`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=11;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=17;
 
 --
 -- AUTO_INCREMENT de la tabla `peliculas_personalc`
@@ -553,7 +616,7 @@ ALTER TABLE `peliculas_personalc`
 -- AUTO_INCREMENT de la tabla `personalc`
 --
 ALTER TABLE `personalc`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=106;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=108;
 
 --
 -- AUTO_INCREMENT de la tabla `salasc`
@@ -565,17 +628,24 @@ ALTER TABLE `salasc`
 -- AUTO_INCREMENT de la tabla `sesionesc`
 --
 ALTER TABLE `sesionesc`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
 
 --
 -- AUTO_INCREMENT de la tabla `usuariosc`
 --
 ALTER TABLE `usuariosc`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=12;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=27;
 
 --
 -- Restricciones para tablas volcadas
 --
+
+--
+-- Filtros para la tabla `butacas_reservadasc`
+--
+ALTER TABLE `butacas_reservadasc`
+  ADD CONSTRAINT `butacas_reservadasc_ibfk_1` FOREIGN KEY (`idcompra`) REFERENCES `compra_butacasc` (`id`) ON DELETE CASCADE ON UPDATE CASCADE,
+  ADD CONSTRAINT `butacas_reservadasc_ibfk_2` FOREIGN KEY (`idsesion`) REFERENCES `sesionesc` (`id`) ON DELETE CASCADE ON UPDATE CASCADE;
 
 --
 -- Filtros para la tabla `compra_butacasc`
@@ -603,7 +673,8 @@ ALTER TABLE `peliculas_personalc`
 --
 ALTER TABLE `sesionesc`
   ADD CONSTRAINT `sesionesc_ibfk_1` FOREIGN KEY (`pelicula_id`) REFERENCES `peliculasc` (`id`) ON DELETE CASCADE ON UPDATE CASCADE,
-  ADD CONSTRAINT `sesionesc_ibfk_2` FOREIGN KEY (`sala_id`) REFERENCES `salasc` (`id`) ON DELETE CASCADE ON UPDATE CASCADE;
+  ADD CONSTRAINT `sesionesc_ibfk_2` FOREIGN KEY (`sala_id`) REFERENCES `salasc` (`id`) ON DELETE CASCADE ON UPDATE CASCADE,
+  ADD CONSTRAINT `sesionesc_ibfk_3` FOREIGN KEY (`hora`) REFERENCES `horasc` (`id`) ON DELETE CASCADE ON UPDATE CASCADE;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
