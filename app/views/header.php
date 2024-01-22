@@ -11,7 +11,7 @@
         </nav>
     </div>
     <div class="flex justify-end gap-6">
-        <a href="#"><img src="app/images/headers/search.png" style="width: 32.5px;height: 32.5px;" alt="search"></a>
+        <a href="index.php?ctl=compraButacas"><img src="app/images/headers/search.png" style="width: 32.5px;height: 32.5px;" alt="search"></a>
         <a href="#"><img src="app/images/headers/notificaciones.png" style="width: 32.5px;height: 32.5px;" alt="notificaciones"></a>
         <a href="app/views/login_register.php"><img src="app/images/headers/usuario.png" style="width: 32.5px;height: 32.5px;" alt="usuario"></a>
     </div>

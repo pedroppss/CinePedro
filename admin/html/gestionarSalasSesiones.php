@@ -71,7 +71,7 @@
                                                 <?php
                                                 //Obtener la fecha actual
                                                 $fechaActual=date('Y-m-d');
-                                                //Sumar un día a la fechsa actual
+                                                //Sumar un día a la fecha actual
                                                 $fechaManana=date('Y-m-d',strtotime($fechaActual.' + 1 day'));
                                                 ?>
                                                 <label class="form-label" for="default-03">Fecha de la Sesión:</label>

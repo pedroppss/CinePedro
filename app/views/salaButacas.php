@@ -2,8 +2,8 @@
 <section class="bg-fond_inicio rounded-2xl mt-12 mb-16 h-72 ml-8">
     <div class="grid grid-cols-2 p-8 text-center">
         <div class="flex gap-12 ml-56">
-            <button class="bg-button_gray_3 w-28 h-14 text-white font-medium font-poppins text-lg rounded-md">Sala 1</button>
-            <a href="index.php?ctl=butacas_2" class="bg-button_gray_4 w-28 h-14 text-white font-medium font-poppins text-lg rounded-md" type="button"><p class="mt-3">Sala 2</p></a>
+            <button class="bg-button_gray_3 w-28 h-14 text-white font-medium font-poppins text-lg rounded-md">Sala 3D</button>
+            <a href="index.php?ctl=butacas_2" class="bg-button_gray_4 w-28 h-14 text-white font-medium font-poppins text-lg rounded-md" type="button"><p class="mt-3">Sala VIP</p></a>
         </div>
         <div>
             <p class="text-white font-medium text-3xl font-poppins ">Sala 1 - 16:30h</p>
@@ -11,9 +11,9 @@
         </div>
     </div>
     <div class="flex gap-12 ml-56">
-        <button class="bg-p_rose w-28 h-14 text-white font-medium font-poppins text-lg rounded-md ml-8">16:30</button>
-        <button class="bg-p_rose_2 w-28 h-14 text-white font-medium font-poppins text-lg rounded-md">18:30</button>
-        <button class="bg-p_rose_2 w-28 h-14 text-white font-medium font-poppins text-lg rounded-md">21:15</button>
+        <button class="bg-p_rose w-28 h-14 text-white font-medium font-poppins text-lg rounded-md ml-8">17:00</button>
+        <button class="bg-p_rose_2 w-28 h-14 text-white font-medium font-poppins text-lg rounded-md">20:00</button>
+        <button class="bg-p_rose_2 w-28 h-14 text-white font-medium font-poppins text-lg rounded-md">23:00</button>
     </div>
 </section>
 <section>

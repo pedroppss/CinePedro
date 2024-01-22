@@ -100,5 +100,28 @@ class controllersPeliculas{
             $_SESSION['actores']=$peli->mostrarActores(10);
             $_SESSION['actrices']=$peli->mostrarActriz(10);
     }
+    public function comprarButacas()
+    {
+        if(!empty($_REQUEST['nombrePelicula']) && !empty($_REQUEST['sala']) && !empty($_REQUEST['hora']))
+        {
+              
+        }else
+        {
+                echo "Debes introducir todos estos campos";
+        }
+    }
+
+
+
+
+
+
+    public function listarpeliculas()
+    {
+        
+        $peli=new peliculas;
+        $_SESSION['peliculas']=$peli->listarPeliculas();
+        //var_dump($_SESSION['peliculas']);
+    }
     
 }

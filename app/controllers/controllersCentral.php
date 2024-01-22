@@ -44,6 +44,12 @@
             include "app/views/informacionPelicula.php";
             (new controllersPeliculas())->mostrar_sirena();
             break;
+        case 'compraButacas':
+            include "app/views/compraEntradas.php";
+            //es para la lista desplegable => mostrar todas las peliculas
+            break;
+        case 'compra':
+            (new controllersPeliculas())->comprarButacas();
         case 'butacas':
             include "app/views/salaButacas.php";
             break;

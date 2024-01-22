@@ -125,5 +125,39 @@ class peliculas extends conexion_2{
             echo "Error:" .$e->getMessage();
         }
     }
+    public function listarPeliculas()
+   {
+       try
+       {
+        
+       $instancia=new conexion_2();
+       $conexion=$instancia->conexion;
+       $consultasql="select peliculasc.id as id , peliculasc.clasificacion as clasif,peliculasc.año as año, peliculasc.duracion as duracion,
+           peliculasc.argumento as argumento,peliculasc.nombre as nombre ,peliculasc.cartel as cartel ,peliculasc.clasificacion_edad as edad from peliculasc";
+       $enlaceDatos=$conexion->prepare($consultasql);
+       $enlaceDatos->execute();
+       $peliculas = array();
+       while($row = $enlaceDatos->fetch(PDO::FETCH_ASSOC)){
+       $pelicula =array(
+           'id'=>$row['id'],
+           'titulo'=>$row['nombre'],
+           'imagen' => $row["cartel"],
+           'edad' => $row['edad'],
+           'argumento' => $row["argumento"],
+           'clasif' => $row["clasif"],
+           'año' => $row["año"],               
+           'duracion' => $row["duracion"]
+          );
+       $peliculas[] = $pelicula;
+       }
+       $_SESSION['peliculas']=$peliculas;
+
+       $conexion=null;
+       return $_SESSION['peliculas'];
+   }catch(PDOException $e){
+           echo "Error:" .$e->getMessage();
+       }
+
+   }
 }
 ?>

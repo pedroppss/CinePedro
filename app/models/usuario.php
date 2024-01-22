@@ -357,6 +357,29 @@ class Usuario extends conexion{
             exit("Error:" .$e->getMessage());
         }
    }
+   //Asignar las salas-sesiones
+   public function asignarsalassesiones($tituloPelicula,$nombreSala,$fecha,$horaSesion,$precio)
+   {
+        try
+        {
+            $instancia=new Usuario();
+            $conexion=$instancia->conexion;
+            $consultasql="insert into sesionesc (fecha,hora,sala_id,precio,pelicula_id) 
+                values (:fecha,:hora,:sala,:precio,:pelicula)";
+            $enlaceDatos=$conexion->prepare($consultasql);
+            $enlaceDatos->bindParam(":fecha",$fecha,PDO::PARAM_STR);
+            $enlaceDatos->bindParam(":hora",$horaSesion,PDO::PARAM_INT);
+            $enlaceDatos->bindParam(":sala",$nombreSala,PDO::PARAM_INT);
+            $enlaceDatos->bindParam(":precio",$precio,PDO::PARAM_STR);
+            $enlaceDatos->bindParam(":pelicula",$tituloPelicula,PDO::PARAM_INT);
+            $enlaceDatos->execute();
+            $enlaceDatos->fetch(PDO::PARAM_STR);
+
+        }catch(PDOException $e)
+        {
+            exit("Error: ".$e->getMessage());
+        }
+   }
    //listar todas las peliculas que hay en la bases de datos
    public function listarPeliculas()
    {

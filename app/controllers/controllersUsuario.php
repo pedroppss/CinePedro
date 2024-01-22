@@ -235,7 +235,17 @@ class controllersUsuario{
         isset($_SESSION)?:session_start();
         include "../../admin/html/gestionarSalasSesiones.php";
         $usuario=new Usuario();
-        $_SESSION['peliculas']=$usuario->listarPeliculas();
+        if(!empty($_REQUEST['nombrePelicula']) && !empty($_REQUEST['nombreSala']) && !empty($_REQUEST['fecha'])
+            && !empty($_REQUEST['horaSesion']) && !empty($_REQUEST['precio']))
+        {
+            $usuario->asignarsalassesiones($_REQUEST['nombrePelicula'],$_REQUEST['nombreSala'],$_REQUEST['fecha'],
+            $_REQUEST['horaSesion'],$_REQUEST['precio']);
+            echo "se ha asignado una sala-sesion nueva correctamente";
+        }else
+        {
+            echo "no se ha asignado la sala-sesión";
+        }
+        
     }
     public function listarPeliculas()
     {
