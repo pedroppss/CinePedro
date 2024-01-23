@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Servidor: 127.0.0.1
--- Tiempo de generación: 18-01-2024 a las 20:07:12
+-- Tiempo de generación: 23-01-2024 a las 12:42:41
 -- Versión del servidor: 10.4.28-MariaDB
 -- Versión de PHP: 8.2.4
 
@@ -20,8 +20,6 @@ SET time_zone = "+00:00";
 --
 -- Base de datos: `cine`
 --
-
-
 
 -- --------------------------------------------------------
 
@@ -55,14 +53,14 @@ CREATE TABLE `compra_butacasc` (
   `usuario_id` int(11) DEFAULT NULL,
   `butaca` int(11) DEFAULT NULL,
   `id_factura` int(11) DEFAULT NULL,
-  `qr_code` varchar(255) DEFAULT NULL
+  `fecha_compra` datetime DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_spanish_ci;
 
 --
 -- Volcado de datos para la tabla `compra_butacasc`
 --
 
-INSERT INTO `compra_butacasc` (`id`, `sesion_id`, `usuario_id`, `butaca`, `id_factura`, `qr_code`) VALUES
+INSERT INTO `compra_butacasc` (`id`, `sesion_id`, `usuario_id`, `butaca`, `id_factura`, `fecha_compra`) VALUES
 (1, 1, 1, 5, 1, NULL),
 (2, 2, 5, 6, 2, NULL),
 (3, 3, 2, 7, 3, NULL),
@@ -111,7 +109,7 @@ CREATE TABLE `horasc` (
 INSERT INTO `horasc` (`id`, `hora`) VALUES
 (1, '17:00:00'),
 (2, '20:00:00'),
-(3, '00:00:23');
+(3, '23:00:00');
 
 -- --------------------------------------------------------
 
@@ -459,7 +457,8 @@ INSERT INTO `sesionesc` (`id`, `fecha`, `hora`, `sala_id`, `precio`, `pelicula_i
 (2, '2023-12-18', 3, 1, 12.50, 2),
 (3, '2023-12-18', 1, 2, 11.90, 3),
 (4, '2023-12-18', 2, 2, 13.75, 4),
-(5, '2024-01-26', 2, 1, 15.00, 4);
+(5, '2024-01-26', 2, 1, 15.00, 4),
+(6, '2024-01-26', 3, 2, 34.00, 2);
 
 -- --------------------------------------------------------
 
@@ -628,7 +627,7 @@ ALTER TABLE `salasc`
 -- AUTO_INCREMENT de la tabla `sesionesc`
 --
 ALTER TABLE `sesionesc`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
 
 --
 -- AUTO_INCREMENT de la tabla `usuariosc`

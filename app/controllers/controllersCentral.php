@@ -60,7 +60,7 @@
             include "app/views/facturaEntrada.php";
             break;
         case 'biblioteca':
-            include "app/views/bibliotecaPelicula.php";
+            (new controllersPeliculas())->listarpeliculas();
             break;
         case 'register':
             break;

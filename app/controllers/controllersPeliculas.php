@@ -118,7 +118,8 @@ class controllersPeliculas{
 
     public function listarpeliculas()
     {
-        
+        isset($_SESSION)?:session_start();
+        include "app/views/bibliotecaPelicula.php";
         $peli=new peliculas;
         $_SESSION['peliculas']=$peli->listarPeliculas();
         //var_dump($_SESSION['peliculas']);
