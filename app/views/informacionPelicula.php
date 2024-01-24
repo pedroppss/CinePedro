@@ -38,32 +38,63 @@ session_start();
                     <img src="app/images/actores/<?= $images2 ?>" class="w-32 h-32 rounded-2xl ml-8">
                 <?php } ?>
             </div>
-            <div>
-                <p class="text-color_gray font-normal font-poppins text-sm ml-8 mt-8">Selecciona el día:</p>
-                <select name="fecha" class="ml-8 mt-2 text-[18px] font-poppins rounded-md">
-                    <?php
-                    for ($i = 0; $i < 4; $i++) {
-                        $siguienteDia = date('Y-m-d', strtotime("+$i day"));
-                        $formattedDate = date('l j F', strtotime("+$i day"));
-                    ?>
-                        <option value="<?= $siguienteDia ?>">
-                            <?= $formattedDate ?>
-                        </option>
+            <form action="index.php?ctl=butacas" method="POST">
+                <div>
+                    <p class="text-color_gray font-normal font-poppins text-sm ml-8 mt-8">Selecciona el día:</p>
+                    <select name="fecha" class="ml-8 mt-2 text-[18px] font-poppins rounded-md">
+                        <?php
+                        for ($i = 0; $i < 4; $i++) {
+                            $siguienteDia = date('Y-m-d', strtotime("+$i day"));
+                            $formattedDate = date('l j F', strtotime("+$i day"));
+                        ?>
+                            <option value="<?= $siguienteDia ?>">
+                                <?= $formattedDate ?>
+                            </option>
+                        <?php } ?>
+                    </select>
+                </div>
+                <div>
+                    <p class="text-color_gray font-normal font-poppins text-sm ml-8 mt-8">Selecciona la Sala: </p>
+                    <select name="sala" class="ml-8 mt-2 text-[18px] font-poppins rounded-md">
+                        <?php foreach ($_SESSION['sesiones'] as $ses) { ?>
+                            <option value="<?php echo $ses['id'] ?>"><?php echo $ses['nombreSala'] ?></option>
+                        <?php } ?>
+                    </select>
+                </div>
+                <div>
+                    <p class="text-color_gray font-normal font-poppins text-sm ml-8 mt-8">Selecciona la Hora: </p>
+                    <select name="hora" class="ml-8 mt-2 text-[18px] font-poppins rounded-md">
+                        <?php foreach ($_SESSION['sesiones'] as $ses) { ?>
+                            <option value="<?php echo $ses['idHora'] ?>"><?php echo $ses['nombreSala'] ?> - <?php echo $ses['hora'] ?></option>
+                        <?php } ?>
+                    </select>
+                </div>
+                <div>
+                <p class="text-color_gray font-normal font-poppins text-sm ml-8 mt-8">ID de la Pelicula :</p>
+                    <select class="ml-8 mt-2 text-[18px] font-poppins rounded-md" name="id" id="id">
+                    <?php foreach ($_SESSION['sesiones'] as $ses) { ?>
+                            <option value="<?php echo $ses['idPelis']?>"><?php echo $ses['idPelis']?></option>
                     <?php } ?>
-                </select>
-            </div>
-            <div class="grid grid-cols-2 justify-between mt-32 ml-8">
-                <div class="flex gap-4">
-                    <button class="bg-button_gray w-28 h-11 rounded-md text-white font-medium font-poppins text-base">Trailer</button>
+                    </select>
+                </div>
+                <div class="grid grid-cols-2 justify-between mt-32 ml-8">
+                    <div class="flex gap-4">
+                        <button class="bg-button_gray w-28 h-11 rounded-md text-white font-medium font-poppins text-base">Trailer</button>
+                        <button class="bg-rose-600 w-28 h-11 rounded-md text-white font-medium font-poppins text-base" type="submit" name="comprar" id="comprar">
+                            <p>Comprar</p>
+                        </button>
+                        <!--
                     <a href="index.php?ctl=butacas" class="bg-rose-600 w-28 h-11 rounded-md text-white font-medium font-poppins text-base">
                         <p class="text-center mt-3">Comprar</p>
                     </a>
+                    -->
+                    </div>
+                    <div class="flex gap-4">
+                        <img class="w-8 h-8" src="app/images/informacionPeliculas/gusta.png">
+                        <img class="w-8 h-8" src="app/images/informacionPeliculas/marcador.png">
+                    </div>
                 </div>
-                <div class="flex gap-4">
-                    <img class="w-8 h-8" src="app/images/informacionPeliculas/gusta.png">
-                    <img class="w-8 h-8" src="app/images/informacionPeliculas/marcador.png">
-                </div>
-            </div>
+            </form>
         </div>
         <div>
             <img src="app/images/carteles/<?= $_SESSION['peliculas']['imagen'][0] ?>" class="w-1000 h-620 -ml-1 rounded-md" alt="">

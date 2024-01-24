@@ -1,12 +1,16 @@
+<?php
+session_start();
+?>
 <a href="index.php?ctl=default"><img src="app/images/salaButacas/vector.png" class="w-6 h-7 ml-8"></a>
 <section class="bg-fond_inicio rounded-2xl mt-12 mb-16 h-72 ml-8">
     <div class="grid grid-cols-2 p-8 text-center">
         <div class="flex gap-12 ml-56">
             <button class="bg-button_gray_3 w-28 h-14 text-white font-medium font-poppins text-lg rounded-md">Sala 3D</button>
-            <a href="index.php?ctl=butacas_2" class="bg-button_gray_4 w-28 h-14 text-white font-medium font-poppins text-lg rounded-md" type="button"><p class="mt-3">Sala VIP</p></a>
+            <button class="bg-button_gray_4 w-28 h-14 text-white font-medium font-poppins text-lg rounded-md">Sala VIP</button>
+            <!--<a href="index.php?ctl=butacas_2" class="bg-button_gray_4 w-28 h-14 text-white font-medium font-poppins text-lg rounded-md" type="button"><p class="mt-3">Sala VIP</p></a>-->
         </div>
         <div>
-            <p class="text-white font-medium text-3xl font-poppins ">Sala 1 - 16:30h</p>
+            <p class="text-white font-medium text-3xl font-poppins ">Sala 3D - <?php echo $_SESSION['sesiones'][0]['hora']?></p>
             <p class="text-color_white font-normal text-lg font-poppins">Elige tus entradas</p>
         </div>
     </div>

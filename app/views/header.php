@@ -3,8 +3,8 @@
         <img src="app/images/headers/logo.png" class="" style="width: 179.23px ; height: 55px;" alt="logo">
         <nav class="-ml-16">
             <ul class="flex justify-start gap-12 text-white font-normal font-poppins">
-                <li><a href="index.php?ctl=default" class="hover:text-green-600 transition-all">Home</a></li>
-                <li><a href="index.php?ctl=biblioteca" class="hover:text-green-600 transition-all">Movies</a></li>
+                <li><a href="default" class="hover:text-green-600 transition-all">Home</a></li>
+                <li><a href="biblioteca" class="hover:text-green-600 transition-all">Movies</a></li>
                 <li><a href="#" class="hover:text-green-600 transition-all">Series</a></li>
                 <li><a href="#" class="hover:text-green-600 transition-all">Top</a></li>
             </ul>

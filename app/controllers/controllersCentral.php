@@ -50,11 +50,9 @@
             break;
         case 'compra':
             (new controllersPeliculas())->comprarButacas();
-        case 'butacas':
-            include "app/views/salaButacas.php";
             break;
-        case 'butacas_2':
-            include "app/views/salaButacas2.php";
+        case 'butacas':
+            (new controllersPeliculas())->butacas();
             break;
         case 'factura':
             include "app/views/facturaEntrada.php";

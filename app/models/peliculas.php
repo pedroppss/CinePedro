@@ -12,7 +12,7 @@ class peliculas extends conexion_2{
         {
             $instancia=new peliculas();
             $conexion=$instancia->conexion;
-            $consultasql="select peliculasc.id,peliculasc.clasificacion as clasif,peliculasc.año as año, peliculasc.duracion as duracion,peliculasc.argumento as argumento,peliculasc.nombre as nombre ,peliculasc.cartel as cartel ,peliculasc.clasificacion_edad as edad, generoc.nombre as genero from peliculasc LEFT join generoc on peliculasc.genero_id=generoc.id WHERE peliculasc.id=:id;";
+            $consultasql="select peliculasc.id as id ,peliculasc.clasificacion as clasif,peliculasc.año as año, peliculasc.duracion as duracion,peliculasc.argumento as argumento,peliculasc.nombre as nombre ,peliculasc.cartel as cartel ,peliculasc.clasificacion_edad as edad, generoc.nombre as genero from peliculasc LEFT join generoc on peliculasc.genero_id=generoc.id WHERE peliculasc.id=:id;";
             $enlaceDatos=$conexion->prepare($consultasql);
             $enlaceDatos->bindParam(":id",$id,PDO::PARAM_INT);
             $enlaceDatos->execute();
@@ -20,6 +20,7 @@ class peliculas extends conexion_2{
             unset($_SESSION['peliculas']);
 
             while($row = $enlaceDatos->fetch(PDO::FETCH_ASSOC)){
+                $idpeli=$row["id"];
                 $titulo=$row["nombre"];
                 $genero=$row["genero"];
                 $imagen=$row["cartel"];
@@ -29,6 +30,7 @@ class peliculas extends conexion_2{
                 $año=$row["año"];
                 $duracion=$row["duracion"];
                 //Agregar informacion a las variables de sesión.
+                $_SESSION['peliculas']['id'][]=$idpeli;
                 $_SESSION['peliculas']['genero'][]=$genero;
                 $_SESSION['peliculas']['imagen'][]=$imagen;
                 $_SESSION['peliculas']['edad'][]=$edad;
@@ -125,6 +127,67 @@ class peliculas extends conexion_2{
             echo "Error:" .$e->getMessage();
         }
     }
+    public function salabutacas($id){
+        try
+        {
+            $instancia=new conexion_2();
+            $conexion=$instancia->conexion;
+            $consultasql="SELECT sesionesc.pelicula_id as idPeli ,sesionesc.hora as idHora, salasc.id as id, salasc.nombre as nombre, horasc.hora as hora from horasc INNER JOIN sesionesc on horasc.id=sesionesc.hora 
+                INNER join salasc on salasc.id=sesionesc.sala_id where sesionesc.pelicula_id=:id";
+            $enlaceDatos=$conexion->prepare($consultasql);
+            $enlaceDatos->bindParam(":id",$id,PDO::PARAM_INT);           
+            $enlaceDatos->execute();
+            $sesiones=array();
+            while($row = $enlaceDatos->fetch(PDO::FETCH_ASSOC)){
+                $sesion =array(
+                    'idHora'=>$row['idHora'],
+                    'idPelis'=>$row['idPeli'],
+                    'id'=>$row['id'],
+                    'nombreSala'=>$row['nombre'],
+                    'hora'=>$row['hora'],
+                   );
+                $sesiones[] = $sesion;
+                }
+                $_SESSION['sesiones']=$sesiones;
+         
+                $conexion=null;
+                return $_SESSION['sesiones'];
+        }catch(PDOException $e)
+        {
+            echo "Error: ".$e->getMessage();
+        }
+    }
+    public function comprasalabutacas($id,$idPelicula,$hora){
+        try
+        {
+            $instancia=new conexion_2();
+            $conexion=$instancia->conexion;
+            $consultasql="SELECT salasc.id as id, salasc.nombre as nombre, horasc.hora as hora from horasc INNER JOIN sesionesc on horasc.id=sesionesc.hora 
+                INNER join salasc on salasc.id=sesionesc.sala_id where sesionesc.pelicula_id=:idPeli AND sesionesc.sala_id=:id AND sesionesc.hora=:hora";
+            $enlaceDatos=$conexion->prepare($consultasql);
+            $enlaceDatos->bindParam(":idPeli",$idPelicula,PDO::PARAM_INT); 
+            $enlaceDatos->bindParam(":id",$id,PDO::PARAM_INT);        
+            $enlaceDatos->bindParam(":hora",$hora,PDO::PARAM_INT);    
+            $enlaceDatos->execute();
+            $sesiones=array();
+            while($row = $enlaceDatos->fetch(PDO::FETCH_ASSOC)){
+                $sesion =array(
+                    'id'=>$row['id'],
+                    'nombreSala'=>$row['nombre'],
+                    'hora'=>$row['hora'],
+                   );
+                $sesiones[] = $sesion;
+                }
+                $_SESSION['sesiones']=$sesiones;
+         
+                $conexion=null;
+                return $_SESSION['sesiones'];
+        }catch(PDOException $e)
+        {
+            echo "Error: ".$e->getMessage();
+        }
+    }
+
     public function listarPeliculas()
    {
        try
