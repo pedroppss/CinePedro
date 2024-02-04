@@ -1,5 +1,6 @@
 <!-- un controllers para el login, registrar usuario , admin => editar Peliculas, listarPeliculas , listarUsuarios-->
 <?php
+    isset($_SESSION)?:session_start();
     include "../controllers/controllersUsuario.php";
     $accion=$_REQUEST['ctl'] ?? 'login';
     switch ($accion) {

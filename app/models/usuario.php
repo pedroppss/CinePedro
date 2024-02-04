@@ -12,7 +12,7 @@ class Usuario extends conexion{
     try{
         $instancia=new Usuario();
         $conexion=$instancia->conexion;
-        $consultasql="select correo,nombre,hash_pass,avatar,rol from usuariosc where correo=:correo";
+        $consultasql="select id,correo,nombre,hash_pass,avatar,rol from usuariosc where correo=:correo";
         $enlaceDatos=$conexion->prepare($consultasql);
         $enlaceDatos->bindParam(":correo",$gmail,PDO::PARAM_STR);
         $enlaceDatos->execute();
@@ -24,6 +24,7 @@ class Usuario extends conexion{
             $usuariocorrecto['rol']=$usuario['rol'];
             $usuariocorrecto['avatar']=$usuario['avatar'];
             $usuariocorrecto['nombre']=$usuario['nombre'];
+            $usuariocorrecto['id']=$usuario['id'];
             //echo  $_SESSION["usuarios"]['nombre'];
         }else{
             $usuariocorrecto=false;
@@ -580,6 +581,15 @@ class Usuario extends conexion{
         echo "Error:" .$e->getMessage();
     }
     
+   }
+   public function cargarDatos()
+   {
+        self::listarPeliculas();
+        self::listarUsuarios();
+        self::listarActores();
+        self::listarActrices();
+        self::listarDirector();
+        self::listasalas();
    }
 }
 ?>

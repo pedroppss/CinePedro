@@ -20,7 +20,7 @@
                         <h1 class="text-3xl font-normal mt-12 text-white font-poppins">Recuperacion de Contraseña</h1>
                         <input class="w-300 h-12 mt-3 bg-fond_black_2 rounded text-base font-normal font-poppins rounded-lg" type="email" name="gmail" id="gmail" placeholder="Email" value="">
                         <br>
-                        <button class="w-300 h-12 mt-7 bg-rose-600 text-2xl font-normal text-white font-poppins" type="submit" name="recuperar" value="recuperar">Recuperar</button>
+                        <button class="w-300 h-12 mt-7 bg-fond_pink text-2xl font-normal text-white font-poppins" type="submit" name="recuperar" value="recuperar">Recuperar</button>
                     </form> 
                 </div>
     </main>

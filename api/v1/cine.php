@@ -2,7 +2,7 @@
 require_once '../../autoload.php';
 Cors::handleCors();
 
-//header('Content-Type: application/JSON');
+header('Content-Type: application/JSON');
 
 $method = $_SERVER['REQUEST_METHOD'];
 switch ($method) {

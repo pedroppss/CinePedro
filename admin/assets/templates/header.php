@@ -166,7 +166,13 @@
                                         </div>
                                     </li><!-- .dropdown -->
                                     <li class="dropdown user-dropdown">
-                                        <a href="app/views/login_register.php?ctl=login" class="dropdown-toggle me-lg-n1" data-bs-toggle="dropdown"> <!--Va a pagADMIN -->
+                                        <a href="app/views/login_register.php?ctl=login" class="dropdown-toggle me-lg-n1" data-bs-toggle="dropdown">
+                                        <div class="user-toggle">
+                                            <p>Cerrar sesion</p>
+                                        </div>        
+                                        </a>
+                                        <br>
+                                        <a href="" class="dropdown-toggle me-lg-n1 ml-5" data-bs-toggle="dropdown"> <!--Va a pagADMIN -->
                                             <div class="user-toggle">
                                                 <div class="user-avatar sm">
                                                     <em class="icon ni ni-user-alt"></em>

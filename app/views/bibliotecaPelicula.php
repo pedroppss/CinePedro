@@ -1,4 +1,3 @@
-
 <main class="bg-fond_inicio rounded-2xl">
     <section class="p-8 font-poppins font-medium">
         <h1 class="text-white text-[30px]">Buscar peliculas</h1>
@@ -12,28 +11,10 @@
         <div class="grid grid-cols-6 gap-10 ml-[19px] mr-[65px]">
             <?php foreach($_SESSION['peliculas'] as $pelicula){ ?>
                 <div class="flex">
-                <a href="index.php?ctl=id=<?=$pelicula['id']?>"><img src="app/images/carteles/<?php echo $pelicula['imagen']?>" class="w-[200px] h-[296px] rounded-sm"></a>
+                <a href="index.php?ctl=id&id=<?=$pelicula['id']?>"><img src="app/images/carteles/<?php echo $pelicula['imagen']?>" class="w-[200px] h-[296px] rounded-sm"></a>
                 </div>
             <?php } ?>
         </div>
-        
-        <!--
-        <div class="flex gap-10">
-            <img src="app/images/carteles/65(2023).png" class="w-[200px] h-[296px] rounded-sm">
-            <img src="app/images/carteles/air.png" class="w-[200px] h-[296px] rounded-sm">
-            <img src="app/images/carteles/aquaman_2.jpg" class="w-[200px] h-[296px] rounded-sm">
-            <img src="app/images/carteles/fast10.png" class="w-[200px] h-[296px] rounded-sm">
-            <img src="app/images/carteles/godzillaykong.jpg" class="w-[200px] h-[296px] rounded-sm">
-            <img src="app/images/carteles/guardianes_galaxia_vol_3.jpg" class="w-[200px] h-[296px] rounded-sm">
-        </div>
-        <div class="flex gap-10 mt-6">
-            <img src="app/images/carteles/needforspeed.jpg" class="w-[200px] h-[296px] rounded-sm">
-            <img src="app/images/carteles/sawx.jpg" class="w-[200px] h-[296px] rounded-sm">
-            <img src="app/images/carteles/sirena.png" class="w-[200px] h-[296px] rounded-sm">
-            <img src="app/images/carteles/spiderman.jpg" class="w-[200px] h-[296px] rounded-sm">
-            <img src="app/images/carteles/transformers.jpg" class="w-[200px] h-[296px] rounded-sm">
-        </div>
--->
     </section>
     <section class="mt-[42.08px]">
         <div class="flex gap-[14px] justify-center">

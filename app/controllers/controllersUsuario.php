@@ -208,7 +208,7 @@ class controllersUsuario{
     }
     public function activadesactivarUsuarios()
     {
-        isset($_SESSION)?:session_start();
+       
         include "../../admin/html/activar_desactivarUsuarios.php";
        
         if(!empty($_REQUEST['nombreUsuario']))
@@ -232,7 +232,7 @@ class controllersUsuario{
     }
     public function gestionarSalasSesiones()
     {
-        isset($_SESSION)?:session_start();
+    
         include "../../admin/html/gestionarSalasSesiones.php";
         $usuario=new Usuario();
         if(!empty($_REQUEST['nombrePelicula']) && !empty($_REQUEST['nombreSala']) && !empty($_REQUEST['fecha'])
@@ -249,37 +249,41 @@ class controllersUsuario{
     }
     public function listarPeliculas()
     {
-        isset($_SESSION)?:session_start();
-        include "../../admin/html/listado.php";
+        
+        
         $usuario=new Usuario();
         $_SESSION['peliculas']=$usuario->listarPeliculas();
+        include "../../admin/html/listado.php";
         //var_dump($_SESSION['peliculas']);
     }
     public function listarUsuarios()
     {
-        isset($_SESSION)?:session_start();
-        include "../../admin/html/listadoUsuario.php";
+        
+        
         $usuario=new Usuario();
         $_SESSION['usuarios']=$usuario->listarUsuarios();
+        include "../../admin/html/listadoUsuario.php";
         //var_dump($_SESSION['usuarios']);
     }
     public function listarActoresActricesDirector()
     {
-        isset($_SESSION)?:session_start();
-        include "../../admin/html/listadoActoresActricesDirectores.php";
+       
+        
         $usuario=new Usuario();
         $_SESSION['actores']=$usuario->listarActores();
         $_SESSION['actrices']=$usuario->listarActrices();
         $_SESSION['directores']=$usuario->listarDirector();
+        include "../../admin/html/listadoActoresActricesDirectores.php";
         //var_dump($_SESSION['actores']);
         //var_dump($_SESSION['actrices']);
         //var_dump($_SESSION['directores']);
     }
     public function listarSalas(){
-        isset($_SESSION)?:session_start();
-        include "../../admin/html/listadoSalas.php";
+       
+        
         $usuario=new Usuario();
         $_SESSION['salas']=$usuario->listasalas();
+        include "../../admin/html/listadoSalas.php";
     }
 }
 ?>

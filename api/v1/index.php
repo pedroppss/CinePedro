@@ -56,13 +56,28 @@ include "ejemplos.php";
                     <pre class="json"><?= style_json($json4) ?></pre>
                 </details>
             </div>
-
+            <div class="api-endpoint">
+                <code><span class='v'>GET</span>/cine/peliculas?buscar=padrino</code>
+                <p>Objeto JSON son buscar la pelicula con el nombre.</p>
+                <details>
+                    <summary>Ejemplo JSON</summary>
+                    <pre class="json"><?= style_json($json5) ?></pre>
+                </details>
+            </div>
+            <div class="api-endpoint">
+                <code><span class='v'>GET</span>/cine/peliculas?buscar=Diesel</code>
+                <p>Objeto JSON son buscar el actor con el nombre.</p>
+                <details>
+                    <summary>Ejemplo JSON</summary>
+                    <pre class="json"><?= style_json($json6) ?></pre>
+                </details>
+            </div>
             <div class="api-endpoint">
                 <code><span class='v'>GET</span> /cine/sesiones</code>
                 <p>Información de las sesiones programadas. Array JSON que contiene objetos con los campos: id, sala, pelicula, dia, hora, asientos_libres, asientos_ocupados</p>
                 <details>
                     <summary>Ejemplo JSON</summary>
-                    <pre class="json"><?= style_json($json5) ?></pre>
+                    <pre class="json"><?= style_json($json7) ?></pre>
                 </details>
             </div>
 
@@ -71,7 +86,23 @@ include "ejemplos.php";
                 <p>Objeto JSON son la información de la sesión indicada</p>
                 <details>
                     <summary>Ejemplo JSON</summary>
-                    <pre class="json"><?= style_json($json6) ?></pre>
+                    <pre class="json"><?= style_json($json8) ?></pre>
+                </details>
+            </div>
+            <div class="api-endpoint">
+                <code><span class='v'>POST</span> /cine/peliculas</code>
+                <p>Objeto JSON son insertar una pelicula</p>
+                <details>
+                    <summary>Ejemplo JSON</summary>
+                    <pre class="json"><?= style_json($json9) ?></pre>
+                </details>
+            </div>
+            <div class="api-endpoint">
+                <code><span class='v'>POST</span> /cine/actores</code>
+                <p>Objeto JSON son insertar un actor o actriz o director</p>
+                <details>
+                    <summary>Ejemplo JSON</summary>
+                    <pre class="json"><?= style_json($json10) ?></pre>
                 </details>
             </div>
         </div>

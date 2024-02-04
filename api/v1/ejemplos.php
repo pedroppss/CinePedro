@@ -72,10 +72,100 @@ $json2 = [
     ]
 ];
 
-$json3 = [];
+$json3 = [
+    [
+        "id_personal"=> 40,
+        "nombre_personal"=> "Adam Driver",
+        "imagen_personal"=> "http://143.47.43.204:8080/pedro/Cine-Pedro/app/images/actores/actor_65_1.jpg",
+        "rol"=> [
+            "Actor"
+        ],
+        "peliculas"=> [
+            [
+                "id_pelicula"=> 1,
+                "nombre_pelicula"=> "65(2023)",
+                "endpoint"=>"http://143.47.43.204:8080/pedro/Cine-Pedro/api/v1/cine.php/peliculas/1",
+            ]
+        ]
+    ],
+    [
+        "id_personal" => 2,
+        "nombre_personal" => "Jason Momoa",
+        "imagen_personal" => $rutaimagen . "img/actores/actor_fast_2.jpg",
+        "rol"=>[
+            "Actor"
+        ],
+        "peliculas" => [
+            [
+                "id_pelicula" => 2,
+                "nombre_pelicula" => "Rápidos y Furiosos10",
+                "endpoint"=>"http://143.47.43.204:8080/pedro/Cine-Pedro/api/v1/cine.php/peliculas/2",
+            ]
+        ]
+    ]
+];
 
-$json4 = [];
+$json4 = [
+    [
+        "id_personal" => 2,
+        "nombre_personal" => "Jason Momoa",
+        "imagen_personal" => $rutaimagen . "img/actores/actor_fast_2.jpg",
+        "rol"=>[
+            "Actor"
+        ],
+        "peliculas" => [
+            [
+                "id_pelicula" => 2,
+                "nombre_pelicula" => "Rápidos y Furiosos10",
+                "endpoint"=>"http://143.47.43.204:8080/pedro/Cine-Pedro/api/v1/cine.php/peliculas/2",
+            ]
+        ]
+    ]
+];
 
-$json5 = [];
+$json5 = [
+    [
+    "id_pelicula" => 2,
+    "nombre_pelicula" => "El Padrino",
+    "genero" => "Acción",
+    "caratula" => $rutaimagen . "caratula/elpadrino_poster.jpg",
+    "elenco" => [
+        [
+            "id_personal" => 3,
+            "nombre_personal" => "Marlon Brando",
+            "imagen_personal" => $rutaimagen . "img/personal/brando.jpg",
+            "rol_personal" => "Actor"
+        ],
+        [
+            "id_personal" => 4,
+            "nombre_personal" => "Francis Ford Coppola",
+            "imagen_personal" => $rutaimagen . "img/personal/coppola.jpg",
+            "rol_personal" => "Director"
+        ]
+    ]
+    ]
+];
 
-$json6 = [];
+$json6 = [
+    [
+        "id_personal"=> 1,
+        "nombre_personal"=> "Vin Diesel",
+        "imagen_personal"=> "http://143.47.43.204:8080/pedro/Cine-Pedro/app/images/actores/actor_fast_1.jpg",
+        "rol"=> [
+            "Actor"
+        ],
+        "peliculas"=> [
+            [
+                "id_pelicula"=> 2,
+                "nombre_pelicula"=> "Fast&Furious10",
+                "endpoint"=> "http://143.47.43.204:8080/pedro/Cine-Pedro/api/v1/cine.php/peliculas/2"
+            ]
+        ]
+    ]
+];
+$json9=[
+    "id_insertado"=>"18"
+];
+$json10=[
+    "id insertado"=> "108"
+];

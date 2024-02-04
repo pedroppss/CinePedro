@@ -2,7 +2,6 @@
 RewriteEngine on 
 RewriteBase /pedro/Cine-Pedro/
 
-
 RewriteCond %{REQUEST_FILENAME} !-f
 RewriteCond %{REQUEST_FILENAME} !-d
 Rewriterule ^default$ index.php?ctl=default  [NC,L]
@@ -13,56 +12,8 @@ Rewriterule ^biblioteca$ index.php?ctl=biblioteca  [NC,L]
 
 RewriteCond %{REQUEST_FILENAME} !-f
 RewriteCond %{REQUEST_FILENAME} !-d
-Rewriterule ^fast&furious10$ index.php?ctl=id=2  [NC,L]
+Rewriterule ^factura$ index.php?ctl=factura [NC,L]
 
 RewriteCond %{REQUEST_FILENAME} !-f
 RewriteCond %{REQUEST_FILENAME} !-d
-Rewriterule ^air$ index.php?ctl=id=3  [NC,L]
-
-RewriteCond %{REQUEST_FILENAME} !-f
-RewriteCond %{REQUEST_FILENAME} !-d
-Rewriterule ^transformers$ index.php?ctl=id=5  [NC,L]
-
-RewriteCond %{REQUEST_FILENAME} !-f
-RewriteCond %{REQUEST_FILENAME} !-d
-Rewriterule ^sawx$ index.php?ctl=id=7  [NC,L]
-
-RewriteCond %{REQUEST_FILENAME} !-f
-RewriteCond %{REQUEST_FILENAME} !-d
-Rewriterule ^65$ index.php?ctl=id=1  [NC,L]
-
-RewriteCond %{REQUEST_FILENAME} !-f
-RewriteCond %{REQUEST_FILENAME} !-d
-Rewriterule ^godzillaykong$ index.php?ctl=id=6  [NC,L]
-
-RewriteCond %{REQUEST_FILENAME} !-f
-RewriteCond %{REQUEST_FILENAME} !-d
-Rewriterule ^spiderman$ index.php?ctl=id=8  [NC,L]
-
-RewriteCond %{REQUEST_FILENAME} !-f
-RewriteCond %{REQUEST_FILENAME} !-d
-Rewriterule ^aquaman2$ index.php?ctl=id=9  [NC,L]
-
-RewriteCond %{REQUEST_FILENAME} !-f
-RewriteCond %{REQUEST_FILENAME} !-d
-Rewriterule ^guardianes$ index.php?ctl=id=4  [NC,L]
-
-RewriteCond %{REQUEST_FILENAME} !-f
-RewriteCond %{REQUEST_FILENAME} !-d
-Rewriterule ^sirena$ index.php?ctl=id=10  [NC,L]
-
-RewriteCond %{REQUEST_FILENAME} !-f
-RewriteCond %{REQUEST_FILENAME} !-d
-Rewriterule ^needforspeed$ index.php?ctl=id=3  [NC,L]
-
-RewriteCond %{REQUEST_FILENAME} !-f
-RewriteCond %{REQUEST_FILENAME} !-d
-Rewriterule ^inicio2$ index.php?ctl=inicio_2  [NC,L]
-
-RewriteCond %{REQUEST_FILENAME} !-f
-RewriteCond %{REQUEST_FILENAME} !-d
-Rewriterule ^login$ login_register.php?ctl=login  [NC,L]
-
-RewriteCond %{REQUEST_FILENAME} !-f
-RewriteCond %{REQUEST_FILENAME} !-d
-Rewriterule ^register$ login_register.php?ctl=register[NC,L]
+Rewriterule ^compra$ index.php?ctl=compra [NC,L]

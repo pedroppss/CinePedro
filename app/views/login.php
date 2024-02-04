@@ -17,11 +17,11 @@
             <div class="p-24 w-500 h-516 rounded-2xl bg-fond_transp">
                     <form action="login_register.php?ctl=login" method="POST">
                         <h1 class="text-3xl font-normal text-white font-poppins">Login</h1>
-                        <input class="w-300 h-12 mt-3 bg-fond_black_2 rounded text-base font-normal font-poppins text-white" type="email" name="gmail" id="gmail" placeholder="Email">  
+                        <input class="w-300 h-12 mt-3 p-[21px] bg-fond_black_2 rounded text-base font-normal font-poppins text-white" type="email" name="gmail" id="gmail" placeholder="Email">  
                         <br>
-                        <input class="w-300 h-12 mt-3 bg-fond_black_2 rounded text-base font-normal font-poppins text-white" type="password" name="password" id="password" placeholder="Password">
+                        <input class="w-300 h-12 mt-3 p-[21px] bg-fond_black_2 rounded text-base font-normal font-poppins text-white" type="password" name="password" id="password" placeholder="Password">
                         <br>
-                        <button class="w-300 h-12 mt-7 bg-rose-600 text-2xl font-normal text-white font-poppins rounded-lg" type="submit" name="Enviar" value="Enviar">Enviar</button>
+                        <button class="w-300 h-12 mt-7 bg-fond_pink  text-2xl font-normal text-white font-poppins rounded-lg" type="submit" name="Enviar" value="Enviar">Enviar</button>
                     </form>
                     <form action="login_register.php?ctl=recuperarPassword" method="POST">
                         <button class="text-white text-base mt-5 ml-16 font-normal font-poppins"  type="submit" href="#">¿Has olvidado tu contraseña?</button> 

@@ -1,42 +1,31 @@
-<?php
-session_start();
-?>
+
 <section>
     <div class="grid grid-cols-2">
         <div>
-            <a href="index.php?ctl=default"><img src="app/images/informacionPeliculas/vector.png" class="w-6 h-7"></a>
-            <h1 class="p-8 text-white  text-7xl font-poppins font-normal"><?= $_SESSION['peliculas']['nombre'][0] ?></h1><!--Nombre de la pelicula-->
+            <a href="biblioteca"><img src="app/images/informacionPeliculas/vector.png" class="w-6 h-7"></a>
+            <h1 class="p-8 text-white  text-7xl font-poppins font-normal"><?php echo $_SESSION['peliculas'][0]['titulo'] ?></h1><!--Nombre de la pelicula-->
             <ul class="flex gap-7 mt-6 ml-8 text-color_gray">
-                <li><?= $_SESSION['peliculas']['clasificacion'][0] ?></li>
-                <li><?= $_SESSION['peliculas']['año'][0] ?></li>
-                <li><?= $_SESSION['peliculas']['genero'][0] ?></li>
-                <li><?= $_SESSION['peliculas']['duracion'][0] ?></li>
-                <li><?= $_SESSION['peliculas']['edad'][0] ?></li>
+                <li><?=$_SESSION['peliculas'][0]['clasif'] ?></li>
+                <li><?=$_SESSION['peliculas'][0]['año'] ?></li>
+                <li><?=$_SESSION['peliculas'][0]['genero'] ?></li>
+                <li><?=$_SESSION['peliculas'][0]['duracion'] ?></li>
+                <li><?=$_SESSION['peliculas'][0]['edad'] ?></li>
             </ul>
-            <p class="text-white font-normal font-poppins text-sm ml-8 mt-7"><?= $_SESSION['peliculas']['argumento'][0] ?></p> <!--Argumento-->
+            <p class="text-white font-normal font-poppins text-sm ml-8 mt-7"><?= $_SESSION['peliculas'][0]['argumento'] ?></p> <!--Argumento-->
             <div class="flex  gap-2 ml-8 mt-4">
                 <p class="text-color_gray font-normal font-poppins text-sm">Director:</p>
-                <p class="text-white font-normal font-poppins text-sm"><?= $_SESSION['directores']['nombre'][1] ?></p> <!--Nombre_de_Director-->
-                <img src="app/images/directores/<?= $_SESSION['directores']['imagen'][1] ?>" class="w-20 h-20 rounded-2xl ml-8">
+                <p class="text-white font-normal font-poppins text-sm"><?= $_SESSION['directores'][0]['nombre'] ?></p> <!--Nombre_de_Director-->
             </div>
             <div class="flex gap-2 ml-8 mt-4">
                 <p class="text-color_gray font-normal font-poppins text-sm">Actors:</p>
                 <p class="text-white font-normal font-poppins text-sm">
-                    <?php foreach ($_SESSION['actores']['nombre'] as $actores) { ?>
-                        <?= $actores . ", " ?>
+                    <?php foreach ($_SESSION['actores'] as $actores) { ?>
+                        <?= $actores['nombre'] . ", " ?>
                     <?php } ?>
-                    <?php foreach ($_SESSION['actrices']['nombre'] as $actrices) { ?>
-                        <?= $actrices . ", " ?>
+                    <?php foreach ($_SESSION['actrices'] as $actrices) { ?>
+                        <?= $actrices['nombre'] . ", " ?>
                     <?php } ?>
                 </p> <!--Actores-->
-            </div>
-            <div class="flex mt-40">
-                <?php foreach ($_SESSION['actores']['imagen'] as $images) { ?>
-                    <img src="app/images/actores/<?= $images ?>" class="w-32 h-32 rounded-2xl ml-8">
-                <?php } ?>
-                <?php foreach ($_SESSION['actrices']['imagen'] as $images2) { ?>
-                    <img src="app/images/actores/<?= $images2 ?>" class="w-32 h-32 rounded-2xl ml-8">
-                <?php } ?>
             </div>
             <form action="index.php?ctl=butacas" method="POST">
                 <div>
@@ -47,12 +36,14 @@ session_start();
                             $siguienteDia = date('Y-m-d', strtotime("+$i day"));
                             $formattedDate = date('l j F', strtotime("+$i day"));
                         ?>
-                            <option value="<?= $siguienteDia ?>">
+                            <option value="<?php echo $siguienteDia ?>">
                                 <?= $formattedDate ?>
                             </option>
                         <?php } ?>
+                        
                     </select>
                 </div>
+                <!--
                 <div>
                     <p class="text-color_gray font-normal font-poppins text-sm ml-8 mt-8">Selecciona la Sala: </p>
                     <select name="sala" class="ml-8 mt-2 text-[18px] font-poppins rounded-md">
@@ -77,10 +68,11 @@ session_start();
                     <?php } ?>
                     </select>
                 </div>
+                    -->
                 <div class="grid grid-cols-2 justify-between mt-32 ml-8">
                     <div class="flex gap-4">
                         <button class="bg-button_gray w-28 h-11 rounded-md text-white font-medium font-poppins text-base">Trailer</button>
-                        <button class="bg-rose-600 w-28 h-11 rounded-md text-white font-medium font-poppins text-base" type="submit" name="comprar" id="comprar">
+                        <button class="bg-fond_pink w-28 h-11 rounded-md text-white font-medium font-poppins text-base" type="submit" name="comprar" id="comprar">
                             <p>Comprar</p>
                         </button>
                         <!--
@@ -97,7 +89,7 @@ session_start();
             </form>
         </div>
         <div>
-            <img src="app/images/carteles/<?= $_SESSION['peliculas']['imagen'][0] ?>" class="w-1000 h-620 -ml-1 rounded-md" alt="">
+            <img src="app/images/carteles/<?= $_SESSION['peliculas'][0]['imagen']?>" class="w-1000 h-620 -ml-1 rounded-md" alt="">
         </div>
     </div>
 </section>

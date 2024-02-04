@@ -1,9 +1,7 @@
-<?php
-session_start();
-?>
+
 <section class=" bg-fond_inicio rounded-2xl mt-12 mb-14 h-[699px] ml-[429px] mr-[372px]">
     <h1 class="p-8 text-center text-white text-[28px] font-poppins font-medium">Formulario de Compra de Entradas</h1>
-    <form action="index.php?ctl=compra" method="POST">
+    <form action="compra" method="POST">
         <label for="pelicula" class="ml-8 text-white font-poppins font-medium text-[22px]">Seleciona una pelicula:</label>
         <br>
         <select name="nombrePelicula" id="nombrePelicula" placeholder="nombre de la Pelicula" class="ml-8 mt-2 text-[18px] font-poppins rounded-md" required>
@@ -20,7 +18,7 @@ session_start();
                 for ($i = 0; $i < 4; $i++) {
                     $siguienteDia = date('Y-m-d', strtotime("+$i day")); ?>
                     <td class="text-white font-semibold border-2 h-[60px] mt-[7px] ml-[10px] mb-[2px] rounded-sm bg-green-950 border-green-900">
-                        <button type="button" class="custom-button" onclick="seleccionarFecha('<?= $siguienteDia ?>')" value="<?= $siguienteDia ?>">
+                        <button type="button" name="dia" class="custom-button" onclick="seleccionarFecha('<?= $siguienteDia ?>')" value="<?= $siguienteDia ?>">
                             <?= date('l j F', strtotime("+$i day")) ?>
                         </button>
                     </td>
@@ -46,7 +44,7 @@ session_start();
         </select>
         <br>
         <br>
-        <input type="submit" name="butacas" value="Ver Butacas Disponibles" class="w-[563px] h-12  ml-[84px] mt-[37px] bg-rose-600 text-2xl font-normal text-white font-poppins rounded-lg">
+        <button type="submit" name="butacas" value="Ver Butacas Disponibles" class="w-[563px] h-12  ml-[84px] mt-[37px] bg-rose-600 text-2xl font-normal text-white font-poppins rounded-lg">Ver Butacas Disponibles</button>
     </form>
     <script>
         function seleccionarFecha(fecha) {

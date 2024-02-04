@@ -17,16 +17,27 @@ class Mostrar
             $rutaPathSinBarra = explode('/', $_SERVER['PATH_INFO']);
             $recurso = $rutaPathSinBarra[1];
             $id = isset($rutaPathSinBarra[2]) ? $rutaPathSinBarra[2] : null;
-
+           // $nombre=isset($_GET['buscar']) ? $rutaPathSinBarra[2] : null;
+           // var_dump($nombre);
             switch ($recurso) {
                 case 'peliculas':
+                    if (isset($_GET['buscar']))
+                    {
+                        self::getBuscarPelicula($_GET['buscar']); 
+                        break;
+                    }
                     if ($id) {
                         self::getPelicula($id);
-                    } else {
+                    }else {
                         self::getPeliculas();
                     }
                     break;
                 case 'actores':
+                    if (isset($_GET['buscar']))
+                    {
+                        self::getBuscarActor($_GET['buscar']); 
+                        break;
+                    }
                     if ($id) {
                         self::getActor($id);
                     } else {
@@ -60,14 +71,31 @@ class Mostrar
         $datosConsulta=Salacine::getPeliculas();
         self::enviarRespuesta($datosConsulta);
     }
+    //Metodo para buscar la pelicula usando el nombre
+    public static function getBuscarPelicula($nombre){
+        $datosConsulta=[];
+        $datosConsulta=Salacine::buscarPelicula($nombre);
+        self::enviarRespuesta($datosConsulta);
+    }
     //Metodo para mostrar el actor
-    public static function getActor()
+    public static function getActor($id)
     {
-
+        $datosConsulta=[];
+        $datosConsulta=Salacine::getActor($id);
+        self::enviarRespuesta($datosConsulta);
     }
     //Metodo para mostrar todos los actores
     public static function getActores(){
-
+        $datosConsulta=[];
+        $datosConsulta=Salacine::getActores();
+        self::enviarRespuesta($datosConsulta);
+    }
+    //Metodo para buscar el actor usando el nombre
+    public static function getBuscarActor($nombre)
+    {
+        $datosConsulta=[];
+        $datosConsulta=Salacine::buscarActor($nombre);
+        self::enviarRespuesta($datosConsulta);
     }
     //Metodo para mostra el sensor
     public static function getSesiones($dia)

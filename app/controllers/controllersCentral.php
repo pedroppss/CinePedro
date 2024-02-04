@@ -1,74 +1,36 @@
 <!--un controllers para la informacion de la Peliculas, las butacas y la factura-->
 <?php
+    session_start();
     include "controllersPeliculas.php";
     $accion=$_REQUEST['ctl'] ?? 'default';
+    // var_dump($_REQUEST);
+    // exit();
+
     switch ($accion) {
-        case 'id=1':
-            include "app/views/informacionPelicula.php";
-           (new controllersPeliculas())->mostrar_65();
-            break;
-        case 'id=2':
-            include "app/views/informacionPelicula.php";
-           (new controllersPeliculas())->mostrar_fast_furious();
-           
-            break;
-        case 'id=3':
-            include "app/views/informacionPelicula.php";
-           (new controllersPeliculas())->mostrar_air();
-            break;
-        case 'id=4':
-            include "app/views/informacionPelicula.php";
-            (new controllersPeliculas())->mostrar_guardianes_galaxia();
-            break;
-        case 'id=5':
-            include "app/views/informacionPelicula.php";
-            (new controllersPeliculas())->mostrar_transformers();
-            break;
-        case 'id=6':
-            include "app/views/informacionPelicula.php";
-            (new controllersPeliculas())->mostrar_godzilla_kong();
-            break;
-        case 'id=7':
-            include "app/views/informacionPelicula.php";
-            (new controllersPeliculas())->mostrar_sawx();
-            break;
-        case 'id=8':
-            include "app/views/informacionPelicula.php";
-            (new controllersPeliculas())->mostrar_spiderman();
-            break;
-        case 'id=9':
-            include "app/views/informacionPelicula.php";
-            (new controllersPeliculas())->mostrar_aquaman();
-            break;
-        case 'id=10':
-            include "app/views/informacionPelicula.php";
-            (new controllersPeliculas())->mostrar_sirena();
-            break;
-        case 'compraButacas':
-            include "app/views/compraEntradas.php";
-            //es para la lista desplegable => mostrar todas las peliculas
+        case 'id':
+            $idPelicula = isset($_GET['id']) ? $_GET['id'] : '';
+            (new controllersPeliculas())->mostrarPelicula($idPelicula);
             break;
         case 'compra':
-            (new controllersPeliculas())->comprarButacas();
+            (new controllersPeliculas())->comprarEntradas();
             break;
         case 'butacas':
             (new controllersPeliculas())->butacas();
             break;
         case 'factura':
-            include "app/views/facturaEntrada.php";
+            (new controllersPeliculas())->compra();
             break;
         case 'biblioteca':
             (new controllersPeliculas())->listarpeliculas();
             break;
-        case 'register':
+        case 'QR':
+            (new controllersPeliculas())->realizarQR();
             break;
         case 'inicio_2':
             include "app/views/inicio_2.php";
             break;
         default:
             include "app/views/inicio.php";
-            //(new controllersPeliculas())->listar();
-            //unset($_SESSION['peliculas']);
             break;
     }
 ?>

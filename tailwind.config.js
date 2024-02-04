@@ -18,6 +18,8 @@ module.exports = {
         }
       },
       backgroundColor:{
+        fond_white:'#FFFFFF',
+        fond_pink:'#FF2C78',
         fond_black:'#020510',
         fond_transp:'#FFFFFF33',
         fond_black_2:'#020510B2',
@@ -90,6 +92,7 @@ module.exports = {
       margin:{
         'personalized':'33rem',
         '151':'151px',
+        '229':'229px',
       },
       borderColor:{
         gray:'rgba(143, 143, 143, 0.40)', 

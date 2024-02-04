@@ -103,7 +103,7 @@
                                             </ul><!-- .nk-menu-sub -->
                                         </li><!-- .nk-menu-item -->
                                         <li class="nk-menu-item has-sub">
-                                            <a href="#" class="nk-menu-link nk-menu-toggle">
+                                            <a href="app/views/login_register.php?ctl=salas" class="nk-menu-link nk-menu-toggle">
                                                 <span class="nk-menu-icon"><em class="icon ni ni-tranx"></em></span>
                                                 <span class="nk-menu-text">Salas</span>
                                             </a>
