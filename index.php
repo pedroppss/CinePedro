@@ -7,7 +7,7 @@
     <title>Cine-Pedro</title>
 </head>
 <body class="container max-w-screen-2xl mx-auto bg-fond_black">
-    <?php include("app/views/header.php"); ?>
+    <?php include("app/views/header.php");?>
     <main>
        <?php include("app/controllers/controllersCentral.php");?> 
     </main>

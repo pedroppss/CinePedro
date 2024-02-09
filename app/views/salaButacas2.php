@@ -3,7 +3,7 @@
 <section class="bg-fond_inicio rounded-2xl mt-12 mb-16 h-72 ml-8">
   <div class="grid grid-cols-2 p-8 text-center">
     <div class="flex gap-12 ml-56">
-      <button class="bg-button_gray_4 w-28 h-14 text-white font-medium font-poppins text-lg rounded-md">Sala 3D</button>
+      <button class="bg-button_gray_4 w-28 h-14 text-white font-medium font-poppins text-lg rounded-md">Sala VIP</button>
       <!--<button class="bg-button_gray_3 w-28 h-14 text-white font-medium font-poppins text-lg rounded-md">Sala VIP</button>-->
     </div>
     <div>
@@ -109,7 +109,6 @@
       $("#butacasSeleccionadas").val(cadena);
       $("#totalButacasSeleccionadas").val(totalButacasSeleccionadas);
       $("#totalButacasMostradas").text("Total de butacas seleccionadas: " + totalButacasSeleccionadas);
-  
     });
   });
 </script>

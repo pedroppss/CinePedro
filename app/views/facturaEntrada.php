@@ -1,52 +1,65 @@
-<a href="index.php?ctl=butacas"><img src="app/images/salaButacas/vector.png" class="w-6 h-7 ml-8"></a>
+<?php
+    $_POST['butacasSeleccionadas']=explode(",",$_POST['butacasSeleccionadas']);
+    $precioEntrada=$_SESSION['sesiones'][0]['precio'];
+    $precioTotal=$precioEntrada*$_POST["totalButacasSeleccionadas"];
+?>
+<a href="biblioteca"><img src="app/images/salaButacas/vector.png" class="w-6 h-7 ml-8"></a>
 <section class="bg-fond_inicio rounded-2xl mt-12 mb-14 h-[99px] ml-8">
     <p class="text-white font-poppins text-[30px] font-medium p-8">Pagar entradas</p>
 </section>
-<section class="bg-fond_white w-[499px] h-[655px] rounded-[13px] ml-[550px] border-[1px] border-gray_factura">
-    <h1 class="p-8 text-[#333333E5] font-roboto text-[24px] font-medium">Ringkasan Order</h1>
-    <p class="ml-8 text-[#333333CC] font-roboto text-[16px] font-bold">Detail Transaksi</p>
-    <div class="grid grid-cols-2 ml-8 mt-4">
+<section class="bg-fond_white w-[499px] h-[760px] rounded-[13px] ml-[550px] border-[1px] border-gray_factura">
+    <h1 class="p-8 text-[#333333E5] font-roboto text-[24px] font-medium">Factura</h1>
+    <p class="ml-8 text-[#333333CC] font-roboto text-[16px] font-bold">Datos</p>
+    <div class="grid grid-cols-2 ml-8 mt-4 gap-28">
         <div>
-            <p class="text-[#333333] font-roboto text-[16px] font-normal">REGULAR SEAT</p>
-            <p class="text-[#333333] font-roboto text-[16px] font-normal">BIAYA LAYANAN</p>
+            <p class="text-[#333333] font-roboto text-[16px] font-normal">ID de la Pelicula</p>
+            <p class="text-[#333333] font-roboto text-[16px] font-normal">Nombre del Usuario</p>
+            <p class="text-[#333333] font-roboto text-[16px] font-normal">Nombre de la Pelicula</p>
+            <p class="text-[#333333] font-roboto text-[16px] font-normal">Nombre de la Sala</p>
         </div>
-        <div class="flex gap-[12px]">
-            <div>
-                <p class="text-[#333333] font-roboto text-[16px] font-normal">Rp. 50.000</p>
-                <p class="text-[#333333] font-roboto text-[16px] font-normal">Rp.3.000</p>
-            </div>
+        <div>
+                <p class="text-[#333333] font-roboto text-[16px] font-normal"><?php echo $_SESSION['sesiones'][0]['id']?></p>
+                <p class="text-[#333333] font-roboto text-[16px] font-normal"><?php echo $_SESSION['usuarios']['nombre']?></p>
+                <p class="text-[#333333] font-roboto text-[16px] font-normal"><?php echo $_SESSION['sesiones'][0]['nombrePelicula']?></p>
+                <p class="text-[#333333] font-roboto text-[16px] font-normal"><?php echo $_SESSION['sesiones'][0]['nombreSala']?></p>
+            <!--
             <div>
                 <p class="text-color_shade_700 font-roboto text-[16px]">X3</p>
                 <p class="text-color_shade_700 font-roboto text-[16px]">X3</p>
             </div>
+            -->
         </div>
     </div>
     <p class="w-[419px] h-[1px] bg-shade_300 ml-[32px] mt-[32px]"></p>
-    <p class="ml-8 text-[#333333CC] font-roboto text-[16px] font-bold mt-[32px]">Promo & Voucher</p>
-    <div class="grid grid-cols-2 ml-8 mt-[16px]">
+    <p class="ml-8 text-[#333333CC] font-roboto text-[16px] font-bold mt-[32px]">Butacas y Precio</p>
+    <div class="grid grid-cols-2 ml-8 mt-[16px] gap-[143px]">
         <div>
-            <p class="text-[#333333] font-roboto text-[16px] font-normal">PROMO TIX ID</p>
+            <p class="text-[#333333] font-roboto text-[16px] font-normal">Total de Butacas Seleccionadas</p>
+            <p class="text-[#333333] font-roboto text-[16px] font-normal">Precio de Entrada</p>
         </div>
         <div>
-            <p class="text-[#333333] font-roboto text-[16px] font-normal">-  Rp. 70.000</p>
+            <p class="text-[#333333] font-roboto text-[16px] font-normal"><?php echo $_POST["totalButacasSeleccionadas"]?></p>
+            <p class="text-[#333333] font-roboto text-[16px] font-normal"><?php echo $precioEntrada ?> €</p>
         </div>
     </div>
     <p class="w-[419px] h-[1px] bg-shade_300 ml-[32px] mt-[32px]"></p>
-    <div class="grid grid-cols-2  ml-8 mt-[18px]">
+    <div class="grid grid-cols-2  ml-8 mt-[18px] gap-[143px]">
         <div>
-            <p class="text-[#333333CC] font-roboto text-[16px] font-bold">Total Bayar</p>
+            <p class="text-[#333333CC] font-roboto text-[16px] font-bold">Precio Total</p>
         </div>
         <div>
-            <p class="text-[#333333] font-roboto text-[16px] font-normal">Rp. 89.000</p>
+            <p class="text-[#333333] font-roboto text-[16px] font-normal"><?php echo $precioTotal?> €</p>
         </div>
     </div>
     <p class="w-[419px] h-[1px] bg-shade_300 ml-[32px] mt-[18px]"></p>
-    <div class="grid grid-cols-2 ml-8 mt-[32px]">
+    <div class="grid grid-cols-2 ml-8 mt-[32px] gap-[143px]">
         <div>
             <p class="text-[#333333] font-roboto text-[16px] font-bold">Metode Pembayaran</p>
+            <p class="text-[#333333] font-roboto text-[16px] font-bold">Lector QR</p>
         </div>
         <div>
             <p class="text-color_sky_blue font-[12px] font-bold font-roboto">Lihat Semua</p>
+            <a href="index.php?ctl=QR" class="text-color_sky_blue font-[12px] font-bold font-roboto" type="submit" class="text-white">Ver QR,pulse aqui</button>
         </div>
     </div>
     <div class="flex ml-8 mt-[22px] gap-[16px]">

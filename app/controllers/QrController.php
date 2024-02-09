@@ -12,7 +12,7 @@ class QrController
         if ($datos == null) {
 
            
- $sesionId = isset($_SESSION['sesiones'][0]['id']) ? $_SESSION['sesiones'][0]['id'] : '';
+            $sesionId = isset($_SESSION['sesiones'][0]['id']) ? $_SESSION['sesiones'][0]['id'] : '';
             $butaca = isset($_POST["butacasSeleccionadas"]) ? $_POST["butacasSeleccionadas"] : '';
             $nombreUsuario = isset($_SESSION['usuarios']['nombre']) ? $_SESSION['usuarios']['nombre'] : '';
             $nombrePelicula = isset($_SESSION['sesiones'][0]['nombrePelicula']) ? $_SESSION['sesiones'][0]['nombrePelicula'] : '';

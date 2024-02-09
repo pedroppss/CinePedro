@@ -91,7 +91,7 @@
       </tbody>
     </table>
     <input type="hidden" name="butacasSeleccionadas" id="butacasSeleccionadas">
-    <input type="hidden" name="totalButacasSeleccionadas" id="totalButacasSeleccionadas" value="0">
+    <input type="hidden" name="totalButacasSeleccionadas" id="totalButacasSeleccionadas">
 </section>
 <section>
   <div class="flex gap-20  justify-center mt-20 mb-20">
@@ -113,30 +113,31 @@
 </form>
 <script>
     $(document).ready(function(){
-      $(".seat").on('click',function(event)
-      {
-        event.preventDefault();
+      var totalButacasSeleccionadas = 0;
+    $(".seat").on('click', function(event) {
+      event.preventDefault();
 
-        var currentSrc = $(this).find("img").attr("src");
-        var normalSrc = "app/images/salaButacas/butaca.png";
-        var selectedSrc = "app/images/salaButacas/Selected.png";
+      var currentSrc = $(this).find("img").attr("src");
+      var normalSrc = "app/images/salaButacas/butaca.png";
+      var selectedSrc = "app/images/salaButacas/Selected.png";
 
-      if (currentSrc === normalSrc) 
-      {
-          $(this).find("img").attr("src", selectedSrc);
-
-      } else if (currentSrc === selectedSrc) 
-      {
+      if (currentSrc === normalSrc) {
+        $(this).find("img").attr("src", selectedSrc);
+        totalButacasSeleccionadas++;
+      } else if (currentSrc === selectedSrc) {
         $(this).find("img").attr("src", normalSrc);
+        totalButacasSeleccionadas--;
       }
       $(this).find("img").toggleClass("ocupada");
-      });
+    });    
       $("#enviar").on('click', function(event){
       let cadena="";
       $(".ocupada").each(function(){
         cadena=cadena+$(this).attr("id")+",";
       });
       $("#butacasSeleccionadas").val(cadena);
+      $("#totalButacasSeleccionadas").val(totalButacasSeleccionadas);
+      $("#totalButacasMostradas").text("Total de butacas seleccionadas: " + totalButacasSeleccionadas);
     });
     });
 </script>

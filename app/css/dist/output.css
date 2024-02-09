@@ -727,6 +727,10 @@ video {
   margin-left: 84px;
 }
 
+.ml-auto{
+  margin-left: auto;
+}
+
 .mr-72{
   margin-right: 18rem;
 }
@@ -741,6 +745,10 @@ video {
 
 .mr-\[65px\]{
   margin-right: 65px;
+}
+
+.mr-auto{
+  margin-right: auto;
 }
 
 .mt-10{
@@ -951,10 +959,6 @@ video {
   height: 1px;
 }
 
-.h-\[200px\]{
-  height: 200px;
-}
-
 .h-\[25px\]{
   height: 25px;
 }
@@ -971,16 +975,20 @@ video {
   height: 48px;
 }
 
+.h-\[500px\]{
+  height: 500px;
+}
+
 .h-\[60px\]{
   height: 60px;
 }
 
-.h-\[655px\]{
-  height: 655px;
-}
-
 .h-\[699px\]{
   height: 699px;
+}
+
+.h-\[760px\]{
+  height: 760px;
 }
 
 .h-\[77px\]{
@@ -993,10 +1001,6 @@ video {
 
 .h-personalized{
   height: 43rem;
-}
-
-.h-\[500px\]{
-  height: 500px;
 }
 
 .w-1000{
@@ -1209,8 +1213,12 @@ video {
   gap: 2.25rem;
 }
 
-.gap-\[12px\]{
-  gap: 12px;
+.gap-\[105px\]{
+  gap: 105px;
+}
+
+.gap-\[143px\]{
+  gap: 143px;
 }
 
 .gap-\[14px\]{
@@ -1223,6 +1231,14 @@ video {
 
 .gap-\[16px\]{
   gap: 16px;
+}
+
+.gap-28{
+  gap: 7rem;
+}
+
+.gap-\[50px\]{
+  gap: 50px;
 }
 
 .rounded{
@@ -1497,6 +1513,10 @@ video {
 
 .text-\[18px\]{
   font-size: 18px;
+}
+
+.text-\[20px\]{
+  font-size: 20px;
 }
 
 .text-\[22px\]{

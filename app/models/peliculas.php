@@ -131,6 +131,33 @@ class peliculas extends conexion_2{
             echo "Error:" .$e->getMessage();
         }
     }
+    public function mostarSesionesFecha($id)
+    {
+        try
+        {
+            $instancia=new conexion_2();
+            $conexion=$instancia->conexion;
+            $consultasql="SELECT sesionesc.fecha as fecha from sesionesc INNER JOIN peliculasc on sesionesc.pelicula_id=peliculasc.id where peliculasc.id=:id";
+            $enlaceDatos=$conexion->prepare($consultasql);
+            $enlaceDatos->bindParam(":id",$id,PDO::PARAM_INT);
+            $enlaceDatos->execute();
+            $sesionesFecha=array();
+            while($row = $enlaceDatos->fetch(PDO::FETCH_ASSOC)){
+                $sesionFecha=array(
+                    'fecha'=>$row['fecha']
+                );
+                $sesionesFecha[]=$sesionFecha;
+            }
+                //Agregar informacion a las variables de sesión.
+               $_SESSION['sesionesFecha']=$sesionesFecha;
+            
+            $conexion=null;
+            return $_SESSION['sesionesFecha'];
+        }catch(PDOException $e)
+        {
+            echo "Error: ". $e->getMessage();
+        }
+    }
     /*
     public function Compraentrada($id,$idSala,$idHora,$fecha){
         try
@@ -218,7 +245,8 @@ class peliculas extends conexion_2{
        $instancia=new conexion_2();
        $conexion=$instancia->conexion;
        $consultasql="select peliculasc.id as id , peliculasc.clasificacion as clasif,peliculasc.año as año, peliculasc.duracion as duracion,
-           peliculasc.argumento as argumento,peliculasc.nombre as nombre ,peliculasc.cartel as cartel ,peliculasc.clasificacion_edad as edad from peliculasc";
+           peliculasc.argumento as argumento,peliculasc.nombre as nombre ,peliculasc.cartel as cartel ,peliculasc.clasificacion_edad as edad from peliculasc
+           where exists(select * from sesionesc where sesionesc.pelicula_id=peliculasc.id)";
        $enlaceDatos=$conexion->prepare($consultasql);
        $enlaceDatos->execute();
        if($enlaceDatos->rowCount()>0){
@@ -254,7 +282,7 @@ class peliculas extends conexion_2{
             $enlaceDatos=$conexion->prepare($consultasql);        
             $enlaceDatos->bindParam(":sesion",$idSesion,PDO::PARAM_INT);
             $enlaceDatos->bindParam(":total",$butacas,PDO::PARAM_INT);
-            $enlaceDatos->bindParam(":idusuar   io",$idUsuario,PDO::PARAM_INT);
+            $enlaceDatos->bindParam(":idusuario",$idUsuario,PDO::PARAM_INT);
             $enlaceDatos->bindParam(":fecha",$fecha,PDO::PARAM_STR);
             $enlaceDatos->execute();
             //$conexion->lastInsertId();

@@ -1,31 +1,11 @@
-<!DOCTYPE html>
-<html lang="es">
+<section>
+        <div class="text-center">
+            <img src="<?= $rutaArchivo ?>" alt="imagen QR" class="ml-auto mr-auto">
+            <br>
+            <div>
+                <a href="<?= $rutaArchivo ?>" download="<?= $nombreArchivoQR ?>" class="text-white text-[20px] font-roboto font-medium"> Pincha para Descargar QR</a>
+            </div>
+        </div>
+</section>
 
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Visualizar QR</title>
-    <style>
-        figure {
-            text-align: center;
-        }
 
-        img {
-            display: block;
-            margin-left: auto;
-            margin-right: auto;
-            border: 2px solid blue;
-        }
-    </style>
-</head>
-<body>
-    <figure>
-        <img src="<?= $rutaArchivo ?>" alt="imagen QR">
-        <br>
-        <figcaption>
-            <a href="<?= $rutaArchivo ?>" download="<?= $nombreArchivoQR ?>"> Pincha para Descargar QR</a>
-        </figcaption>
-    </figure>
-</body>
-
-</html>

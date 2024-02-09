@@ -98,6 +98,9 @@ module.exports = {
         gray:'rgba(143, 143, 143, 0.40)', 
         gray_factura:'#C4C4C4',
         gray_2:'rgba(220, 220, 220, 0.30)',
+      },
+      gridTemplateColumns:{
+        'col_2':'repeat(2,auto)'
       }
     },
   },

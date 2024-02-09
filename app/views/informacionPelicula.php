@@ -27,10 +27,11 @@
                     <?php } ?>
                 </p> <!--Actores-->
             </div>
-            <form action="index.php?ctl=butacas" method="POST">
+            <form action="butacas" method="POST">
                 <div>
                     <p class="text-color_gray font-normal font-poppins text-sm ml-8 mt-8">Selecciona el día:</p>
                     <select name="fecha" class="ml-8 mt-2 text-[18px] font-poppins rounded-md">
+                        <!--
                         <?php
                         for ($i = 0; $i < 4; $i++) {
                             $siguienteDia = date('Y-m-d', strtotime("+$i day"));
@@ -40,7 +41,12 @@
                                 <?= $formattedDate ?>
                             </option>
                         <?php } ?>
-                        
+                        -->
+                        <?php foreach($_SESSION['sesionesFecha'] as $sesion){?>
+                            <option value="<?php echo $sesion['fecha']?>">
+                                <?php echo $sesion['fecha']?>
+                            </option>
+                        <?php } ?>
                     </select>
                 </div>
                 <!--
@@ -75,11 +81,6 @@
                         <button class="bg-fond_pink w-28 h-11 rounded-md text-white font-medium font-poppins text-base" type="submit" name="comprar" id="comprar">
                             <p>Comprar</p>
                         </button>
-                        <!--
-                    <a href="index.php?ctl=butacas" class="bg-rose-600 w-28 h-11 rounded-md text-white font-medium font-poppins text-base">
-                        <p class="text-center mt-3">Comprar</p>
-                    </a>
-                    -->
                     </div>
                     <div class="flex gap-4">
                         <img class="w-8 h-8" src="app/images/informacionPeliculas/gusta.png">

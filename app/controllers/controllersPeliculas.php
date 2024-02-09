@@ -12,6 +12,8 @@ class controllersPeliculas
                 $_SESSION['directores'] = $peli->mostrarDirector($id);
                 $_SESSION['actores'] = $peli->mostrarActores($id);
                 $_SESSION['actrices'] = $peli->mostrarActriz($id);
+                $_SESSION['sesionesFecha']=$peli->mostarSesionesFecha($id);
+                //var_dump($_SESSION['sesionesFecha'][0]['fecha']);
                 //$_SESSION['sesiones'] = $peli->salabutacas($id);
                 include "app/views/informacionPelicula.php";
                 
@@ -75,10 +77,12 @@ class controllersPeliculas
         
         public function compra()
         {
-        include "app/views/Compra.php";
+        //include "app/views/Compra.php";
+        include "app/views/facturaEntrada.php";
         $peli=new peliculas();
         $peli->comprarButacas($_SESSION['sesiones'][0]['id'],$_POST['totalButacasSeleccionadas'],$_SESSION['usuarios']['id'],$_SESSION['sesiones'][0]['fechacompra']);
         }
+        
         public function realizarQR()
         {
                 QrController::generarQr();

@@ -77,7 +77,7 @@ class Usuario extends conexion{
             $enlaceDatos->bindParam(":argumento",$argumento,PDO::PARAM_STR);
             $enlaceDatos->bindParam(":cartel",$imagen,PDO::PARAM_STR);
             $enlaceDatos->bindParam(":edad",$edad,PDO::PARAM_STR);
-            $enlaceDatos->bindParam(":genero",$genero_id,PDO::PARAM_STR);
+            $enlaceDatos->bindParam(":genero",$genero_id,PDO::PARAM_INT);
             $enlaceDatos->execute();
             //$enlaceDatos->fetch(PDO::PARAM_STR);
         }catch(PDOException $e)
@@ -242,7 +242,7 @@ class Usuario extends conexion{
             $enlaceDatos->bindParam(":duracion",$duracion,PDO::PARAM_STR);
             $enlaceDatos->bindParam(":argumento",$argumento,PDO::PARAM_STR);
             $enlaceDatos->bindParam(":edad",$edad,PDO::PARAM_STR);
-            $enlaceDatos->bindParam(":genero",$genero_id,PDO::PARAM_STR);
+            $enlaceDatos->bindParam(":genero",$genero_id,PDO::PARAM_INT);
             $enlaceDatos->execute();
             $enlaceDatos->fetch(PDO::PARAM_STR);
         }catch(PDOException $e)
@@ -381,6 +381,34 @@ class Usuario extends conexion{
             exit("Error: ".$e->getMessage());
         }
    }
+   //funcion para saber si gestionarsala en la base de datos.
+   public function existeSesion($nombrePelicula,$nombreSala,$fecha,$horaSesion)
+   {
+        try
+        {
+            $instancia=new Usuario();
+            $conexion=$instancia->conexion;
+            $consultasql="select*from sesionesc inner join peliculasc on sesionesc.pelicula_id=peliculasc.id where sala_id=:sala and fecha=:fecha and hora=:hora and
+                sesionesc.pelicula_id=:Pelicula";
+            $enlaceDatos=$conexion->prepare($consultasql);
+            $enlaceDatos->bindParam(":sala",$nombreSala,PDO::PARAM_INT);
+            $enlaceDatos->bindParam(":fecha",$fecha,PDO::PARAM_STR);
+            $enlaceDatos->bindParam(":hora",$horaSesion,PDO::PARAM_INT);
+            $enlaceDatos->bindParam(":Pelicula",$nombrePelicula,PDO::PARAM_INT);
+            $enlaceDatos->execute();
+            //return $enlaceDatos->fetch(PDO::FETCH_ASSOC);
+            if($enlaceDatos->rowCount()>0)
+            {
+                return true;
+            }else{
+                return false;
+            }
+        }catch(PDOException $e)
+        {
+            exit("Error: ".$e->getMessage());
+        }
+   }
+
    //listar todas las peliculas que hay en la bases de datos
    public function listarPeliculas()
    {
@@ -580,16 +608,6 @@ class Usuario extends conexion{
     }catch(PDOException $e){
         echo "Error:" .$e->getMessage();
     }
-    
-   }
-   public function cargarDatos()
-   {
-        self::listarPeliculas();
-        self::listarUsuarios();
-        self::listarActores();
-        self::listarActrices();
-        self::listarDirector();
-        self::listasalas();
-   }
+   } 
 }
 ?>
