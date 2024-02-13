@@ -1,3 +1,4 @@
+<!--esto muesta las butacas de la sala 3D-->
 <script src="node_modules/jquery/dist/jquery.js"></script>
 <a href="biblioteca"><img src="app/images/salaButacas/vector.png" class="w-6 h-7 ml-8"></a>
 <section class="bg-fond_inicio rounded-2xl mt-12 mb-16 h-72 ml-8">
@@ -39,13 +40,13 @@
             && ($row!='C')  && ($row!='B')&& ($seat==5) || ($seat==12) || ($seat==13)){
           $asientos[$row][$seat] = -1;
         }else{
-          $asientos[$row][$seat] = (int)($row) * 20 + $seat;
+          $asientos[$row][$seat] =$row . $seat;//(int)($row) * 20 + $seat;
         }
       }
     }
     for ($row = 'H'; $row <= 'H'; $row++) {
       for ($seat = 0; $seat < 21; $seat++) {
-        $asientos[$row][$seat] = (int)($row) * 20 + $seat;
+        $asientos[$row][$seat] = $row . $seat;//(int)($row) * 20 + $seat;
       }
     }
     
@@ -135,6 +136,7 @@
       $(".ocupada").each(function(){
         cadena=cadena+$(this).attr("id")+",";
       });
+      cadena=cadena.substr(0, cadena.length-1);
       $("#butacasSeleccionadas").val(cadena);
       $("#totalButacasSeleccionadas").val(totalButacasSeleccionadas);
       $("#totalButacasMostradas").text("Total de butacas seleccionadas: " + totalButacasSeleccionadas);

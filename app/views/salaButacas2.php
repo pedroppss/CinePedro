@@ -1,3 +1,4 @@
+<!--esto muestra las butacas de la sala VIP-->
 <script src="node_modules/jquery/dist/jquery.js"></script>
 <a href="biblioteca"><img src="app/images/salaButacas/vector.png" class="w-6 h-7 ml-8"></a>
 <section class="bg-fond_inicio rounded-2xl mt-12 mb-16 h-72 ml-8">
@@ -32,7 +33,7 @@
         if (($butacas[$row] != 'H') && (($seat == 5) || ($seat == 6) || (($seat == 12) || ($seat == 13)))) {
           $asientos[$row][$seat] = -1;
         } else {
-          $asientos[$row][$seat] = ($row) * 20 + $seat;
+          $asientos[$row][$seat] = $butacas[$row] . $seat;//($row) * 20 + $seat;
         }
       }
     }
@@ -106,6 +107,7 @@
       $(".ocupada").each(function(){
         cadena=cadena+$(this).attr("id")+",";
       });
+      cadena=cadena.substr(0, cadena.length-1);
       $("#butacasSeleccionadas").val(cadena);
       $("#totalButacasSeleccionadas").val(totalButacasSeleccionadas);
       $("#totalButacasMostradas").text("Total de butacas seleccionadas: " + totalButacasSeleccionadas);

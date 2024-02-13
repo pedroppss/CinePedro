@@ -1,4 +1,4 @@
-<!--un controllers para la informacion de la Peliculas, las butacas y la factura-->
+<!--un controllers para la informacion de la Peliculas, las butacas y la factura, la biblioteca, lector QR-->
 <?php
     session_start();
     include "controllersPeliculas.php";

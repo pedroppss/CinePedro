@@ -1,7 +1,8 @@
+<!--conexion para el model usuario.php-->
 <?php
 include "../bd/config.php";
 class conexion{
-    
+
     protected $conexion;
     public function __construct()
     {

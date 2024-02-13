@@ -7,9 +7,11 @@ module.exports = {
   ],
   theme: {
     extend: {
+      //ANIMATION
       animation:{
         'change_color':'change_color 1s linear infinite',
       },
+      //KEYFRAMES
       keyframes:{
         change_color:{
             'from':{color:'#EE77EC'},
@@ -17,6 +19,7 @@ module.exports = {
             'to':{color:'#D86BD6'},
         }
       },
+      //BACKGROUNDCOLOR
       backgroundColor:{
         fond_white:'#FFFFFF',
         fond_pink:'#FF2C78',
@@ -41,6 +44,7 @@ module.exports = {
         menu_button:'#1D1731',
         gray:'rgba(235, 235, 235, 0.30)',
       },
+      //COLORES
       colors:{
         color_button:'#EEEEEE',
         color_button_2:'#CECECE',
@@ -56,13 +60,16 @@ module.exports = {
         checkbox_black:'rgba(2, 5, 16, 0.7)',
         sunshine_yellow:'rgba(255, 190, 0, 1)',
       },
+      //TIPO DE LETRA
       fontFamily:{
         'poppins':['Poppins'],
         'roboto':['Roboto'],
       },
+      //TIPO DE TAMAÑO
       backgroundSize:{
         'personalized':'96rem'
       },
+      //HEIGHT
       height:{
         'personalized':'43rem',
         '87':'87px',
@@ -76,6 +83,7 @@ module.exports = {
         '684':'684.488px',
         
       },
+      //WIDTH
       width:{
         '350':'350px',
         '415':'415px',
@@ -89,16 +97,19 @@ module.exports = {
         '1002':'1400.872px',
         '1500':'1500px',
       },
+      //MARGIN
       margin:{
         'personalized':'33rem',
         '151':'151px',
         '229':'229px',
       },
+      //COLOR DE LOS BORDES
       borderColor:{
         gray:'rgba(143, 143, 143, 0.40)', 
         gray_factura:'#C4C4C4',
         gray_2:'rgba(220, 220, 220, 0.30)',
       },
+      //GRID TEMPLATE-COLUMNS
       gridTemplateColumns:{
         'col_2':'repeat(2,auto)'
       }

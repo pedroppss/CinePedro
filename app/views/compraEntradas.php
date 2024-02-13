@@ -1,4 +1,4 @@
-
+<!--esta muestra un formulario para comprar las entraas-->
 <section class=" bg-fond_inicio rounded-2xl mt-12 mb-14 h-[699px] ml-[429px] mr-[372px]">
     <h1 class="p-8 text-center text-white text-[28px] font-poppins font-medium">Formulario de Compra de Entradas</h1>
     <form action="compra" method="POST">

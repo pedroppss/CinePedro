@@ -1,3 +1,4 @@
+<!--esto muestra el lector QR-->
 <section>
         <div class="text-center">
             <img src="<?= $rutaArchivo ?>" alt="imagen QR" class="ml-auto mr-auto">

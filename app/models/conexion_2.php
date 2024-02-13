@@ -1,3 +1,4 @@
+<!-- conexion para el model peliculas.php-->
 <?php
 include "app/bd/config.php";
 class conexion_2{

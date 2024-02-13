@@ -2,6 +2,7 @@
 include "../models/usuario.php";
 class controllersUsuario
 {
+    //funcion para iniciar sesion
     public function login()
     {
         $encontrado = false;
@@ -42,6 +43,7 @@ class controllersUsuario
         }
         return $error;
     }
+    //funcion para registrar un usuario nuevo
     public function registarUsuario()
     {
         include "../views/login_register_header.php";
@@ -55,6 +57,7 @@ class controllersUsuario
             //ControllerCorreo::enviarCorreo("pedroentornocliente@gmail.com",$_REQUEST['gmail']);
         }
     }
+    //funcion para cerrar sesion
     public function logout()
     {
 
@@ -66,6 +69,7 @@ class controllersUsuario
     {
         include "../views/recuperarPassword.php";
     }
+    //funcion para añadir una pelicula nueva, solo puede hacer el administrador
     public function añadirPelicula()
     {
         include "../../admin/html/CrearPelicula.php";
@@ -99,6 +103,7 @@ class controllersUsuario
             echo "debes introducir todos los campos que son obligatorios";
         }
     }
+     //funcion para eliminar una pelicula, solo puede hacer el administrador
     public function eliminarPelicula()
     {
         include "../../admin/html/borrarPelicula.php";
@@ -110,6 +115,7 @@ class controllersUsuario
             echo "No se ha borrado la pelicula";
         }
     }
+     //funcion para añadir una usuario, solo puede hacer el administrador
     public function eliminarUsuario()
     {
         include "../../admin/html/eliminarCuentasUsuarios.php";
@@ -121,6 +127,7 @@ class controllersUsuario
             echo "No se ha borrado el usuario";
         }
     }
+     //funcion para añadir un actor o actriz o Director, solo puede hacer el administrador
     public function eliminarActorActrizDirector()
     {
         include "../../admin/html/borrarActores.php";
@@ -132,6 +139,7 @@ class controllersUsuario
             echo "No se ha borrado";
         }
     }
+     //funcion para editar una pelicula, solo puede hacer el administrador
     public function editarPelicula()
     {
         include "../../admin/html/editarPelicula.php";
@@ -156,6 +164,7 @@ class controllersUsuario
 
         //$_SESSION['usuarios']=$usuario->editar($_REQUEST['nombrePelicula'],$_REQUEST['argumento']);
     }
+     //funcion para editar un actor  o actriz o Director, solo puede hacer el administrador
     public function editarActorAztrizDirector()
     {
         include "../../admin/html/editarActores.php";
@@ -167,6 +176,7 @@ class controllersUsuario
             echo "no se ha editado";
         }
     }
+     //funcion para añadir un actor  o actriz o Director nuevo, solo puede hacer el administrador
     public function crearActorAztrizDirector()
     {
         include "../../admin/html/crearActores.php";
@@ -197,6 +207,7 @@ class controllersUsuario
             echo "Por favor,completa todos los campos";
         }
     }
+    //funcion para activar o desactivar usuario, solo puede hacer el administrador
     public function activadesactivarUsuarios()
     {
 
@@ -207,6 +218,7 @@ class controllersUsuario
             $_SESSION['usuario'] = $usuario->usuario($_REQUEST['nombreUsuario']);
         }
     }
+    //funcion para asiganr roles a los usuarios, solo puede hacer el administrador
     public function asignarRolesUsuarios()
     {
         include "../../admin/html/asignarRolesUsuarios.php";
@@ -218,6 +230,7 @@ class controllersUsuario
             echo "no se ha asignado el rol";
         }
     }
+    //funcion para gerstionar Salas-Sesiones, solo puede hacer el adminitrador
     public function gestionarSalasSesiones()
     {
 
@@ -244,6 +257,7 @@ class controllersUsuario
             echo "No se han proporcionado todos los datos necesarios";
         }
     }
+    //funcion para listar todas las peliculas que hay en la base de datos,solo puede ver el administrador
     public function listarPeliculas()
     {
 
@@ -253,6 +267,7 @@ class controllersUsuario
         include "../../admin/html/listado.php";
         //var_dump($_SESSION['peliculas']);
     }
+    //funcion para listar todos los usuarios que hay en la base de datos,solo puede ver el administrador
     public function listarUsuarios()
     {
 
@@ -262,6 +277,7 @@ class controllersUsuario
         include "../../admin/html/listadoUsuario.php";
         //var_dump($_SESSION['usuarios']);
     }
+    //funcion para listar todas los actores,actrices y directores que hay en la base de datos,solo puede ver el administrador
     public function listarActoresActricesDirector()
     {
 
@@ -275,6 +291,7 @@ class controllersUsuario
         //var_dump($_SESSION['actrices']);
         //var_dump($_SESSION['directores']);
     }
+    //funcion para listar todas las Salas-sesiones que hay en la base de datos,solo puede ver el administrador
     public function listarSalas()
     {
 

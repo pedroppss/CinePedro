@@ -1,3 +1,4 @@
+<!--este es el inicio de la página-->
 <main class="bg-fond_inicio rounded-2xl">
     <h1 class="p-8 ml-[48px] font-medium font-poppins text-white text-3xl animate-change_color">Cartelera</h1>
     <div class="flex gap-7 ml-[48px]">

@@ -1,3 +1,6 @@
+<!--
+conexión para el API
+-->
 <?php
 include "../../app/bd/config.php";
 class Conectar

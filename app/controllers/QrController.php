@@ -17,7 +17,7 @@ class QrController
             $nombreUsuario = isset($_SESSION['usuarios']['nombre']) ? $_SESSION['usuarios']['nombre'] : '';
             $nombrePelicula = isset($_SESSION['sesiones'][0]['nombrePelicula']) ? $_SESSION['sesiones'][0]['nombrePelicula'] : '';
 
-            $datos = "Sesión={$sesionId}||Butaca={$butaca}||Usuario={$nombreUsuario}||Película={$nombrePelicula}";
+            $datos = "Sesión={$sesionId}&Butaca={$butaca}&Usuario={$nombreUsuario}&Película={$nombrePelicula}";
         }
 
 

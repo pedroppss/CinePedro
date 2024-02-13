@@ -6,6 +6,7 @@ class peliculas extends conexion_2{
         parent::__construct();
     }
    
+    //funcion para mostrar la informacion de la pelicula
     public function mostrarImagenes($id)
     {
         try
@@ -46,6 +47,7 @@ class peliculas extends conexion_2{
             echo "Error:" .$e->getMessage();
         }
     }
+    //funcion para mostrar el director de la pelicula
     public function mostrarDirector($id){
         try
         {
@@ -74,6 +76,7 @@ class peliculas extends conexion_2{
             echo "Error:" .$e->getMessage();
         }
     }
+    //funcion para mostrar los actores de la pelicula
     public function mostrarActores($id)
     {
         try
@@ -102,6 +105,7 @@ class peliculas extends conexion_2{
             echo "Error:" .$e->getMessage();
         }
     }
+    //funcion para mostrar los actrices de la pelicula
     public function mostrarActriz($id)
     {
         try
@@ -131,6 +135,7 @@ class peliculas extends conexion_2{
             echo "Error:" .$e->getMessage();
         }
     }
+    //funcion  para mostrar las sesiones que hay en esa pelicula
     public function mostarSesionesFecha($id)
     {
         try
@@ -196,12 +201,13 @@ class peliculas extends conexion_2{
         }
     }
     */
+    //funcion para mostrar la sala dependiendo de la sesion de la peliculas que has elegido
     public function salabutacas($fecha,$idPelicula){
 
         try{
             $instancia=new conexion_2();
             $conexion=$instancia->conexion;
-            $consultasql="SELECT salasc.id as id, salasc.nombre as nombre, horasc.hora as hora, peliculasc.id as idPelicula,sesionesc.fecha as fecha_compra,
+            $consultasql="SELECT salasc.id as id, sesionesc.id as sesionid, salasc.nombre as nombre, horasc.hora as hora, peliculasc.id as idPelicula,sesionesc.fecha as fecha_compra,
             peliculasc.nombre as titulo, sesionesc.precio as precio FROM horasc
             INNER JOIN sesionesc ON horasc.id = sesionesc.hora
             INNER JOIN salasc ON salasc.id = sesionesc.sala_id
@@ -220,6 +226,7 @@ class peliculas extends conexion_2{
                     'precio'=>$row['precio'],
                     'fechacompra'=>$row['fecha_compra'],
                     'id'=>$row['id'],
+                    'sesionid'=>$row['sesionid'],
                     'nombreSala'=>$row['nombre'],
                     'hora'=>$row['hora'],
                    );
@@ -237,6 +244,7 @@ class peliculas extends conexion_2{
         }
     }
 
+    //funcion para mostrar solo las peliculas que tienen las sesiones
     public function listarPeliculas()
    {
        try
@@ -273,24 +281,38 @@ class peliculas extends conexion_2{
        }
 
    }
+   //funcion para comprar las butacas seleccionadas
    public function comprarButacas($idSesion,$butacas,$idUsuario,$fecha)
    {
+    $arrayButacas=explode(",", $butacas);
+    //echo "butacas=".$butacas." count=".count($arrayButacas);
+    $tamArray=count($arrayButacas);
+
         try{
             $instancia=new conexion_2();
             $conexion=$instancia->conexion;
             $consultasql="INSERT INTO compra_butacasc (sesion_id,usuario_id,cant_butaca,fecha_compra) values (:sesion,:idusuario,:total,:fecha)";
             $enlaceDatos=$conexion->prepare($consultasql);        
             $enlaceDatos->bindParam(":sesion",$idSesion,PDO::PARAM_INT);
-            $enlaceDatos->bindParam(":total",$butacas,PDO::PARAM_INT);
+            $enlaceDatos->bindParam(":total",$tamArray,PDO::PARAM_INT);
             $enlaceDatos->bindParam(":idusuario",$idUsuario,PDO::PARAM_INT);
             $enlaceDatos->bindParam(":fecha",$fecha,PDO::PARAM_STR);
             $enlaceDatos->execute();
-            //$conexion->lastInsertId();
             
+            $idCompra=$conexion->lastInsertId();
+
+            foreach($arrayButacas as $butaca){
+                $consultasql="INSERT INTO butacas_compradasc (id_compra, num_butaca) values (:idcompra,:butaca)";
+                $enlaceDatos=$conexion->prepare($consultasql);        
+                $enlaceDatos->bindParam(":idcompra",$idCompra,PDO::PARAM_INT);
+                $enlaceDatos->bindParam(":butaca",$butaca,PDO::PARAM_STR);
+                $enlaceDatos->execute();
+            }
+            $_SESSION['butacasSeleccionadas']=$arrayButacas;
         }catch(PDOException $e){
             echo "Error:" .$e->getMessage();
         }
- 
+
     }
    }
 

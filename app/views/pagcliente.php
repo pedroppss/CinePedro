@@ -1,3 +1,4 @@
+<!--página para el cliente-->
 <!DOCTYPE html>
 <html lang="es">
 <head>

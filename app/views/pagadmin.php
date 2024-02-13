@@ -1,4 +1,4 @@
-
+<!--página de administrador-->
 <!DOCTYPE html>
 <html lang="es">
 <head>

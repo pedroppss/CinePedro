@@ -1,17 +1,4 @@
-<!--
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="../css/dist/output.css" type="text/css"/>
-        <title>Recuperar Contraseña</title>
-</head>
-<body  class="container max-w-screen-2xl mx-auto bg-fond_black">
-   <header class="container max-w-screen-2xl p-11">
-        <img src="../images/recuperarContraseña/logo.png" style="width: 179.23px ; height: 55px;" alt="logo">
-   </header> 
--->
+<!--esto es para recuperar la contraseña, si te has olvidado la contraseña-->
 <body class="container max-w-screen-2xl mx-auto bg-fond_black">
    <main class="bg-no-repeat bg-personalized h-personalized grid content-around justify-around mt-[103px]" style="background-image: url(../images/recuperarContraseña/fondo-imagenes.png);">
                 <div class="p-24 w-500 h-620 rounded-2xl bg-fond_transp">

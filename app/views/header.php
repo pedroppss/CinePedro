@@ -1,3 +1,4 @@
+<!--este es el header de la pagina-->
 <header class="container max-w-screen-2xl mx-auto grid grid-cols-2 justify-between p-11">
     <div class="grid grid-cols-2">
         <img src="app/images/headers/logo.png" class="" style="width: 179.23px ; height: 55px;" alt="logo">

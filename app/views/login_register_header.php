@@ -1,3 +1,4 @@
+<!--este el header para iniciar o registrar usuario-->
 <!DOCTYPE html>
 <html lang="en">
 <head>

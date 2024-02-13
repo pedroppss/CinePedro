@@ -1,4 +1,4 @@
-
+<!--esto muestra la informacion de la pelicula y las sesiones que tiene esta pelicula-->
 <section>
     <div class="grid grid-cols-2">
         <div>
