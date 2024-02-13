@@ -2,9 +2,11 @@
 
 @import url('https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,300;0,400;0,500;0,700;0,900;1,100;1,500;1,700&display=swap');
 
-/*
-! tailwindcss v3.4.0 | MIT License | https://tailwindcss.com
-*/
+/*importar el tipo de letra*/
+
+/*tailwind*/
+
+/*! tailwindcss v3.4.0 | MIT License | https://tailwindcss.com*/
 
 /*
 1. Prevent padding and border from affecting element width. (https://github.com/mozdevs/cssremedy/issues/4)
@@ -582,10 +584,6 @@ video {
   }
 }
 
-.collapse{
-  visibility: collapse;
-}
-
 .absolute{
   position: absolute;
 }
@@ -839,8 +837,16 @@ video {
   margin-top: 19px;
 }
 
+.mt-\[20px\]{
+  margin-top: 20px;
+}
+
 .mt-\[22px\]{
   margin-top: 22px;
+}
+
+.mt-\[30px\]{
+  margin-top: 30px;
 }
 
 .mt-\[32px\]{
@@ -849,6 +855,10 @@ video {
 
 .mt-\[37px\]{
   margin-top: 37px;
+}
+
+.mt-\[40px\]{
+  margin-top: 40px;
 }
 
 .mt-\[42\.08px\]{
@@ -863,6 +873,10 @@ video {
   margin-top: 51px;
 }
 
+.mt-\[5px\]{
+  margin-top: 5px;
+}
+
 .mt-\[6px\]{
   margin-top: 6px;
 }
@@ -875,24 +889,28 @@ video {
   margin-top: 8rem;
 }
 
-.mt-\[2px\]{
-  margin-top: 2px;
+.ml-\[32rem\]{
+  margin-left: 32rem;
 }
 
-.mt-\[5px\]{
-  margin-top: 5px;
+.ml-\[89rem\]{
+  margin-left: 89rem;
 }
 
-.mt-\[30px\]{
-  margin-top: 30px;
+.ml-\[\]{
+  margin-left: ;
 }
 
-.mt-\[20px\]{
-  margin-top: 20px;
+.ml-\[241px\]{
+  margin-left: 241px;
 }
 
-.mt-\[40px\]{
-  margin-top: 40px;
+.mt-\[\]{
+  margin-top: ;
+}
+
+.mt-\[36px\]{
+  margin-top: 36px;
 }
 
 .flex{
@@ -1007,10 +1025,6 @@ video {
   height: 48px;
 }
 
-.h-\[500px\]{
-  height: 500px;
-}
-
 .h-\[60px\]{
   height: 60px;
 }
@@ -1033,10 +1047,6 @@ video {
 
 .h-personalized{
   height: 43rem;
-}
-
-.h-\[30px\]{
-  height: 30px;
 }
 
 .w-1000{
@@ -1139,6 +1149,10 @@ video {
   width: 499px;
 }
 
+.w-\[527px\]{
+  width: 527px;
+}
+
 .w-\[563px\]{
   width: 563px;
 }
@@ -1151,40 +1165,12 @@ video {
   width: 653px;
 }
 
-.w-\[99px\]{
-  width: 99px;
-}
-
-.w-\[300px\]{
-  width: 300px;
-}
-
-.w-\[250ppx\]{
-  width: 250ppx;
-}
-
-.w-\[250px\]{
-  width: 250px;
-}
-
-.w-\[220px\]{
-  width: 220px;
-}
-
-.w-\[527pxpx\]{
-  width: 527pxpx;
-}
-
-.w-\[527px\]{
-  width: 527px;
-}
-
 .w-\[72rem\]{
   width: 72rem;
 }
 
-.w-\[90\%\]{
-  width: 90%;
+.w-\[99px\]{
+  width: 99px;
 }
 
 .max-w-screen-2xl{
@@ -1285,6 +1271,10 @@ video {
   gap: 2.25rem;
 }
 
+.gap-\[10px\]{
+  gap: 10px;
+}
+
 .gap-\[14px\]{
   gap: 14px;
 }
@@ -1295,14 +1285,6 @@ video {
 
 .gap-\[16px\]{
   gap: 16px;
-}
-
-.gap-\[10px\]{
-  gap: 10px;
-}
-
-.gap-\[200px\]{
-  gap: 200px;
 }
 
 .gap-\[391px\]{
@@ -1353,6 +1335,14 @@ video {
   border-radius: 0.125rem;
 }
 
+.rounded-\[20px\]{
+  border-radius: 20px;
+}
+
+.rounded-\[51px\]{
+  border-radius: 51px;
+}
+
 .border{
   border-width: 1px;
 }
@@ -1390,11 +1380,6 @@ video {
 .border-green-950{
   --tw-border-opacity: 1;
   border-color: rgb(5 46 22 / var(--tw-border-opacity));
-}
-
-.border-black{
-  --tw-border-opacity: 1;
-  border-color: rgb(0 0 0 / var(--tw-border-opacity));
 }
 
 .border-b-black{
@@ -1504,10 +1489,6 @@ video {
 
 .bg-shade_300{
   background-color: rgba(189, 197, 212, 1);
-}
-
-.bg-\[\]{
-  background-color: ;
 }
 
 .bg-personalized{
@@ -1621,6 +1602,10 @@ video {
   font-size: 30px;
 }
 
+.text-\[40px\]{
+  font-size: 40px;
+}
+
 .text-base{
   font-size: 1rem;
   line-height: 1.5rem;
@@ -1646,20 +1631,16 @@ video {
   line-height: 1rem;
 }
 
-.text-\[50px\]{
-  font-size: 50px;
-}
-
-.text-\[40px\]{
-  font-size: 40px;
-}
-
 .font-\[12px\]{
   font-weight: 12px;
 }
 
 .font-bold{
   font-weight: 700;
+}
+
+.font-extrabold{
+  font-weight: 800;
 }
 
 .font-medium{
@@ -1672,10 +1653,6 @@ video {
 
 .font-semibold{
   font-weight: 600;
-}
-
-.font-extrabold{
-  font-weight: 800;
 }
 
 .text-\[\#333333CC\]{

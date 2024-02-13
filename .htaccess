@@ -17,3 +17,7 @@ Rewriterule ^factura$ index.php?ctl=factura [NC,L]
 RewriteCond %{REQUEST_FILENAME} !-f
 RewriteCond %{REQUEST_FILENAME} !-d
 Rewriterule ^compra$ index.php?ctl=compra [NC,L]
+
+RewriteCond %{REQUEST_FILENAME} !-f
+RewriteCond %{REQUEST_FILENAME} !-d
+Rewriterule ^QR$ index.php?ctl=QR [NC,L]

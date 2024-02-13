@@ -18,13 +18,19 @@ $rutaLogo = 'http://' . $_SERVER['SERVER_NAME'] . ':' . $_SERVER['SERVER_PORT'] 
     <!--<img src="<?= $rutaLogo ?>logo.png" style="width: 179.23px ; height: 55px;" alt="Logo">-->
     <section>
         <img src="../../app/images/login/logo.png" class="mt-[8rem] ml-[21rem]" style="width: 179.23px ; height: 55px;" alt="Logo">
-        <div class="ml-[21rem] mt-[30px]">
-            <p class="font-poppins font-bold">Fecha de compra:</p>
-            <p></p><!--fecha de compra-->
-            <p class="font-poppins mt-[5px]">86390-WHMKZ88-609144</p>
-            <p class="w-[527px] font-poppins mt-[5px]">Autorizado medianta la resolucion Nro. 01235562123/SUNAT Representacion impresa de la factura Electrónica.
-                Este documentado puede ser validado en http://143.47.43.204:8080/pedro/Cine-Pedro/. Serie y correlativo BB06-2124656
-            </p>
+        <div class="flex gap-[10px]">
+            <div class="ml-[21rem] mt-[30px]">
+                <p class="font-poppins font-bold">Fecha de compra:</p>
+                <p></p><!--fecha de compra-->
+                <p class="font-poppins mt-[5px]">86390-WHMKZ88-609144</p>
+                <p class="w-[527px] font-poppins mt-[5px]">Autorizado medianta la resolucion Nro. 01235562123/SUNAT Representacion impresa de la factura Electrónica.
+                    Este documentado puede ser validado en http://143.47.43.204:8080/pedro/Cine-Pedro/. Serie y correlativo BB06-2124656
+                </p>
+            </div>
+            <div>
+                <img src="../../app/images/avatar/default.jpg" class="ml-[241px] rounded-[51px]" style="width: 100px; height: 100px;">
+                <img src="../../app/images/carteles/fast10.png" class="ml-[241px] mt-[36px]" style="width: 289px; height: 140px;">
+            </div>
         </div>
     </section>
     <p class="mt-[40px] ml-[21rem] w-[72rem] border-[1px] border-gray"></p>
@@ -75,6 +81,11 @@ $rutaLogo = 'http://' . $_SERVER['SERVER_NAME'] . ':' . $_SERVER['SERVER_PORT'] 
                 <td></td>
             </tr>
         </table>
+        <div class="ml-[89rem] flex gap-[10px]">
+            <p class="font-poppins font-bold">Total:</p>
+            <p class="font-poppins font-medium">€</p>
+        </div>
+
     </section>
 </body>
 
