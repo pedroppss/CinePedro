@@ -1,3 +1,4 @@
+<!--aside de la página principal de administrador-->
 <div class="nk-aside " data-content="sideNav" data-toggle-overlay="true" data-toggle-screen="lg" data-toggle-body="true">
                                 <div class="nk-sidebar-menu " data-simplebar>
                                     <ul class="nk-menu nk-menu-main">

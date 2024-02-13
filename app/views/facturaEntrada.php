@@ -1,7 +1,9 @@
 <!--esta muestra la factura lo que has comprado y tambien muestra el lector QR-->
 <?php
     $precioEntrada=$_SESSION['sesiones'][0]['precio'];
-    $precioTotal=$precioEntrada*$_POST["totalButacasSeleccionadas"]; 
+    $precioTotal=$precioEntrada*$_POST["totalButacasSeleccionadas"];
+    $_SESSION['totalButacas']=$_POST["totalButacasSeleccionadas"];
+    $_SESSION['precioTotal']=$precioTotal;
 ?>
 <a href="biblioteca"><img src="app/images/salaButacas/vector.png" class="w-6 h-7 ml-8"></a>
 <section class="bg-fond_inicio rounded-2xl mt-12 mb-14 h-[99px] ml-8">

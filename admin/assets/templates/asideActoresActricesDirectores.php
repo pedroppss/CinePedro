@@ -1,3 +1,4 @@
+<!--aside para los actores, actrices y directores-->
 <div class="nk-aside" data-content="sideNav" data-toggle-overlay="true" data-toggle-screen="lg" data-toggle-body="true">
                                 <div class="nk-sidebar-menu" data-simplebar>
                                     <ul class="nk-menu nk-menu-main">
@@ -50,18 +51,21 @@
                                     <ul class="nk-menu">
                                         
                                         <li class="nk-menu-item has-sub">
+                                            <!--Crear Actores, Actrices o Directores-->
                                             <a href="app/views/login_register.php?ctl=añadirActores" class="nk-menu-link nk-menu-toggle">
                                                 <span class="nk-menu-icon"><em class="icon ni ni-tile-thumb"></em></span>
                                                 <span class="nk-menu-text">Crear Actores, Actrices o Directores</span>
                                             </a>
                                         </li><!-- .nk-menu-item -->
                                         <li class="nk-menu-item has-sub">
+                                            <!--Borrar Actores, Actrices o Directores-->
                                             <a href="app/views/login_register.php?ctl=borrarActores" class="nk-menu-link nk-menu-toggle">
                                                 <span class="nk-menu-icon"><em class="icon ni ni-users"></em></span>
                                                 <span class="nk-menu-text">Borrar Actores, Actrices o Directores</span>
                                             </a>
                                         </li><!-- .nk-menu-item -->
                                         <li class="nk-menu-item has-sub">
+                                            <!--Editar Actores, Actrices o Directores-->
                                             <a href="app/views/login_register.php?ctl=editarActores" class="nk-menu-link nk-menu-toggle">
                                                 <span class="nk-menu-icon"><em class="icon ni ni-user-list"></em></span>
                                                 <span class="nk-menu-text">Editar Actores, Actrices o Directores</span>

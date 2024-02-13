@@ -1,3 +1,4 @@
+<!--aside para las peliculas-->
 <div class="nk-aside" data-content="sideNav" data-toggle-overlay="true" data-toggle-screen="lg" data-toggle-body="true">
                                 <div class="nk-sidebar-menu" data-simplebar>
                                     <ul class="nk-menu nk-menu-main">
@@ -50,18 +51,21 @@
                                     <ul class="nk-menu">
                                         
                                         <li class="nk-menu-item has-sub">
+                                            <!--Crear Peliculas-->
                                             <a href="app/views/login_register.php?ctl=añadir" class="nk-menu-link nk-menu-toggle">
                                                 <span class="nk-menu-icon"><em class="icon ni ni-tile-thumb"></em></span>
                                                 <span class="nk-menu-text">Crear Peliculas</span>
                                             </a>
                                         </li><!-- .nk-menu-item -->
                                         <li class="nk-menu-item has-sub">
+                                            <!--Borrar Peliculas-->
                                             <a href="app/views/login_register.php?ctl=borrar" class="nk-menu-link nk-menu-toggle">
                                                 <span class="nk-menu-icon"><em class="icon ni ni-users"></em></span>
                                                 <span class="nk-menu-text">Borrar Peliculas</span>
                                             </a>
                                         </li><!-- .nk-menu-item -->
                                         <li class="nk-menu-item has-sub">
+                                            <!--Editar peliculas-->
                                             <a href="app/views/login_register.php?ctl=editar" class="nk-menu-link nk-menu-toggle">
                                                 <span class="nk-menu-icon"><em class="icon ni ni-user-list"></em></span>
                                                 <span class="nk-menu-text">Editar peliculas</span>

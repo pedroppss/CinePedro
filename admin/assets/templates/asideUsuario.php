@@ -1,3 +1,4 @@
+<!--aside para los usuarios-->
 <div class="nk-aside" data-content="sideNav" data-toggle-overlay="true" data-toggle-screen="lg" data-toggle-body="true">
                                 <div class="nk-sidebar-menu" data-simplebar>
                                     <ul class="nk-menu nk-menu-main">
@@ -50,18 +51,21 @@
                                     <ul class="nk-menu">
                                         
                                         <li class="nk-menu-item has-sub">
+                                            <!--Activar/desactivar usuarios-->
                                             <a href="app/views/login_register.php?ctl=activar/desactivarusuarios" class="nk-menu-link nk-menu-toggle">
                                                 <span class="nk-menu-icon"><em class="icon ni ni-tile-thumb"></em></span>
                                                 <span class="nk-menu-text">Activar/desactivar usuarios</span>
                                             </a>
                                         </li><!-- .nk-menu-item -->
                                         <li class="nk-menu-item has-sub">
+                                            <!--Eliminar cuentas de los usuarios-->
                                             <a href="app/views/login_register.php?ctl=eliminarcuentas" class="nk-menu-link nk-menu-toggle">
                                                 <span class="nk-menu-icon"><em class="icon ni ni-tile-thumb"></em></span>
                                                 <span class="nk-menu-text">Eliminar cuentas de los usuarios</span>
                                             </a>
                                         </li>
                                         <li class="nk-menu-item has-sub">
+                                            <!--Asignar roles a los usuarios-->
                                             <a href="app/views/login_register.php?ctl=asignarRolesUsuarios" class="nk-menu-link nk-menu-toggle">
                                                 <span class="nk-menu-icon"><em class="icon ni ni-users"></em></span>
                                                 <span class="nk-menu-text">Asignar roles a los usuarios</span>

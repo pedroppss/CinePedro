@@ -1,4 +1,4 @@
-
+<!--esto es una página para muestre la lista de peliculas que hay en la base de datos-->
 <!DOCTYPE html>
 <html lang="zxx" class="js">
 

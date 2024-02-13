@@ -1,4 +1,4 @@
-
+<!--esto es un formulario para borrar peliculas-->
 <!DOCTYPE html>
 <html lang="zxx" class="js">
 

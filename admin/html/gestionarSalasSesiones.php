@@ -1,4 +1,4 @@
-
+<!--esto es un formulario para gestionar salas-sesiones-->
 <!DOCTYPE html>
 <html lang="zxx" class="js">
 

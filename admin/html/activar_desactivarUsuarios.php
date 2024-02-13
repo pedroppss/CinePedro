@@ -1,3 +1,4 @@
+<!--esto es un formulario para activar o desactivar usuarios-->
 <!DOCTYPE html>
 <html lang="zxx" class="js">
 

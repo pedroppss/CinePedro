@@ -1,4 +1,4 @@
-
+<!--esto es la pagina principal de administrador-->
 <!DOCTYPE html>
 <html lang="zxx" class="js">
 

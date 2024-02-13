@@ -1,4 +1,4 @@
-
+<!--esto es una página que muestre la lista de las salas-sesiones-->
 <!DOCTYPE html>
 <html lang="zxx" class="js">
 

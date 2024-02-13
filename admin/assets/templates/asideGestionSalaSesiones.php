@@ -1,3 +1,4 @@
+<!--aside para la salas-sesiones-->
 <div class="nk-aside" data-content="sideNav" data-toggle-overlay="true" data-toggle-screen="lg" data-toggle-body="true">
                                 <div class="nk-sidebar-menu" data-simplebar>
                                     <ul class="nk-menu nk-menu-main">
@@ -49,6 +50,7 @@
                                     </ul><!-- .nk-menu -->
                                     <ul class="nk-menu">    
                                         <li class="nk-menu-item has-sub">
+                                            <!--Gestionar Sala-Sesiones-->
                                             <a href="app/views/login_register.php?ctl=gestionarsalasesiones" class="nk-menu-link nk-menu-toggle">
                                                 <span class="nk-menu-icon"><em class="icon ni ni-tile-thumb"></em></span>
                                                 <span class="nk-menu-text">Gestionar Sala-Sesiones</span>

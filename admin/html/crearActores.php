@@ -1,3 +1,4 @@
+<!--esto es un formulario para crear actores-->
 <?php 
 session_start();
 ?>

@@ -1,3 +1,4 @@
+<!--footer-->
 <div class="nk-footer">
                                     <div class="container wide-xl mt-8">
                                         <div class="nk-footer-wrap g-2">

@@ -1,4 +1,4 @@
-
+<!--esto es un formulario para eliminar cuentas de usuarios-->
 <!DOCTYPE html>
 <html lang="zxx" class="js">
 
