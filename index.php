@@ -1,3 +1,4 @@
+<!--este es el index.php principal-->
 <!DOCTYPE html>
 <html lang="en">
 <head>
