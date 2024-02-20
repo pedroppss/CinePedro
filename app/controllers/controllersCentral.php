@@ -26,6 +26,9 @@
         case 'QR':
             (new controllersPeliculas())->realizarQR();
             break;
+        case 'registrar':
+            (new controllersPeliculas())->PDF();
+            break;
         case 'inicio_2':
             include "app/views/inicio_2.php";
             break;

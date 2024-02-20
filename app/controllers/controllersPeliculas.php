@@ -1,6 +1,7 @@
 <?php
 include "app/models/peliculas.php";
 include_once "QrController.php";
+include_once "GenerarPDF.php";
 class controllersPeliculas
 {
         //funcion para mostrar Pelicula
@@ -35,7 +36,7 @@ class controllersPeliculas
                 if (!empty($_REQUEST['fecha'])) {
                         $peli = new peliculas();
                         $_SESSION['sesiones'] = $peli->salabutacas($_REQUEST['fecha'], $_SESSION['peliculas'][0]['id']);
-
+                        $tempo=$peli->obtenerButacasOcupadas($_SESSION['sesiones'][0]['sesionid']);
                         if ($_SESSION['sesiones'] == false) {
                                 include "app/views/informacionPelicula.php";
                         }
@@ -95,5 +96,8 @@ class controllersPeliculas
                         $datos ="Sesión={$sesionId}&Butaca={$butaca}&Usuario={$nombreUsuario}&Película={$nombrePelicula}";
                         QrController::generarQr($datos);
                 }
+        }
+        public function PDF(){
+                GenerarPDF::generarPDF("factura.pdf");
         }
 }

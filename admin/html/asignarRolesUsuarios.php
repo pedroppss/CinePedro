@@ -34,12 +34,12 @@
                                     <div class="components-preview wide-md mx-auto">
                                         <div class="nk-block-head nk-block-head-lg wide-sm">
                                             <div class="nk-block-head-content">
-                                                <div class="nk-block-head-sub"><a class="back-to" href="app/views/login_register.php?ctl=usuarios"><em class="icon ni ni-arrow-left"></em><span>Lista de Actores, Actrices y Directores</span></a></div>
+                                                <div class="nk-block-head-sub"><a class="back-to" href="app/views/login_register.php?ctl=usuarios"><em class="icon ni ni-arrow-left"></em><span>Lista de Usuarios</span></a></div>
                                                 <h2 class="nk-block-title fw-normal">Asignar Roles a los Usuarios</h2>
                                                 <div class="nk-block-des">
                                                     <!--<p class="lead">Using <a href="https://datatables.net/" target="_blank">DataTables</a>, add advanced interaction controls to your HTML tables. It is a highly flexible tool and all advanced features allow you to display table instantly and nice way.</p>
                                                     <p>Check out the <a href="https://datatables.net/" target="_blank">documentation</a> for a full overview.</p>-->
-                                                <p class="lead">Esto es para asignar roles (administrador o Roles) a los usuarios
+                                                <p class="lead">Esto es para asignar roles (administrador o clientes) a los usuarios
                                                 </p>
                                                 </div>
                                             </div>
@@ -66,6 +66,7 @@
                                                     <button class="w-300 h-12 mt-7 ml-[299px] bg-rose-600 text-2xl font-normal text-white font-poppins" type="submit" name="asignar" value="asignar">Asignar</button>
                                                 </div>
                                             </form>
+                                            <div class="text-red-600"><?=$error?></div>
                                         </div> <!-- nk-block -->
                                     </div><!-- .components-preview -->
                                 </div>

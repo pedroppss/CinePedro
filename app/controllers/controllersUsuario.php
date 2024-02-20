@@ -7,29 +7,36 @@ class controllersUsuario
     {
         $encontrado = false;
         $error = "";
-        isset($_SESSION) ?: session_start();
+        
 
         if (empty($_REQUEST['gmail']) && empty($_REQUEST['password'])) {
-
-            include "../views/login_register_header.php";
-            include "../views/login.php";
-            $error = "Debes introducir el email y la contraseña que son obligatorios";
-            return;
-        } else if (isset($_REQUEST['password']) < 3  && isset($_REQUEST['gmail'])) {
+            $error = "Debes introducir el email y la contraseña, que son obligatorios";
+            
+        
+        } else if (strlen($_REQUEST['password']) < 3) {
             $error = "La contraseña debe tener mas de 3 caracteres";
+        /*
         } else if (!preg_match('/[A-Z]/', isset($_REQUEST['password']))) {
             $error = "la contraseña deber tener al menos una letra mayuscula";
         } else if (!preg_match('/[a-z]/', isset($_REQUEST['password']))) {
             $error = "la contraseña deber tener al menos una letra minúscula";
+        */
         }
+        if (!empty($error)) {
+            include "../views/login_register_header.php";
+            include "../views/login.php";
+            return $error;
+        }
+
         $usuario = new Usuario();
         $_SESSION['usuarios'] = $usuario->login($_REQUEST['gmail'], $_REQUEST['password']);
 
         if ($_SESSION['usuarios'] == false) {
             //var_dump('no conectado');
-
+            $error = "Credenciales inválidas. Por favor, verifica tu email y contraseña.";
             include "../views/login_register_header.php";
-            include "../views/login.php";
+            include "../views/login.php"; 
+            return;
         } else {
             $encontrado = true;
             if ($_SESSION["usuarios"]["rol"] == "cliente") {
@@ -46,16 +53,27 @@ class controllersUsuario
     //funcion para registrar un usuario nuevo
     public function registarUsuario()
     {
-        include "../views/login_register_header.php";
-        include "../views/register.php";
+        
+        $error="";
         $usuario = new Usuario();
-        if (!isset($_REQUEST['nombre']) || !isset($_REQUEST['apellidos']) || !isset($_REQUEST['password']) || !isset($_REQUEST['nif']) || !isset($_REQUEST['gmail'])) {
-            echo "Todos los campos debe ser obligatorios";
-        } else {
+      
+        if (empty($_REQUEST['nombre']) || empty($_REQUEST['apellidos']) || empty($_REQUEST['password']) || empty($_REQUEST['nif']) || empty($_REQUEST['gmail'])) 
+        {
+            $error="Todos los campos debe ser obligatorios";
 
-            $_SESSION['usuarios'] = $usuario->registar($_REQUEST['nombre'], $_REQUEST['apellidos'], $_REQUEST['password'], $_REQUEST['nif'], $_REQUEST['gmail']);
+        }else
+        if(isset($_REQUEST['nombre']) && isset($_REQUEST['apellidos']) && isset($_REQUEST['password']) && isset($_REQUEST['nif']) && isset($_REQUEST['gmail'])){
+
+            $usuario->registar($_REQUEST['nombre'], $_REQUEST['apellidos'], $_REQUEST['password'], $_REQUEST['nif'], $_REQUEST['gmail']);
+            $error= "Registro con exito";
             //ControllerCorreo::enviarCorreo("pedroentornocliente@gmail.com",$_REQUEST['gmail']);
         }
+        if (!empty($error)) {
+            include "../views/login_register_header.php";
+            include "../views/register.php";
+        }
+        return $error;
+        
     }
     //funcion para cerrar sesion
     public function logout()
@@ -72,8 +90,9 @@ class controllersUsuario
     //funcion para añadir una pelicula nueva, solo puede hacer el administrador
     public function añadirPelicula()
     {
-        include "../../admin/html/CrearPelicula.php";
+        
         $usuario = new Usuario();
+        $error="";
         if (
             !empty($_REQUEST['nombrePelicula']) && !empty($_REQUEST['argumento']) && !empty($_REQUEST['clasificacion']) && !empty($_REQUEST['ano']) && !empty($_REQUEST['duracion']) && !empty($_REQUEST['edad'])
             && !empty($_REQUEST['genero_id']) && !empty($_FILES['imagen']) && !empty($_REQUEST['actor/actriz']) && !empty($_REQUEST['director'])
@@ -95,60 +114,96 @@ class controllersUsuario
                 );
                 $usuario->meteractrizactor($_REQUEST['actor/actriz'], $_REQUEST['nombrePelicula']);
                 $usuario->meterdirector($_REQUEST['director'], $_REQUEST['nombrePelicula']);
-                echo "Se ha creado correctamente";
+                $error= "Se ha creado correctamente";
             } else {
-                echo "Formato de imagen no valido";
+                $error= "Formato de imagen no valido";
             }
         } else {
-            echo "debes introducir todos los campos que son obligatorios";
+            $error= "debes introducir todos los campos que son obligatorios";
         }
+        if (!empty($error)) {
+            include "../../admin/html/CrearPelicula.php";
+        }
+        return $error;
     }
      //funcion para eliminar una pelicula, solo puede hacer el administrador
     public function eliminarPelicula()
     {
-        include "../../admin/html/borrarPelicula.php";
+        $error="";
         $usuario = new Usuario();
-        if (!empty($_REQUEST['nombrePelicula'])) {
-            $_SESSION['pelicula'] = $usuario->eliminar($_REQUEST['nombrePelicula']);
-            echo "Se ha borrado la pelicula correctamente";
+        if (!empty($_REQUEST['nombrePelicula'])) 
+        {
+            if($usuario->existePelicula($_REQUEST['nombrePelicula'])){
+                $usuario->eliminar($_REQUEST['nombrePelicula']);
+                $error="Se ha borrado la pelicula correctamente";
+            }else{
+                $error="No se ha borrado la pelicula porque no existe ninguna pelicula con ese nombre";
+            }
         } else {
-            echo "No se ha borrado la pelicula";
+            $error="Introduce ese campo que es obligatorio";
         }
+        if(!empty($error))
+        {
+            include "../../admin/html/borrarPelicula.php";
+        }
+        return $error;
     }
      //funcion para añadir una usuario, solo puede hacer el administrador
     public function eliminarUsuario()
     {
-        include "../../admin/html/eliminarCuentasUsuarios.php";
+        $error="";
+        
         $usuario = new Usuario();
-        if (!empty($_REQUEST['correoUsuario']) && !empty($_REQUEST['nombreUsuario'])) {
-            $usuario->eliminarusuario($_REQUEST['correoUsuario'], $_REQUEST['nombreUsuario']);
-            echo "Se ha borrado el usuario correctamente";
+        if (!empty($_REQUEST['correoUsuario']) || !empty($_REQUEST['nombreUsuario'])) {
+            if($usuario->existeUsuario($_REQUEST['correoUsuario'], $_REQUEST['nombreUsuario'])){
+                $usuario->eliminarusuario($_REQUEST['correoUsuario'], $_REQUEST['nombreUsuario']);
+                $error= "Se ha borrado el usuario correctamente";
+            }else{
+                $error= "No se ha borrado el usuario porque no existe en la base de datos";
+            }  
         } else {
-            echo "No se ha borrado el usuario";
+            $error="Debes introducir estos campos porque son obligatorios";
         }
+        if(!empty($error))
+        {
+            include "../../admin/html/eliminarCuentasUsuarios.php";
+        }
+        return $error;
     }
      //funcion para añadir un actor o actriz o Director, solo puede hacer el administrador
     public function eliminarActorActrizDirector()
     {
-        include "../../admin/html/borrarActores.php";
+        $error="";
+        
         $usuario = new Usuario();
         if (!empty($_REQUEST['nombreActorActrizDirector'])) {
-            $usuario->eliminaractoractrizdirector($_REQUEST['nombreActorActrizDirector']);
-            echo "Se ha borrado correctamente";
+            if($usuario->existeActorActrizDirector($_REQUEST['nombreActorActrizDirector'])){
+                $usuario->eliminaractoractrizdirector($_REQUEST['nombreActorActrizDirector']);
+                $error= "Se ha borrado correctamente";
+            }else{
+                $error="No se ha borrado porque no existe en la base de datos";
+            }
+            
         } else {
-            echo "No se ha borrado";
+            $error= "Introduce ese campo porque es obligatorio";
         }
+        if(!empty($error))
+        {
+            include "../../admin/html/borrarActores.php";
+        }
+        return $error;
     }
      //funcion para editar una pelicula, solo puede hacer el administrador
     public function editarPelicula()
     {
-        include "../../admin/html/editarPelicula.php";
+        $error="";
+        
         $usuario = new Usuario();
         if (
-            !empty($_REQUEST['nombrePelicula']) && !empty($_REQUEST['argumento']) && !empty($_REQUEST['clasificacion']) && !empty($_REQUEST['ano']) && !empty($_REQUEST['duracion']) && !empty($_REQUEST['edad'])
-            && !empty($_REQUEST['genero_id'])
+            !empty($_REQUEST['nombrePelicula']) || !empty($_REQUEST['argumento']) || !empty($_REQUEST['clasificacion']) || !empty($_REQUEST['ano']) || !empty($_REQUEST['duracion']) || !empty($_REQUEST['edad'])
+            || !empty($_REQUEST['genero_id'])
         ) {
-            $_SESSION['pelicula'] = $usuario->editar(
+             $usuario->editar(
                 $_REQUEST['nombrePelicula'],
                 $_REQUEST['argumento'],
                 $_REQUEST['clasificacion'],
@@ -157,29 +212,39 @@ class controllersUsuario
                 $_REQUEST['edad'],
                 $_REQUEST['genero_id']
             );
-            echo "Se ha editado la pelicula exitosamente";
+            $error= "Se ha editado la pelicula exitosamente";
         } else {
-            echo "No se ha editado la pelicula";
+            $error="No se ha editado la pelicula,tienes que introducir los campos que son obligatorios";
         }
+        if (!empty($error)) {
+            include "../../admin/html/editarPelicula.php";
+        }
+        return $error;
 
         //$_SESSION['usuarios']=$usuario->editar($_REQUEST['nombrePelicula'],$_REQUEST['argumento']);
     }
      //funcion para editar un actor  o actriz o Director, solo puede hacer el administrador
     public function editarActorAztrizDirector()
     {
-        include "../../admin/html/editarActores.php";
+        $error="";
+        
         $usuario = new Usuario();
         if (!empty($_REQUEST['nombreActorActrizDirector']) && !empty($_REQUEST['tipo'])) {
             $usuario->editaractoractrizdirector($_REQUEST['nombreActorActrizDirector'], $_REQUEST['tipo']);
-            echo "Se ha editado exitosamente";
+            $error= "Se ha editado exitosamente";
         } else {
-            echo "no se ha editado";
+            $error= "no se ha editado";
         }
+        if (!empty($error)) {
+            include "../../admin/html/editarActores.php";
+        }
+        return $error;
     }
      //funcion para añadir un actor  o actriz o Director nuevo, solo puede hacer el administrador
     public function crearActorAztrizDirector()
     {
-        include "../../admin/html/crearActores.php";
+        $error="";
+        
         $usuario = new Usuario();
         if (!empty($_REQUEST['nombreActorActrizDirector']) && !empty($_REQUEST['tipo']) && !empty($_FILES['imagen'])) {
             $nombreAD = $_REQUEST['nombreActorActrizDirector'];
@@ -199,42 +264,57 @@ class controllersUsuario
                     $usuario->anadiractoractrizdirector($nombreAD, $tipoAD, $imagenAD);
                 }
 
-                echo "Se ha creado correctamente";
+                $error= "Se ha creado correctamente";
             } else {
-                echo "Formato de imagen no valido";
+                $error= "Formato de imagen no valido";
             }
         } else {
-            echo "Por favor,completa todos los campos";
+            $error= "Por favor,completa todos los campos";
         }
+        if (!empty($error)) {
+            include "../../admin/html/crearActores.php";
+        }
+        return $error;
     }
     //funcion para activar o desactivar usuario, solo puede hacer el administrador
     public function activadesactivarUsuarios()
     {
-
-        include "../../admin/html/activar_desactivarUsuarios.php";
-
+        $error="";
+        //include "../../admin/html/activar_desactivarUsuarios.php";
+        $usuario = new Usuario();
         if (!empty($_REQUEST['nombreUsuario'])) {
-            $usuario = new Usuario();
-            $_SESSION['usuario'] = $usuario->usuario($_REQUEST['nombreUsuario']);
+            
+            $usuario->usuario($_REQUEST['nombreUsuario']);
+            $error="Se ha activado o desactivado correctamente";
+        }else{
+            $error="Introduce ese campo que es obligatorio";
         }
+        if (!empty($error)) {
+            include "../../admin/html/activar_desactivarUsuarios.php";
+        }
+        return $error;
     }
     //funcion para asiganr roles a los usuarios, solo puede hacer el administrador
     public function asignarRolesUsuarios()
     {
-        include "../../admin/html/asignarRolesUsuarios.php";
+        $error="";
         $usuario = new Usuario();
         if (!empty($_REQUEST['nombreUsuario']) && !empty($_REQUEST['roles'])) {
             $usuario->asignar($_REQUEST['nombreUsuario'], $_REQUEST['roles']);
-            echo "Se asignado el rol correctamente";
+            $error= "Se asignado el rol correctamente";
         } else {
-            echo "no se ha asignado el rol";
+            $error= "no se ha asignado el rol";
         }
+        if (!empty($error)) {
+            include "../../admin/html/asignarRolesUsuarios.php";
+        }
+        return $error;
     }
     //funcion para gerstionar Salas-Sesiones, solo puede hacer el adminitrador
     public function gestionarSalasSesiones()
     {
-
-        include "../../admin/html/gestionarSalasSesiones.php";
+        $error="";
+        
         $usuario = new Usuario();
 
         if (
@@ -249,13 +329,17 @@ class controllersUsuario
 
             if (!$usuario->existeSesion($nombrePelicula, $nombreSala, $fecha, $horaSesion)) {
                 $usuario->asignarsalassesiones($nombrePelicula, $nombreSala, $fecha, $horaSesion, $precio);
-                echo "Se ha asignado una sala-sesión nueva correctamente";
+                $error= "Se ha asignado una sala-sesión nueva correctamente";
             } else {
-                echo "Ya existe una sala-sesión con los mismos detalles";
+                $error= "Ya existe una sala-sesión con los mismos detalles";
             }
         } else {
-            echo "No se han proporcionado todos los datos necesarios";
+            $error= "No se han proporcionado todos los datos necesarios";
         }
+        if (!empty($error)) {
+            include "../../admin/html/gestionarSalasSesiones.php";
+        }
+        return $error;
     }
     //funcion para listar todas las peliculas que hay en la base de datos,solo puede ver el administrador
     public function listarPeliculas()
@@ -294,8 +378,6 @@ class controllersUsuario
     //funcion para listar todas las Salas-sesiones que hay en la base de datos,solo puede ver el administrador
     public function listarSalas()
     {
-
-
         $usuario = new Usuario();
         $_SESSION['salas'] = $usuario->listasalas();
         include "../../admin/html/listadoSalas.php";

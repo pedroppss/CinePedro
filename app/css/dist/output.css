@@ -717,6 +717,10 @@ video {
   margin-left: 32px;
 }
 
+.ml-\[36px\]{
+  margin-left: 36px;
+}
+
 .ml-\[3px\]{
   margin-left: 3px;
 }
@@ -899,6 +903,14 @@ video {
 
 .mt-\[8rem\]{
   margin-top: 8rem;
+}
+
+.mt-10p{
+  margin-top: 10px;
+}
+
+.block{
+  display: block;
 }
 
 .flex{
@@ -1572,6 +1584,10 @@ video {
 
 .text-\[20px\]{
   font-size: 20px;
+}
+
+.text-\[21px\]{
+  font-size: 21px;
 }
 
 .text-\[22px\]{

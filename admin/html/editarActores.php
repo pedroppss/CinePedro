@@ -50,7 +50,7 @@
                                                     <h4 class="nk-block-title">Editación de Actores/ces o Directores </h4>
                                                 </div>
                                             </div>
-                                            <form action="app/views/login_register.php?ctl=añadirActores" method="POST">
+                                            <form action="app/views/login_register.php?ctl=editarActores" method="POST">
                                                 <div class="form-group">
                                                     <label class="form-label" for="default-01">Nombre del Actor, Actriz o Director para editar</label>
                                                     <div class="form-control-wrap">
@@ -67,6 +67,7 @@
                                                     <button class="w-300 h-12 mt-7 ml-[299px] bg-rose-600 text-2xl font-normal text-white font-poppins" type="submit" name="Editar" value="Editar">Editar</button>
                                                 </div>
                                             </form>
+                                            <div class="text-red-600"><?=$error?></div>
                                         </div> <!-- nk-block -->
                                     </div><!-- .components-preview -->
                                 </div>

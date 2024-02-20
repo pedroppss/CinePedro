@@ -332,5 +332,6 @@ class Salacine extends Conectar
         $idInsertado=$conexion->lastInsertId();
         return $idInsertado;
     }
+    
 
 }

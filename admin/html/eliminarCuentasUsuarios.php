@@ -34,7 +34,7 @@
                                     <div class="components-preview wide-md mx-auto">
                                         <div class="nk-block-head nk-block-head-lg wide-sm">
                                             <div class="nk-block-head-content">
-                                                <div class="nk-block-head-sub"><a class="back-to" href="app/views/login_register.php?ctl=usuarios"><em class="icon ni ni-arrow-left"></em><span>Lista de Actores, Actrices y Directores</span></a></div>
+                                                <div class="nk-block-head-sub"><a class="back-to" href="app/views/login_register.php?ctl=usuarios"><em class="icon ni ni-arrow-left"></em><span>Lista de Usuarios</span></a></div>
                                                 <h2 class="nk-block-title fw-normal">Eliminar cuentas de los Usuarios</h2>
                                                 <div class="nk-block-des">
                                                     <!--<p class="lead">Using <a href="https://datatables.net/" target="_blank">DataTables</a>, add advanced interaction controls to your HTML tables. It is a highly flexible tool and all advanced features allow you to display table instantly and nice way.</p>
@@ -65,6 +65,7 @@
                                                     <button class="w-300 h-12 mt-7 ml-[299px] bg-rose-600 text-2xl font-normal text-white font-poppins" type="submit" name="borrar" value="borrar">Borrar</button>
                                                 </div>
                                             </form>
+                                            <div class="text-red-600"><?=$error?></div>
                                         </div> <!-- nk-block -->
                                     </div><!-- .components-preview -->
                                 </div>

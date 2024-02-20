@@ -102,6 +102,7 @@ module.exports = {
         'personalized':'33rem',
         '151':'151px',
         '229':'229px',
+        '10p':'10px'
       },
       //COLOR DE LOS BORDES
       borderColor:{

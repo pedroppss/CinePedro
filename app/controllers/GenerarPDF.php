@@ -1,11 +1,11 @@
 <?php
-include 'vendor/autoload.php';
+include './vendor/autoload.php';
 
 use Dompdf\Dompdf;
 
-class GenerarPDF
+class GenerarPDF extends Dompdf
 {
-    public static function generarPDF($fichero, $facturas)
+    public static function generarPDF($fichero)
     {
         //Creamos un objeto de la clase DOMPDF y le indicamos que vamos a utilizar direcciones URL
         $dompdf = new Dompdf(array('enable_remote' => true, 'isHtml5ParserEnabled' => true));

@@ -1,6 +1,5 @@
-<!--esto muesta las butacas de la sala 3D-->
 <script src="node_modules/jquery/dist/jquery.js"></script>
-<a href="biblioteca"><img src="app/images/salaButacas/vector.png" class="w-6 h-7 ml-8"></a>
+<a href="index.php?ctl=biblioteca"><img src="app/images/salaButacas/vector.png" class="w-6 h-7 ml-8"></a>
 <section class="bg-fond_inicio rounded-2xl mt-12 mb-16 h-72 ml-8">
   <div class="grid grid-cols-2 p-8 text-center">
     <div class="flex gap-12 ml-56">
@@ -40,7 +39,7 @@
             && ($row!='C')  && ($row!='B')&& ($seat==5) || ($seat==12) || ($seat==13)){
           $asientos[$row][$seat] = -1;
         }else{
-          $asientos[$row][$seat] =$row . $seat;//(int)($row) * 20 + $seat;
+          $asientos[$row][$seat] = $row . $seat;// (int)($row) * 20 + $seat;
         }
       }
     }
@@ -49,6 +48,7 @@
         $asientos[$row][$seat] = $row . $seat;//(int)($row) * 20 + $seat;
       }
     }
+
     
     ?>
     <table border="0" class="ml-80 mr-72">
@@ -61,10 +61,17 @@
                   <img src="app/images/salaButacas/vacio.png" class="w-11 h-10">
                 <?php } else { ?>
                   <div class="relative">
-                    <a href="#" class="seat" id="butaca-<?php echo $asientos[$row][$seat] ?>">
-                      <img id="<?php echo $asientos[$row][$seat]; ?>" src="app/images/salaButacas/butaca.png" class="w-11 h-10" alt="Butaca <?php echo $row . $seat; ?>">
-                    </a>
-                    <label class="absolute text-black top-[13%] left-[22%] font-poppins text-[15px]"><?php echo $row . $seat; ?></label>
+                    <?php if(in_array($row.$seat, $_SESSION['butacasOcupadas'])) { ?>
+                        <a href="#" class="seat" id="butaca-<?php echo $asientos[$row][$seat] ?>">
+                          <img id="<?php echo $asientos[$row][$seat]; ?>" src="app/images/salaButacas/Unavailable.png" class="w-11 h-10 unavalible" alt="Butaca <?php echo $row . $seat; ?>">
+                        </a>
+                        <label class="absolute text-black top-[13%] left-[22%] font-poppins text-[15px]"><?php echo $row . $seat; ?></label>
+                    <?php } else { ?>
+                        <a href="#" class="seat" id="butaca-<?php echo $asientos[$row][$seat] ?>">
+                          <img id="<?php echo $asientos[$row][$seat]; ?>" src="app/images/salaButacas/Available.png" class="w-11 h-10" alt="Butaca <?php echo $row . $seat; ?>">
+                        </a>
+                        <label class="absolute text-black top-[13%] left-[22%] font-poppins text-[15px]"><?php echo $row . $seat; ?></label>
+                    <?php } ?>
                   </div>
                 <?php } ?>
               </td>
@@ -79,12 +86,23 @@
           <tr>
             <?php for ($seat = 0; $seat < 21; $seat++) { ?>
               <td>
+                <?php if ($asientos[$row][$seat] == -1) { ?>
+                  <img src="app/images/salaButacas/vacio.png" class="w-11 h-10">
+                <?php } else { ?>
                   <div class="relative">
-                    <a href="#" class="seat" id="butaca-<?php echo $asientos[$row][$seat] ?>">
-                      <img id="<?php echo $asientos[$row][$seat]; ?>" src="app/images/salaButacas/butaca.png" class="w-11 h-10" alt="Butaca <?php echo $row . $seat; ?>">
-                    </a>
-                    <label class="absolute text-black top-[13%] left-[22%] font-poppins text-[15px]"><?php echo $row . $seat; ?></label>
+                    <?php if(in_array($row.$seat, $_SESSION['butacasOcupadas'])) { ?>
+                        <a href="#" class="seat" id="butaca-<?php echo $asientos[$row][$seat] ?>">
+                          <img id="<?php echo $asientos[$row][$seat]; ?>" src="app/images/salaButacas/Unavailable.png" class="w-11 h-10 unavalible" alt="Butaca <?php echo $row . $seat; ?>">
+                        </a>
+                        <label class="absolute text-black top-[13%] left-[22%] font-poppins text-[15px]"><?php echo $row . $seat; ?></label>
+                    <?php } else { ?>
+                        <a href="#" class="seat" id="butaca-<?php echo $asientos[$row][$seat] ?>">
+                          <img id="<?php echo $asientos[$row][$seat]; ?>" src="app/images/salaButacas/Available.png" class="w-11 h-10" alt="Butaca <?php echo $row . $seat; ?>">
+                        </a>
+                        <label class="absolute text-black top-[13%] left-[22%] font-poppins text-[15px]"><?php echo $row . $seat; ?></label>
+                    <?php } ?>
                   </div>
+                <?php } ?>
               </td>
             <?php } ?>
           </tr>
@@ -118,8 +136,12 @@
     $(".seat").on('click', function(event) {
       event.preventDefault();
 
+      if($(this).find("img").hasClass("unavalible")){
+        return;
+      }
+
       var currentSrc = $(this).find("img").attr("src");
-      var normalSrc = "app/images/salaButacas/butaca.png";
+      var normalSrc = "app/images/salaButacas/Available.png";
       var selectedSrc = "app/images/salaButacas/Selected.png";
 
       if (currentSrc === normalSrc) {

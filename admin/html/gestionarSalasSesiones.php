@@ -94,6 +94,7 @@
                                                 <br>
                                                 <button class="w-300 h-12 mt-7 ml-[299px] bg-rose-600 text-2xl font-normal text-white font-poppins" type="submit" name="asignar" id="asignar" value="añadir">Asignar</button>
                                             </form>
+                                            <div class="text-red-600"><?=$error?></div>
                                         </div> <!-- nk-block -->
                                     </div><!-- .components-preview -->
                                 </div>

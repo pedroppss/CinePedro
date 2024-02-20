@@ -314,6 +314,34 @@ class peliculas extends conexion_2{
         }
 
     }
+    public function obtenerButacasOcupadas($idSesion)
+    {
+        try
+        {
+            $instancia=new conexion_2();
+            $conexion=$instancia->conexion;
+            $consultasql="SELECT butacas_compradasc.num_butaca as numButaca FROM 
+                compra_butacasc INNER JOIN butacas_compradasc 
+                    ON compra_butacasc.id=butacas_compradasc.id_compra
+                        WHERE compra_butacasc.sesion_id=:sesionId";
+            $enlaceDatos=$conexion->prepare($consultasql); 
+            $enlaceDatos->bindParam("sesionId",$idSesion,PDO::PARAM_INT);
+            $enlaceDatos->execute();
+            if($enlaceDatos->rowCount()>0){
+                $butacasOcupadas=array();
+                while($row = $enlaceDatos->fetch(PDO::FETCH_ASSOC)){
+                    $butacasOcupadas[]=$row['numButaca'];
+                }
+                $_SESSION['butacasOcupadas']=$butacasOcupadas;
+           }
+           $conexion=null;
+           return $_SESSION['butacasOcupadas'];
+
+        }catch(PDOException $e){
+            echo "Error:" .$e->getMessage();
+        }
+    }
+
    }
 
 ?>

@@ -408,7 +408,73 @@ class Usuario extends conexion{
             exit("Error: ".$e->getMessage());
         }
    }
-
+   //funcion para saber si el usuario esta en la base de datos
+   public function existeUsuario($correo,$nombre)
+   {
+        try
+        {
+            $instancia=new Usuario();
+            $conexion=$instancia->conexion;
+            $consultasql="select * FROM usuariosc where usuariosc.correo=:correo and usuariosc.nombre=:nombre";
+            $enlaceDatos=$conexion->prepare($consultasql);
+            $enlaceDatos->bindParam(":correo",$correo,PDO::PARAM_STR);
+            $enlaceDatos->bindParam(":nombre",$nombre,PDO::PARAM_STR);
+            $enlaceDatos->execute();
+            if($enlaceDatos->rowCount()>0)
+            {
+                return true;
+            }else{
+                return false;
+            }
+        }catch(PDOException $e)
+        {
+            exit("Error: ".$e->getMessage());
+        }
+   }
+   //funcion para saber si el nombre de la pelicula esta en la base de datos
+   public function existePelicula($nombre)
+   {
+        try
+        {
+            $instancia=new Usuario();
+            $conexion=$instancia->conexion;
+            $consultasql="select * FROM peliculasc where peliculasc.nombre=:nombre";
+            $enlaceDatos=$conexion->prepare($consultasql);
+            $enlaceDatos->bindParam(":nombre",$nombre,PDO::PARAM_STR);
+            $enlaceDatos->execute();
+            if($enlaceDatos->rowCount()>0)
+            {
+                return true;
+            }else{
+                return false;
+            }
+        }catch(PDOException $e)
+        {
+            exit("Error: ".$e->getMessage());
+        }
+   }
+   //funcion para saber si el nombre del actor o actriz o director esta en la base de datos
+   public function existeActorActrizDirector($nombre)
+   {
+        try
+        {
+            $instancia=new Usuario();
+            $conexion=$instancia->conexion;
+            $consultasql="select * FROM personalc where personalc.nombre=:nombre";
+            $enlaceDatos=$conexion->prepare($consultasql);
+            $enlaceDatos->bindParam(":nombre",$nombre,PDO::PARAM_STR);
+            $enlaceDatos->execute();
+            if($enlaceDatos->rowCount()>0)
+            {
+                return true;
+            }else{
+                return false;
+            }
+        }catch(PDOException $e)
+        {
+            exit("Error: ".$e->getMessage());
+        }
+   }
    //listar todas las peliculas que hay en la bases de datos
    public function listarPeliculas()
    {
