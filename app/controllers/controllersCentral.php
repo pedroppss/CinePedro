@@ -23,6 +23,9 @@
         case 'biblioteca':
             (new controllersPeliculas())->listarpeliculas();
             break;
+        case 'busquedaPelicula':
+            (new controllersPeliculas())->busquedapeliculas();
+            break;
         case 'QR':
             (new controllersPeliculas())->realizarQR();
             break;

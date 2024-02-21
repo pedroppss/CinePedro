@@ -281,6 +281,42 @@ class peliculas extends conexion_2{
        }
 
    }
+   //funcion para la busqueda de peliculas
+   public function busqueda($nombre)
+   {
+        try{
+            $instancia=new conexion_2();
+            $conexion=$instancia->conexion;
+            $consultasql="select peliculasc.id as id , peliculasc.clasificacion as clasif,peliculasc.año as año, peliculasc.duracion as duracion, 
+                peliculasc.argumento as argumento,peliculasc.nombre as nombre ,peliculasc.cartel as cartel ,peliculasc.clasificacion_edad as edad from peliculasc
+                    where exists(select * from sesionesc where sesionesc.pelicula_id=peliculasc.id) AND peliculasc.nombre LIKE :nombre";
+            $enlaceDatos=$conexion->prepare($consultasql);        
+            $enlaceDatos->bindValue(":nombre",'%'.$nombre.'%',PDO::PARAM_STR);
+            $enlaceDatos->execute();
+            if($enlaceDatos->rowCount()>0){
+                $pelicula=array();
+                while($row = $enlaceDatos->fetch(PDO::FETCH_ASSOC)){
+                    $data=array(
+                        'id'=>$row['id'],
+                        'titulo'=>$row['nombre'],
+                        'imagen' => $row["cartel"],
+                        'edad' => $row['edad'],
+                        'argumento' => $row["argumento"],
+                        'clasif' => $row["clasif"],
+                        'año' => $row["año"],               
+                        'duracion' => $row["duracion"]
+                       );
+                       $pelicula[]=$data;
+                }
+                $_SESSION['peliculas']=$pelicula;
+           }
+           $conexion=null;
+           return isset($_SESSION['peliculas']) ? $_SESSION['peliculas'] : array(); // Devolver el arreglo de películas o vacío si no hay resultados
+        }catch(PDOException $e){
+           echo "Error:" .$e->getMessage();
+       }
+
+   }
    //funcion para comprar las butacas seleccionadas
    public function comprarButacas($idSesion,$butacas,$idUsuario,$fecha)
    {

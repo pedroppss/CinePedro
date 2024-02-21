@@ -22,13 +22,30 @@ class controllersPeliculas
         public function listarpeliculas()
         {
 
-                $peli = new peliculas;
+                $peli = new peliculas();
                 $peli->listarPeliculas();
                 include "app/views/bibliotecaPelicula.php";
                 //var_dump($_SESSION['peliculas']);
                 //foreach($_SESSION['peliculas'] as $pelic){
                 //         echo $pelic['titulo'];
                 // }
+        }
+        //funcion para mostrar las peliculas que has buscado en la búsqueda de peliculas
+        public function busquedapeliculas()
+        {
+                
+                $error="";
+                if(!empty($_REQUEST['buscar']))
+                {
+                        $peli=new peliculas();
+                        $peli->busqueda($_REQUEST['buscar']);
+                }else{
+                        $error="No hay resultados";
+                }
+               
+                        include "app/views/bibliotecaPelicula.php";
+                
+                return $error;
         }
         //funcion para mostrar las butacas
         public function butacas()
