@@ -35,12 +35,17 @@ class controllersPeliculas
         {
                 
                 $error="";
+                if(empty($_REQUEST['buscar']))
+                {
+                        $error="Introduce ese campo para poder buscar la pelicula";
+                }
                 if(!empty($_REQUEST['buscar']))
                 {
                         $peli=new peliculas();
                         $peli->busqueda($_REQUEST['buscar']);
 
-                }else{
+                }
+                else{
                         $error="No hay resultados";
                 }
                
