@@ -12,6 +12,10 @@ Rewriterule ^biblioteca$ index.php?ctl=biblioteca  [NC,L]
 
 RewriteCond %{REQUEST_FILENAME} !-f
 RewriteCond %{REQUEST_FILENAME} !-d
+Rewriterule ^butacas$ index.php?ctl=butacas [NC,L]
+
+RewriteCond %{REQUEST_FILENAME} !-f
+RewriteCond %{REQUEST_FILENAME} !-d
 Rewriterule ^factura$ index.php?ctl=factura [NC,L]
 
 RewriteCond %{REQUEST_FILENAME} !-f

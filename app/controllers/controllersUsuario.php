@@ -87,6 +87,26 @@ class controllersUsuario
     {
         include "../views/recuperarPassword.php";
     }
+    //funcion para recuperar la contraseña si te has olvidado
+    public function recuperar(){
+        $error="";
+        $usuario = new Usuario();
+        if(empty($_REQUEST['gmail'])){
+            $error="Introduce ese campo que es obligatorio";
+        }else
+        if(isset($_REQUEST['gmail']))
+        {
+            $usuario->cambiarPassword($_REQUEST['gmail']);
+            include "../views/login_register_header.php";
+            include "../views/login.php"; 
+        }
+        if (!empty($error)) {
+            include "../views/login_register_header.php";
+            include "../views/recuperarPassword.php"; 
+        }
+        return $error;
+
+    }
     //funcion para añadir una pelicula nueva, solo puede hacer el administrador
     public function añadirPelicula()
     {

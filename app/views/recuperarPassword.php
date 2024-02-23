@@ -3,12 +3,13 @@
    <main class="bg-no-repeat bg-personalized h-personalized grid content-around justify-around mt-[103px]" style="background-image: url(../images/recuperarContraseña/fondo-imagenes.png);">
                 <div class="p-24 w-500 h-[401px] rounded-2xl bg-fond_transp">
                         <a href="login_register.php?ctl=login"><img class="-ml-20 -mt-10"  src="../images/recuperarContraseña/vector.png" alt="vector"></a>
-                    <form action="login_register.php?ctl=recuperarPassword" method="POST">
+                    <form action="login_register.php?ctl=recuperar" method="POST">
                         <h1 class="text-3xl font-normal mt-12 text-white font-poppins">Recuperacion de Contraseña</h1>
                         <input class="w-300 h-12 mt-3 p-[21px] bg-fond_black_2 rounded text-base font-normal font-poppins" type="email" name="gmail" id="gmail" placeholder="Email" value="">
                         <br>
                         <button class="w-300 h-12 mt-7 bg-fond_pink text-2xl font-normal text-white font-poppins rounded-lg" type="submit" name="recuperar" value="recuperar">Recuperar</button>
-                    </form> 
+                    </form>
+                    <div class="text-red-600"><?=$error?></div>
                 </div>
     </main>
 </body>

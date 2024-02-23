@@ -46,6 +46,9 @@
         case 'recuperarPassword':
             (new controllersUsuario())->recuperarPassword();
             break;
+        case 'recuperar':
+            (new controllersUsuario())->recuperar();
+            break;
         case 'adminPrincipal':
             include "../../admin/html/index.php";
             break;

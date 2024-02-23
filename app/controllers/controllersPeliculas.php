@@ -39,11 +39,12 @@ class controllersPeliculas
                 {
                         $peli=new peliculas();
                         $peli->busqueda($_REQUEST['buscar']);
+
                 }else{
                         $error="No hay resultados";
                 }
                
-                        include "app/views/bibliotecaPelicula.php";
+                include "app/views/bibliotecaPelicula.php";
                 
                 return $error;
         }

@@ -61,6 +61,39 @@ class Usuario extends conexion{
             exit("Error:".$e->getMessage());
         }
    }
+    //funcion para enviar por gmail y saber la contraseña cambiada
+    public function cambiarPassword($email)
+    {
+     try
+     {
+         $instancia=new Usuario();
+         $conexion=$instancia->conexion;
+         $consultasql="update usuariosc set hash_pass=:password where correo=:correo";
+         $enlaceDatos=$conexion->prepare($consultasql);
+         $password=usuario::randomPassword(8);
+         $hash=password_hash($password,PASSWORD_BCRYPT);
+         $enlaceDatos->bindParam(":correo",$email,PDO::PARAM_STR);
+         $enlaceDatos->bindParam(":password",$hash,PDO::PARAM_STR);
+         $enlaceDatos->execute();
+         $enlaceDatos->fetch(PDO::PARAM_STR);
+         ControllerCorreo::enviarCorreoPassword($email,"pedroentornocliente@gmail.com", $password);
+
+     }catch(PDOException $e)
+     {
+         exit("Error:".$e->getMessage());
+     }
+    }
+    //funcion para generar la contraseña aleatoriamente
+    function randomPassword($tam) {
+        $alphabet = 'abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ1234567890';
+        $pass = array(); 
+        $alphaLength = strlen($alphabet) - 1; 
+        for ($i = 0; $i < $tam; $i++) {
+            $n = rand(0, $alphaLength);
+            $pass[] = $alphabet[$n];
+        }
+        return implode($pass); 
+    }
    //Añadir una pelicula
    public function añadir($nombrePelicula,$argumento,$clasificacion,$ano,$duracion,$edad,$genero_id,$imagen)
    {
