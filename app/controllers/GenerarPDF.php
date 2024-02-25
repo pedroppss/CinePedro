@@ -1,9 +1,9 @@
 <?php
-include './vendor/autoload.php';
+include 'vendor/autoload.php';
 
 use Dompdf\Dompdf;
 
-class GenerarPDF extends Dompdf
+class GenerarPDF
 {
     public static function generarPDF($fichero)
     {
@@ -39,5 +39,8 @@ class GenerarPDF extends Dompdf
         //Muy importante, si no hacemos echo no se mostrará el pdf generado
         echo $datos;
         exit;
+    }
+    public static function PDF(){
+        self::generarPDF("fichero.pdf");
     }
 }

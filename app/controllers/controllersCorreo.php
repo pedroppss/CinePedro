@@ -148,5 +148,5 @@ class ControllerCorreo
             echo "En la línea "  . $e->getLine() . ' en el archivo ' . $e->getFile() . ': <br>';
             echo "<br>Mensaje de error:" . $e->getMessage();
         }
-    }    
+    }
 }

@@ -25,6 +25,7 @@ class Usuario extends conexion{
             $usuariocorrecto['avatar']=$usuario['avatar'];
             $usuariocorrecto['nombre']=$usuario['nombre'];
             $usuariocorrecto['id']=$usuario['id'];
+            $usuariocorrecto['correo']=$usuario['correo'];
             //echo  $_SESSION["usuarios"]['nombre'];
         }else{
             $usuariocorrecto=false;

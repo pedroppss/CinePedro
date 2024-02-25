@@ -29,7 +29,7 @@
         case 'QR':
             (new controllersPeliculas())->realizarQR();
             break;
-        case 'registrar':
+        case 'reservar':
             (new controllersPeliculas())->PDF();
             break;
         case 'inicio_2':

@@ -74,7 +74,7 @@
         <input type="checkbox" id="miCheckbox" name="miCheckbox" class="w-[26px] h-[25px] bg-checkbox_black text-checkbox_black">
             <label for="checkbox" class="text-[#333333CC] text-[16px] font-normal font-poppins ml-2 align-super">Enviar factura al email</label> 
     </div>
-    <form action="index.php?ctl=registrar" method="POST">
+    <form action="index.php?ctl=reservar" method="POST">
     <button class="w-[419px] pt-[16px] pb-[16px] pl-[12px] pr-[12px] bg-royal_blue ml-8 mt-[22px] rounded-[8px] text-sunshine_yellow font-roboto text-[24px] font-medium text-center">RESERVAR</button>
     </form>
 </section>

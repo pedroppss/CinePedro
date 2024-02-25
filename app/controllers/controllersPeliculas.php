@@ -121,6 +121,6 @@ class controllersPeliculas
                 }
         }
         public function PDF(){
-                GenerarPDF::generarPDF("factura.pdf");
+                GenerarPDF::PDF();
         }
 }
